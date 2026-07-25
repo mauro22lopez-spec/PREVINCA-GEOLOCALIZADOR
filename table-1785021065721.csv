@@ -1,0 +1,6 @@
+﻿Archivo,Para qué sirve
+[index.html](sandbox:///mnt/agents/output/mapa-rosario/index.html),La app web completa (mapa + calor + Excel + rutas)
+[direcciones\_ventas\_rosario.xlsx](sandbox:///mnt/agents/output/mapa-rosario/direcciones_ventas_rosario.xlsx),Excel con 57 direcciones reales de Rosario
+[direcciones\_ventas\_rosario.csv](sandbox:///mnt/agents/output/mapa-rosario/direcciones_ventas_rosario.csv),Mismo contenido en CSV
+[vercel.json](sandbox:///mnt/agents/output/mapa-rosario/vercel.json),Configuración para Vercel
+[README.md](sandbox:///mnt/agents/output/mapa-rosario/README.md),Documentación del proyecto
