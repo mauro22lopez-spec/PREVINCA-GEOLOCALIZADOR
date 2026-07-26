@@ -1,4 +1,0 @@
-﻿#,Archivo,Para qué sirve
-1,**[index.html](sandbox:///mnt/agents/output/mapa-rosario/index.html)**,"La app web completa (mapa, calor, Excel, rutas)"
-2,**[vercel.json](sandbox:///mnt/agents/output/mapa-rosario/vercel.json)**,Configuración para que Vercel lo reconozca
-3,**[direcciones\_ventas\_rosario.xlsx](sandbox:///mnt/agents/output/mapa-rosario/direcciones_ventas_rosario.xlsx)**,Excel con 57 direcciones reales de Rosario
