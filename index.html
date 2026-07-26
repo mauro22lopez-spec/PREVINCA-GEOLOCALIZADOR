@@ -10,12 +10,12 @@
     <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f0f2f5; }
-        .header { background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%); color: white; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 12px rgba(0,0,0,0.2); position: relative; z-index: 1000; }
+        html, body { font-family: 'Segoe UI', system-ui, sans-serif; background: #f0f2f5; height: 100%; overflow: hidden; }
+        .header { background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%); color: white; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 12px rgba(0,0,0,0.2); position: relative; z-index: 1000; height: 56px; flex-shrink: 0; }
         .header h1 { font-size: 1.3rem; display: flex; align-items: center; gap: 10px; font-weight: 700; }
         .header .subtitle { font-size: 0.8rem; opacity: 0.85; font-weight: 500; }
-        .main-container { display: flex; height: calc(100vh - 56px); }
-        .sidebar { width: 360px; background: white; border-right: 1px solid #e0e0e0; display: flex; flex-direction: column; overflow: hidden; }
+        .main-container { display: flex; height: calc(100vh - 56px); width: 100vw; }
+        .sidebar { width: 360px; background: white; border-right: 1px solid #e0e0e0; display: flex; flex-direction: column; overflow: hidden; flex-shrink: 0; }
         .sidebar-scroll { overflow-y: auto; flex: 1; padding-bottom: 20px; }
         .panel { padding: 16px 18px; border-bottom: 1px solid #f0f0f0; }
         .panel h3 { font-size: 0.9rem; color: #1a237e; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; font-weight: 700; }
@@ -56,7 +56,7 @@
         .route-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
         .route-btn-secondary { width: 100%; padding: 12px; background: linear-gradient(135deg, #0984e3 0%, #74b9ff 100%); color: white; border: none; border-radius: 10px; font-size: 0.9rem; font-weight: 700; cursor: pointer; margin-top: 8px; transition: all 0.2s; box-shadow: 0 4px 12px rgba(9,132,227,0.3); }
         .route-btn-secondary:hover { transform: translateY(-2px); }
-        #map { flex: 1; height: 100%; }
+        #map { flex: 1; height: 100%; min-height: 400px; background: #e8eaf6; }
         .leaflet-popup-content-wrapper { border-radius: 14px; box-shadow: 0 8px 30px rgba(0,0,0,0.18); padding: 0; overflow: hidden; }
         .leaflet-popup-content { margin: 0; padding: 0; }
         .popup-header { background: linear-gradient(135deg, #1a237e 0%, #3949ab 100%); color: white; padding: 12px 16px; font-weight: 700; font-size: 0.95rem; }
@@ -73,7 +73,7 @@
         .progress-bar { width: 280px; height: 6px; background: rgba(255,255,255,0.2); border-radius: 3px; overflow: hidden; margin-top: 12px; }
         .progress-fill { height: 100%; background: #00cec9; border-radius: 3px; transition: width 0.3s; width: 0%; }
         .hint-box { background: #fff3e0; border-left: 3px solid #ff9800; padding: 10px 12px; border-radius: 0 8px 8px 0; font-size: 0.75rem; color: #e65100; margin-top: 10px; line-height: 1.4; }
-        @media (max-width: 768px) { .main-container { flex-direction: column; } .sidebar { width: 100%; max-height: 45vh; } #map { height: 55vh; } }
+        @media (max-width: 768px) { .main-container { flex-direction: column; } .sidebar { width: 100%; max-height: 45vh; } #map { height: 55vh; min-height: 300px; } }
     </style>
 </head>
 <body>
@@ -195,18 +195,164 @@
         ];
         const ROSARIO_CENTER = [-32.9442, -60.6505];
         let map, markersLayer, heatLayer, currentData = [], allData = [], showMarkers = true, showHeat = true;
-        function initMap() { map = L.map('map').setView(ROSARIO_CENTER, 13); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors', maxZoom: 19 }).addTo(map); markersLayer = L.layerGroup().addTo(map); }
+        
         function getColorBySales(v) { if (v >= 60) return '#e53935'; if (v >= 30) return '#fbc02d'; return '#43a047'; }
         function getStatus(v) { if (v >= 60) return 'alta'; if (v >= 30) return 'media'; return 'baja'; }
         function getStatusLabel(v) { if (v >= 60) return '🔥 Alta Venta'; if (v >= 30) return '⚡ Venta Media'; return '🌱 Baja Venta'; }
-        async function geocodeAddress(address) { try { const query = encodeURIComponent(address + ', Rosario, Santa Fe, Argentina'); const url = `https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=1&countrycodes=ar`; const response = await fetch(url, { headers: { 'User-Agent': 'MapaVentasRosario/1.0' } }); const data = await response.json(); if (data && data.length > 0) return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) }; } catch (e) { console.warn('Geocodificación falló:', address, e); } return { lat: ROSARIO_CENTER[0] + (Math.random() - 0.5) * 0.06, lng: ROSARIO_CENTER[1] + (Math.random() - 0.5) * 0.06 }; }
-        function renderData(data) { currentData = data; allData = [...data]; markersLayer.clearLayers(); if (heatLayer) map.removeLayer(heatLayer); const heatPoints = []; let totalVentas = 0, altaCount = 0, bajaCount = 0; const zones = new Set(); data.forEach(item => { const color = getColorBySales(item.ventas); const status = getStatus(item.ventas); totalVentas += item.ventas; if (status === 'alta') altaCount++; if (status === 'baja') bajaCount++; if (item.zona) zones.add(item.zona); const customIcon = L.divIcon({ className: 'custom-marker', html: `<div style="width:30px;height:30px;background:${color};border:3px solid white;border-radius:50%;box-shadow:0 2px 10px rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;color:${status==='media'?'#333':'white'};font-weight:800;font-size:11px;font-family:system-ui,sans-serif;">${item.ventas}</div>`, iconSize: [30, 30], iconAnchor: [15, 15] }); const marker = L.marker([item.lat, item.lng], { icon: customIcon }); const popupContent = `<div class="popup-header">📍 ${item.direccion}</div><div class="popup-body">${item.nombre ? `<p>👤 <strong>${item.nombre}</strong></p>` : ''}${item.telefono ? `<p>📞 ${item.telefono}</p>` : ''}${item.zona ? `<p>🗺️ Zona: <strong>${item.zona}</strong></p>` : ''}<p>📈 Ventas: <strong>${item.ventas}</strong></p>${item.notas ? `<p>📝 ${item.notas}</p>` : ''}<span class="tag ${status}">${getStatusLabel(item.ventas)}</span></div>`; marker.bindPopup(popupContent); markersLayer.addLayer(marker); heatPoints.push([item.lat, item.lng, item.ventas / 100]); }); heatLayer = L.heatLayer(heatPoints, { radius: 40, blur: 25, maxZoom: 17, gradient: { 0.2: '#43a047', 0.5: '#fbc02d', 0.8: '#e53935', 1.0: '#b71c1c' } }); if (showHeat) heatLayer.addTo(map); if (!showMarkers) markersLayer.removeFrom(map); document.getElementById('totalDirecciones').textContent = data.length; document.getElementById('totalVentas').textContent = totalVentas; document.getElementById('zonaAlta').textContent = altaCount; document.getElementById('zonaBaja').textContent = bajaCount; updateZoneFilter(zones); renderAddressList(data); if (data.length > 0) { const group = new L.featureGroup(markersLayer.getLayers()); map.fitBounds(group.getBounds().pad(0.12)); } document.getElementById('routeBtn').disabled = data.length === 0; document.getElementById('routeWazeBtn').disabled = data.length === 0; }
-        function updateZoneFilter(zones) { const select = document.getElementById('zoneFilter'); const currentVal = select.value; select.innerHTML = '<option value="all">Todas las zonas</option>'; Array.from(zones).sort().forEach(z => { select.innerHTML += `<option value="${z}">${z}</option>`; }); select.value = currentVal; }
-        function filterByZone() { const zone = document.getElementById('zoneFilter').value; if (zone === 'all') renderData(allData); else renderData(allData.filter(d => d.zona === zone)); }
-        function renderAddressList(data) { const list = document.getElementById('addressList'); if (data.length === 0) { list.innerHTML = '<p style="color:#888; font-size:0.8rem; text-align:center; padding:20px;">Sin direcciones</p>'; return; } list.innerHTML = data.map((item, i) => { const status = getStatus(item.ventas); return `<div class="address-item" onclick="flyToAddress(${allData.indexOf(item)})"><span class="pin">📍</span><span class="addr-text"><div style="font-weight:600;color:#333;">${item.direccion}</div><div style="font-size:0.7rem;color:#888;margin-top:2px;">${item.nombre || ''} ${item.telefono ? '· ' + item.telefono : ''}</div></span>${item.zona ? `<span class="addr-zone">${item.zona}</span>` : ''}<span class="status-dot ${status}"></span></div>`; }).join(''); }
-        function flyToAddress(index) { const item = allData[index]; if (item) { map.flyTo([item.lat, item.lng], 18, { duration: 1.2 }); setTimeout(() => { markersLayer.getLayers()[index]?.openPopup(); }, 1300); } }
-        function toggleLayer(type) { if (type === 'markers') { showMarkers = !showMarkers; document.getElementById('btnMarkers').classList.toggle('active', showMarkers); if (showMarkers) markersLayer.addTo(map); else markersLayer.removeFrom(map); } else { showHeat = !showHeat; document.getElementById('btnHeat').classList.toggle('active', showHeat); if (showHeat) heatLayer.addTo(map); else map.removeLayer(heatLayer); } }
-        function openRoute() { if (currentData.length === 0) return; const origin = `${currentData[0].lat},${currentData[0].lng}`; const dest = `${currentData[currentData.length-1].lat},${currentData[currentData.length-1].lng}`; const waypoints = currentData.slice(1, -1).map(d => `${d.lat},${d.lng}`).join('|'); const url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${dest}&waypoints=${waypoints}`; window.open(url, '_blank'); }
-        function openRouteWaze() { if (currentData.length === 0) return; const first = currentData[0]; const url = `https://waze.com/ul?ll=${first.lat},${first.lng}&navigate=yes`; window.open(url, '_blank'); }
+        
+        async function geocodeAddress(address) {
+            try {
+                const query = encodeURIComponent(address + ', Rosario, Santa Fe, Argentina');
+                const url = 'https://nominatim.openstreetmap.org/search?q=' + query + '&format=json&limit=1&countrycodes=ar';
+                const response = await fetch(url, { headers: { 'User-Agent': 'MapaVentasRosario/1.0' } });
+                const data = await response.json();
+                if (data && data.length > 0) return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) };
+            } catch (e) { console.warn('Geocodificación falló:', address, e); }
+            return { lat: ROSARIO_CENTER[0] + (Math.random() - 0.5) * 0.06, lng: ROSARIO_CENTER[1] + (Math.random() - 0.5) * 0.06 };
+        }
+        
+        function initMap() {
+            if (typeof L === 'undefined') { console.error('Leaflet no cargó'); setTimeout(initMap, 500); return; }
+            const mapEl = document.getElementById('map');
+            if (!mapEl) { console.error('No se encontró #map'); return; }
+            map = L.map('map').setView(ROSARIO_CENTER, 13);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors', maxZoom: 19 }).addTo(map);
+            markersLayer = L.layerGroup().addTo(map);
+            console.log('Mapa inicializado correctamente');
+        }
+        
+        function renderData(data) {
+            currentData = data; allData = [...data];
+            if (markersLayer) markersLayer.clearLayers();
+            if (heatLayer && map) map.removeLayer(heatLayer);
+            const heatPoints = [];
+            let totalVentas = 0, altaCount = 0, bajaCount = 0;
+            const zones = new Set();
+            data.forEach((item, idx) => {
+                const color = getColorBySales(item.ventas);
+                const status = getStatus(item.ventas);
+                totalVentas += item.ventas;
+                if (status === 'alta') altaCount++;
+                if (status === 'baja') bajaCount++;
+                if (item.zona) zones.add(item.zona);
+                const customIcon = L.divIcon({ className: 'custom-marker', html: '<div style="width:30px;height:30px;background:' + color + ';border:3px solid white;border-radius:50%;box-shadow:0 2px 10px rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;color:' + (status==='media'?'#333':'white') + ';font-weight:800;font-size:11px;font-family:system-ui,sans-serif;">' + item.ventas + '</div>', iconSize: [30, 30], iconAnchor: [15, 15] });
+                const marker = L.marker([item.lat, item.lng], { icon: customIcon });
+                const popupContent = '<div class="popup-header">📍 ' + item.direccion + '</div><div class="popup-body">' + (item.nombre ? '<p>👤 <strong>' + item.nombre + '</strong></p>' : '') + (item.telefono ? '<p>📞 ' + item.telefono + '</p>' : '') + (item.zona ? '<p>🗺️ Zona: <strong>' + item.zona + '</strong></p>' : '') + '<p>📈 Ventas: <strong>' + item.ventas + '</strong></p>' + (item.notas ? '<p>📝 ' + item.notas + '</p>' : '') + '<span class="tag ' + status + '">' + getStatusLabel(item.ventas) + '</span></div>';
+                marker.bindPopup(popupContent);
+                markersLayer.addLayer(marker);
+                heatPoints.push([item.lat, item.lng, item.ventas / 100]);
+            });
+            heatLayer = L.heatLayer(heatPoints, { radius: 40, blur: 25, maxZoom: 17, gradient: { 0.2: '#43a047', 0.5: '#fbc02d', 0.8: '#e53935', 1.0: '#b71c1c' } });
+            if (showHeat) heatLayer.addTo(map);
+            if (!showMarkers) markersLayer.removeFrom(map);
+            document.getElementById('totalDirecciones').textContent = data.length;
+            document.getElementById('totalVentas').textContent = totalVentas;
+            document.getElementById('zonaAlta').textContent = altaCount;
+            document.getElementById('zonaBaja').textContent = bajaCount;
+            updateZoneFilter(zones);
+            renderAddressList(data);
+            if (data.length > 0 && markersLayer.getLayers().length > 0) {
+                const group = new L.featureGroup(markersLayer.getLayers());
+                map.fitBounds(group.getBounds().pad(0.12));
+            }
+            document.getElementById('routeBtn').disabled = data.length === 0;
+            document.getElementById('routeWazeBtn').disabled = data.length === 0;
+        }
+        
+        function updateZoneFilter(zones) {
+            const select = document.getElementById('zoneFilter');
+            const currentVal = select.value;
+            select.innerHTML = '<option value="all">Todas las zonas</option>';
+            Array.from(zones).sort().forEach(z => { select.innerHTML += '<option value="' + z + '">' + z + '</option>'; });
+            select.value = currentVal;
+        }
+        
+        function filterByZone() {
+            const zone = document.getElementById('zoneFilter').value;
+            if (zone === 'all') renderData(allData);
+            else renderData(allData.filter(d => d.zona === zone));
+        }
+        
+        function renderAddressList(data) {
+            const list = document.getElementById('addressList');
+            if (data.length === 0) { list.innerHTML = '<p style="color:#888; font-size:0.8rem; text-align:center; padding:20px;">Sin direcciones</p>'; return; }
+            list.innerHTML = data.map((item, i) => {
+                const status = getStatus(item.ventas);
+                return '<div class="address-item" onclick="flyToAddress(' + allData.indexOf(item) + ')"><span class="pin">📍</span><span class="addr-text"><div style="font-weight:600;color:#333;">' + item.direccion + '</div><div style="font-size:0.7rem;color:#888;margin-top:2px;">' + (item.nombre || '') + (item.telefono ? ' · ' + item.telefono : '') + '</div></span>' + (item.zona ? '<span class="addr-zone">' + item.zona + '</span>' : '') + '<span class="status-dot ' + status + '"></span></div>';
+            }).join('');
+        }
+        
+        function flyToAddress(index) {
+            const item = allData[index];
+            if (item) { map.flyTo([item.lat, item.lng], 18, { duration: 1.2 }); setTimeout(() => { markersLayer.getLayers()[index]?.openPopup(); }, 1300); }
+        }
+        
+        function toggleLayer(type) {
+            if (type === 'markers') { showMarkers = !showMarkers; document.getElementById('btnMarkers').classList.toggle('active', showMarkers); if (showMarkers) markersLayer.addTo(map); else markersLayer.removeFrom(map); }
+            else { showHeat = !showHeat; document.getElementById('btnHeat').classList.toggle('active', showHeat); if (showHeat) heatLayer.addTo(map); else map.removeLayer(heatLayer); }
+        }
+        
+        function openRoute() {
+            if (currentData.length === 0) return;
+            const origin = currentData[0].lat + ',' + currentData[0].lng;
+            const dest = currentData[currentData.length-1].lat + ',' + currentData[currentData.length-1].lng;
+            const waypoints = currentData.slice(1, -1).map(d => d.lat + ',' + d.lng).join('|');
+            window.open('https://www.google.com/maps/dir/?api=1&origin=' + origin + '&destination=' + dest + '&waypoints=' + waypoints, '_blank');
+        }
+        
+        function openRouteWaze() {
+            if (currentData.length === 0) return;
+            const first = currentData[0];
+            window.open('https://waze.com/ul?ll=' + first.lat + ',' + first.lng + '&navigate=yes', '_blank');
+        }
+        
         function loadRealData() { renderData(REAL_DATA); }
-        document.getElementById('excelFile').addEventListener('change', async function(e) { const file = e.target.files[0]; if (!file) return; const
+        
+        document.getElementById('excelFile').addEventListener('change', async function(e) {
+            const file = e.target.files[0]; if (!file) return;
+            const overlay = document.getElementById('loadingOverlay');
+            const progressFill = document.getElementById('progressFill');
+            const loadingText = document.getElementById('loadingText');
+            overlay.classList.add('active');
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                try {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const jsonData = XLSX.utils.sheet_to_json(firstSheet);
+                    const processed = []; const total = jsonData.length;
+                    for (let i = 0; i < jsonData.length; i++) {
+                        const row = jsonData[i];
+                        const direccion = row['Dirección'] || row['Direccion'] || row['direccion'] || row['DIRECCION'] || '';
+                        const ventas = parseInt(row['Ventas'] || row['ventas'] || row['VENTAS'] || row['Cantidad'] || 0);
+                        const nombre = row['Nombre'] || row['nombre'] || row['NOMBRE'] || '';
+                        const telefono = row['Teléfono'] || row['Telefono'] || row['telefono'] || row['TEL'] || '';
+                        const notas = row['Notas'] || row['notas'] || row['NOTAS'] || '';
+                        const zona = row['Zona'] || row['zona'] || row['ZONA'] || '';
+                        if (!direccion) continue;
+                        const pct = Math.round(((i + 1) / total) * 100);
+                        progressFill.style.width = pct + '%';
+                        loadingText.textContent = 'Geocodificando ' + (i+1) + ' de ' + total + ': ' + direccion.substring(0, 35) + '...';
+                        if (i > 0) await new Promise(r => setTimeout(r, 600));
+                        const coords = await geocodeAddress(direccion);
+                        processed.push({ direccion: direccion.includes('Rosario') ? direccion : direccion + ', Rosario, Santa Fe', lat: coords.lat, lng: coords.lng, ventas: ventas || Math.floor(Math.random() * 100), nombre, telefono, notas, zona });
+                    }
+                    overlay.classList.remove('active');
+                    renderData(processed);
+                } catch (err) { overlay.classList.remove('active'); alert('Error al procesar el archivo: ' + err.message); }
+            };
+            reader.readAsArrayBuffer(file);
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM listo, inicializando mapa...');
+            initMap();
+            setTimeout(function() {
+                if (!map) { console.warn('Reintentando inicialización...'); initMap(); }
+                else { loadRealData(); }
+            }, 300);
+        });
+    </script>
+</body>
+</html>
