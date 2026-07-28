@@ -6,12 +6,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9475,
-    "lng": -60.642,
-    "fuente": "original",
+    "lat": -32.9375,
+    "lng": -60.66,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Lavalle 300",
-    "verificacion": "original_validada"
+    "normalizada": "Lavalle 300 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Lavalle 1600",
@@ -20,12 +19,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.951,
-    "lng": -60.648,
-    "fuente": "original",
+    "lat": -32.9445,
+    "lng": -60.672,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Lavalle 1600",
-    "verificacion": "original_validada"
+    "normalizada": "Lavalle 1600 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Córdoba 890",
@@ -34,12 +32,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.948,
-    "lng": -60.644,
-    "fuente": "original",
+    "lat": -32.944,
+    "lng": -60.656,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Córdoba 890",
-    "verificacion": "original_validada"
+    "normalizada": "Córdoba 890 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Rioja 990",
@@ -48,12 +45,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.949,
-    "lng": -60.646,
-    "fuente": "original",
+    "lat": -32.948,
+    "lng": -60.6575,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Rioja 990",
-    "verificacion": "original_validada"
+    "normalizada": "Rioja 990 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "San Luis 1090",
@@ -62,12 +58,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.95,
-    "lng": -60.647,
-    "fuente": "original",
+    "lat": -32.949,
+    "lng": -60.66,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "San Luis 1090",
-    "verificacion": "original_validada"
+    "normalizada": "San Luis 1090 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Mendoza 1290",
@@ -76,12 +71,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.952,
-    "lng": -60.649,
-    "fuente": "original",
+    "lat": -32.942,
+    "lng": -60.664,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Mendoza 1290",
-    "verificacion": "original_validada"
+    "normalizada": "Mendoza 1290 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Zeballos 1540",
@@ -90,12 +84,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.954,
-    "lng": -60.651,
-    "fuente": "original",
+    "lat": -32.952,
+    "lng": -60.67,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Zeballos 1540",
-    "verificacion": "original_validada"
+    "normalizada": "Zeballos 1540 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Montevideo 1650",
@@ -104,12 +97,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.955,
-    "lng": -60.652,
-    "fuente": "original",
+    "lat": -32.941,
+    "lng": -60.671,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Montevideo 1650",
-    "verificacion": "original_validada"
+    "normalizada": "Montevideo 1650 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "República del Líbano 200",
@@ -118,12 +110,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.972,
-    "lng": -60.712,
-    "fuente": "original",
+    "lat": -32.908,
+    "lng": -60.688,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "República del Líbano 200",
-    "verificacion": "original_validada"
+    "normalizada": "República del Líbano 200 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Paso de Uspallata 300",
@@ -132,12 +123,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.973,
-    "lng": -60.713,
-    "fuente": "original",
+    "lat": -32.91,
+    "lng": -60.69,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Paso de Uspallata 300",
-    "verificacion": "original_validada"
+    "normalizada": "Paso de Uspallata 300 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Remedios de Escalada 300",
@@ -146,12 +136,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.971,
-    "lng": -60.711,
-    "fuente": "original",
+    "lat": -32.906,
+    "lng": -60.692,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Remedios de Escalada 300",
-    "verificacion": "original_validada"
+    "normalizada": "Remedios de Escalada 300 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Valle de Huaura 50",
@@ -160,12 +149,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.97,
-    "lng": -60.71,
-    "fuente": "original",
+    "lat": -32.905,
+    "lng": -60.687,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Valle de Huaura 50",
-    "verificacion": "original_validada"
+    "normalizada": "Valle de Huaura 50 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Batalla de Bailén 100",
@@ -174,12 +162,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9715,
-    "lng": -60.7115,
-    "fuente": "original",
+    "lat": -32.912,
+    "lng": -60.689,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Batalla de Bailén 100",
-    "verificacion": "original_validada"
+    "normalizada": "Batalla de Bailén 100 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Av. Pres. Perón 4000",
@@ -188,12 +175,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.958,
-    "lng": -60.662,
-    "fuente": "original",
+    "lat": -32.972,
+    "lng": -60.648,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Av. Pres. Perón 4000",
-    "verificacion": "original_validada"
+    "normalizada": "Av. Pres. Perón 4000 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Av. Pres. Perón 3500",
@@ -202,12 +188,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.956,
-    "lng": -60.66,
-    "fuente": "original",
+    "lat": -32.97,
+    "lng": -60.652,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Av. Pres. Perón 3500",
-    "verificacion": "original_validada"
+    "normalizada": "Av. Pres. Perón 3500 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Av. Pres. Perón 3000",
@@ -216,12 +201,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.954,
-    "lng": -60.658,
-    "fuente": "original",
+    "lat": -32.968,
+    "lng": -60.656,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Av. Pres. Perón 3000",
-    "verificacion": "original_validada"
+    "normalizada": "Av. Pres. Perón 3000 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Ocampo 3800",
@@ -230,12 +214,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.957,
-    "lng": -60.661,
-    "fuente": "original",
+    "lat": -32.974,
+    "lng": -60.65,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Ocampo 3800",
-    "verificacion": "original_validada"
+    "normalizada": "Ocampo 3800 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Cafferata 678",
@@ -245,11 +228,10 @@
     "telefono": "",
     "notas": "",
     "lat": -32.955,
-    "lng": -60.659,
-    "fuente": "original",
+    "lng": -60.662,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Cafferata 678",
-    "verificacion": "original_validada"
+    "normalizada": "Cafferata 678 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Baigorria 2300",
@@ -258,12 +240,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.982,
-    "lng": -60.682,
-    "fuente": "original",
+    "lat": -32.918,
+    "lng": -60.672,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Baigorria 2300",
-    "verificacion": "original_validada"
+    "normalizada": "Baigorria 2300 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Dr. Pedro Medrano 2259",
@@ -272,12 +253,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9815,
-    "lng": -60.6815,
-    "fuente": "original",
+    "lat": -32.92,
+    "lng": -60.674,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Dr. Pedro Medrano 2259",
-    "verificacion": "original_validada"
+    "normalizada": "Dr. Pedro Medrano 2259 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Anchoris 1300",
@@ -286,12 +266,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.98,
-    "lng": -60.68,
-    "fuente": "original",
+    "lat": -32.922,
+    "lng": -60.67,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Anchoris 1300",
-    "verificacion": "original_validada"
+    "normalizada": "Anchoris 1300 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Molina 1700",
@@ -300,12 +279,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.981,
-    "lng": -60.681,
-    "fuente": "original",
+    "lat": -32.924,
+    "lng": -60.676,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Molina 1700",
-    "verificacion": "original_validada"
+    "normalizada": "Molina 1700 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Cosquín 2000",
@@ -314,12 +292,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9825,
-    "lng": -60.6825,
-    "fuente": "original",
+    "lat": -32.916,
+    "lng": -60.678,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Cosquín 2000",
-    "verificacion": "original_validada"
+    "normalizada": "Cosquín 2000 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Braille 3500",
@@ -328,12 +305,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.985,
-    "lng": -60.685,
-    "fuente": "original",
+    "lat": -32.914,
+    "lng": -60.682,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Braille 3500",
-    "verificacion": "original_validada"
+    "normalizada": "Braille 3500 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Valle Hermoso 2500",
@@ -342,12 +318,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.983,
-    "lng": -60.683,
-    "fuente": "original",
+    "lat": -32.919,
+    "lng": -60.68,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Valle Hermoso 2500",
-    "verificacion": "original_validada"
+    "normalizada": "Valle Hermoso 2500 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "José M. Rosa 7500",
@@ -356,12 +331,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.918,
-    "lng": -60.705,
-    "fuente": "original",
+    "lat": -32.905,
+    "lng": -60.725,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "José M. Rosa 7500",
-    "verificacion": "original_validada"
+    "normalizada": "José M. Rosa 7500 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "A. Chizzini 8400",
@@ -370,12 +344,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.916,
-    "lng": -60.708,
-    "fuente": "original",
+    "lat": -32.902,
+    "lng": -60.735,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "A. Chizzini 8400",
-    "verificacion": "original_validada"
+    "normalizada": "A. Chizzini 8400 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Condarco 8800",
@@ -384,12 +357,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.915,
-    "lng": -60.71,
-    "fuente": "original",
+    "lat": -32.9,
+    "lng": -60.74,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Condarco 8800",
-    "verificacion": "original_validada"
+    "normalizada": "Condarco 8800 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Juárez Celman Bis 8800",
@@ -398,12 +370,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9155,
-    "lng": -60.7105,
-    "fuente": "original",
+    "lat": -32.898,
+    "lng": -60.738,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Juárez Celman Bis 8800",
-    "verificacion": "original_validada"
+    "normalizada": "Juárez Celman Bis 8800 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Brassey 8200",
@@ -412,12 +383,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.917,
-    "lng": -60.707,
-    "fuente": "original",
+    "lat": -32.904,
+    "lng": -60.732,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Brassey 8200",
-    "verificacion": "original_validada"
+    "normalizada": "Brassey 8200 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Blvd. Argentino 8000",
@@ -426,12 +396,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.919,
-    "lng": -60.706,
-    "fuente": "original",
+    "lat": -32.906,
+    "lng": -60.73,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Blvd. Argentino 8000",
-    "verificacion": "original_validada"
+    "normalizada": "Blvd. Argentino 8000 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Juan B. Justo 1100",
@@ -440,12 +409,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.968,
-    "lng": -60.692,
-    "fuente": "original",
+    "lat": -32.908,
+    "lng": -60.698,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Juan B. Justo 1100",
-    "verificacion": "original_validada"
+    "normalizada": "Juan B. Justo 1100 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "González del Solar Bis 1100",
@@ -454,12 +422,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9685,
-    "lng": -60.6925,
-    "fuente": "original",
+    "lat": -32.91,
+    "lng": -60.7,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "González del Solar Bis 1100",
-    "verificacion": "original_validada"
+    "normalizada": "González del Solar Bis 1100 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Urdinarrain 1000",
@@ -468,12 +435,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.969,
-    "lng": -60.693,
-    "fuente": "original",
+    "lat": -32.906,
+    "lng": -60.696,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Urdinarrain 1000",
-    "verificacion": "original_validada"
+    "normalizada": "Urdinarrain 1000 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "José Ingenieros 900",
@@ -482,12 +448,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.97,
+    "lat": -32.912,
     "lng": -60.694,
-    "fuente": "original",
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "José Ingenieros 900",
-    "verificacion": "original_validada"
+    "normalizada": "José Ingenieros 900 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Franklin 800",
@@ -496,12 +461,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.971,
-    "lng": -60.695,
-    "fuente": "original",
+    "lat": -32.904,
+    "lng": -60.692,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Franklin 800",
-    "verificacion": "original_validada"
+    "normalizada": "Franklin 800 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Juan José Paso 700",
@@ -510,12 +474,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.972,
-    "lng": -60.696,
-    "fuente": "original",
+    "lat": -32.902,
+    "lng": -60.69,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Juan José Paso 700",
-    "verificacion": "original_validada"
+    "normalizada": "Juan José Paso 700 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Baigorria 2200",
@@ -524,12 +487,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.983,
-    "lng": -60.7,
-    "fuente": "original",
+    "lat": -32.917,
+    "lng": -60.671,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Baigorria 2200",
-    "verificacion": "original_validada"
+    "normalizada": "Baigorria 2200 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Mariano Perdriel 2200",
@@ -538,12 +500,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9835,
-    "lng": -60.7005,
-    "fuente": "original",
+    "lat": -32.915,
+    "lng": -60.673,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Mariano Perdriel 2200",
-    "verificacion": "original_validada"
+    "normalizada": "Mariano Perdriel 2200 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Marcelino Freyre 2100",
@@ -552,12 +513,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.984,
-    "lng": -60.701,
-    "fuente": "original",
+    "lat": -32.913,
+    "lng": -60.675,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Marcelino Freyre 2100",
-    "verificacion": "original_validada"
+    "normalizada": "Marcelino Freyre 2100 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Calvo 1327",
@@ -566,12 +526,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.985,
-    "lng": -60.702,
-    "fuente": "original",
+    "lat": -32.911,
+    "lng": -60.669,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Calvo 1327",
-    "verificacion": "original_validada"
+    "normalizada": "Calvo 1327 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Comercio 1100",
@@ -580,12 +539,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.986,
-    "lng": -60.703,
-    "fuente": "original",
+    "lat": -32.909,
+    "lng": -60.671,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Comercio 1100",
-    "verificacion": "original_validada"
+    "normalizada": "Comercio 1100 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Francisco Netri 1100",
@@ -594,12 +552,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9865,
-    "lng": -60.7035,
-    "fuente": "original",
+    "lat": -32.92,
+    "lng": -60.669,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Francisco Netri 1100",
-    "verificacion": "original_validada"
+    "normalizada": "Francisco Netri 1100 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Av. Casiano Casas 1200",
@@ -608,12 +565,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.987,
-    "lng": -60.704,
-    "fuente": "original",
+    "lat": -32.916,
+    "lng": -60.667,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Av. Casiano Casas 1200",
-    "verificacion": "original_validada"
+    "normalizada": "Av. Casiano Casas 1200 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "San Martín 567",
@@ -622,12 +578,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9523,
-    "lng": -60.6289,
-    "fuente": "original",
+    "lat": -32.943,
+    "lng": -60.642,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "San Martín 567",
-    "verificacion": "original_validada"
+    "normalizada": "San Martín 567 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Pellegrini 890",
@@ -636,12 +591,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9412,
-    "lng": -60.6456,
-    "fuente": "original",
+    "lat": -32.948,
+    "lng": -60.645,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Pellegrini 890",
-    "verificacion": "original_validada"
+    "normalizada": "Pellegrini 890 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Mitre 234",
@@ -650,12 +604,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9387,
-    "lng": -60.6321,
-    "fuente": "original",
+    "lat": -32.941,
+    "lng": -60.639,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Mitre 234",
-    "verificacion": "original_validada"
+    "normalizada": "Mitre 234 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Entre Ríos 789",
@@ -664,12 +617,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9498,
-    "lng": -60.6212,
-    "fuente": "original",
+    "lat": -32.947,
+    "lng": -60.641,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Entre Ríos 789",
-    "verificacion": "original_validada"
+    "normalizada": "Entre Ríos 789 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Sarmiento 345",
@@ -678,12 +630,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9434,
-    "lng": -60.6512,
-    "fuente": "original",
+    "lat": -32.942,
+    "lng": -60.644,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Sarmiento 345",
-    "verificacion": "original_validada"
+    "normalizada": "Sarmiento 345 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Balcarce 678",
@@ -692,12 +643,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9512,
-    "lng": -60.6434,
-    "fuente": "original",
+    "lat": -32.945,
+    "lng": -60.64,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Balcarce 678",
-    "verificacion": "original_validada"
+    "normalizada": "Balcarce 678 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Bv. Oroño 7890",
@@ -706,12 +656,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9401,
-    "lng": -60.6489,
-    "fuente": "original",
+    "lat": -32.95,
+    "lng": -60.656,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Bv. Oroño 7890",
-    "verificacion": "original_validada"
+    "normalizada": "Bv. Oroño 7890 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Wheelwright 2345",
@@ -720,12 +669,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9534,
-    "lng": -60.6523,
-    "fuente": "original",
+    "lat": -32.936,
+    "lng": -60.633,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Wheelwright 2345",
-    "verificacion": "original_validada"
+    "normalizada": "Wheelwright 2345 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Laprida 901",
@@ -734,12 +682,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9478,
-    "lng": -60.6234,
-    "fuente": "original",
+    "lat": -32.949,
+    "lng": -60.647,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Laprida 901",
-    "verificacion": "original_validada"
+    "normalizada": "Laprida 901 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Zeballos 789",
@@ -748,12 +695,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9501,
-    "lng": -60.6367,
-    "fuente": "original",
+    "lat": -32.949,
+    "lng": -60.649,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Zeballos 789",
-    "verificacion": "original_validada"
+    "normalizada": "Zeballos 789 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Moreno 1234",
@@ -762,12 +708,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9389,
-    "lng": -60.6298,
-    "fuente": "original",
+    "lat": -32.95,
+    "lng": -60.644,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Moreno 1234",
-    "verificacion": "original_validada"
+    "normalizada": "Moreno 1234 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Paraguay 567",
@@ -776,12 +721,11 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9567,
-    "lng": -60.6445,
-    "fuente": "original",
+    "lat": -32.944,
+    "lng": -60.648,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Paraguay 567",
-    "verificacion": "original_validada"
+    "normalizada": "Paraguay 567 (coordenada aproximada de arranque)"
   },
   {
     "direccion": "Urquiza 8901",
@@ -790,11 +734,10 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9412,
-    "lng": -60.6534,
-    "fuente": "original",
+    "lat": -32.94,
+    "lng": -60.646,
+    "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Urquiza 8901",
-    "verificacion": "original_validada"
+    "normalizada": "Urquiza 8901 (coordenada aproximada de arranque)"
   }
 ]
