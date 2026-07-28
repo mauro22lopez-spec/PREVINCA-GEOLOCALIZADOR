@@ -231,10 +231,9 @@
       <button class="btn btn-secondary" id="btnExport">📥 Exportar vista actual (.xlsx)</button>
       <button class="btn btn-primary" id="btnSaveSupa">☁️ Guardar en Supabase</button>
       <div class="hint">
-        <b>Supabase:</b> configurá <code>SUPABASE_URL</code> y
-        <code>SUPABASE_ANON_KEY</code> en el código. Los datos se cargan
-        automáticamente desde la nube. Apretá "Guardar" cuando quieras
-        persistir cambios. Nada se modifica sin tu acción.
+        Los datos se cargan automáticamente desde Supabase si existen.
+        Si Supabase está vacío, se usan los datos embebidos.
+        Apretá "Guardar" para persistir cambios en la nube.
       </div>
     </div>
 
@@ -1069,53 +1068,40 @@ var DIRECCIONES_EMBED = [
 
 
 /* --- Configuración de Supabase -------------------------------------------- */
-/* Reemplazá estos valores con los de tu proyecto:
-   Supabase Dashboard → Settings → API → Project URL / anon public */
 var SUPABASE_URL = 'https://bnvltncjaoytmpmalmui.supabase.co';
 var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJudmx0bmNqYW95dG1wbWFsbXVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNjYzMjgsImV4cCI6MjEwMDg0MjMyOH0.F_yFci6bOCDBNB_8VLo4b8LPZ02QXwNDFmJu5RBQwek';
 
 var supabase = null;
 
 function initSupabase() {
-  if (typeof window.supabase !== 'undefined' && SUPABASE_URL.indexOf('TU-PROJECT') === -1) {
-    supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    return true;
+  if (typeof window.supabase !== 'undefined') {
+    try {
+      supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      return true;
+    } catch (e) {
+      console.error('Error initSupabase:', e);
+      return false;
+    }
   }
   return false;
 }
 
-/* --- CRUD Supabase (solo funciones, sin tocar el flujo existente) -------- */
+/* --- CRUD Supabase -------------------------------------------------------- */
 
-/* Carga direcciones desde Supabase. Si falla o está vacío, usa el embebido. */
+/* Carga direcciones desde Supabase. */
 function loadFromSupabase() {
-  if (!initSupabase()) { return Promise.reject('Supabase no configurado'); }
+  if (!supabase) return Promise.reject('No supabase');
   return supabase.from('direcciones').select('*').order('direccion')
     .then(function (result) {
-      if (result.data && result.data.length > 0) {
-        return { source: 'supabase', data: result.data };
-      }
-      return { source: 'empty', data: [] };
+      if (result.error) throw result.error;
+      return result.data || [];
     });
 }
 
-/* Guarda/actualiza UNA dirección en Supabase. */
-function saveOneToSupabase(item) {
-  if (!supabase) { return Promise.resolve(); }
-  return supabase.from('direcciones').upsert({
-    direccion: item.direccion, ventas: item.ventas, zona: item.zona,
-    nombre: item.nombre, telefono: item.telefono, notas: item.notas,
-    lat: item.lat, lng: item.lng, fuente: item.fuente,
-    calidad: item.calidad, normalizada: item.normalizada
-  }, { onConflict: 'direccion' });
-}
-
-/* Sincroniza TODO el dataset actual (allData) con Supabase.
-   El usuario aprieta el botón cuando QUIERE guardar. */
+/* Sincroniza TODO el dataset actual con Supabase. */
 function syncAllToSupabase() {
   if (!supabase) {
-    alert('Supabase no está configurado.
-
-Editá SUPABASE_URL y SUPABASE_ANON_KEY en el código.');
+    alert('Supabase no está disponible.');
     return;
   }
   showOverlay('Guardando ' + allData.length + ' direcciones en Supabase...');
@@ -1145,22 +1131,24 @@ Editá SUPABASE_URL y SUPABASE_ANON_KEY en el código.');
     });
 }
 
-/* Sube el dataset embebido a Supabase (solo si la tabla está vacía).
-   Se usa la primera vez, automáticamente. */
-function seedSupabase() {
-  if (!supabase) { return Promise.resolve(); }
-  var rows = [];
-  var i;
-  for (i = 0; i < DIRECCIONES_EMBED.length; i++) {
-    var r = DIRECCIONES_EMBED[i];
-    rows.push({
-      direccion: r.direccion, ventas: r.ventas, zona: r.zona,
-      nombre: r.nombre, telefono: r.telefono, notas: r.notas,
-      lat: r.lat, lng: r.lng, fuente: r.fuente,
-      calidad: r.calidad, normalizada: r.normalizada
-    });
+/* Intenta cargar desde Supabase; si falla o está vacío, usa el embebido. */
+function tryLoadFromSupabase() {
+  if (!initSupabase()) {
+    console.log('Supabase no disponible, usando embebido');
+    return;
   }
-  return supabase.from('direcciones').upsert(rows, { onConflict: 'direccion' });
+  loadFromSupabase()
+    .then(function (data) {
+      if (data && data.length > 0) {
+        console.log('Cargado desde Supabase:', data.length, 'direcciones');
+        ingestRows(data);
+      } else {
+        console.log('Supabase vacío, usando embebido');
+      }
+    })
+    .catch(function (err) {
+      console.error('Error cargando desde Supabase:', err);
+    });
 }
 
 /* --- Estado ---------------------------------------------------------------- */
@@ -1237,36 +1225,30 @@ function ingestRows(json) {
   hideOverlay();
 }
 
-/* Intenta cargar desde Supabase primero. Si falla o no está configurado,
-   intenta el archivo JSON externo. Si eso también falla, usa el embebido. */
+/* Carga datos: intenta Supabase primero, sino JSON externo, sino embebido. */
 function loadFromJson() {
   showOverlay('Cargando datos...');
 
   /* 1) Intentar Supabase */
   if (initSupabase()) {
     loadFromSupabase()
-      .then(function (result) {
-        if (result.source === 'supabase') {
-          ingestRows(result.data);
-          console.log('Cargado desde Supabase:', result.data.length, 'direcciones');
+      .then(function (data) {
+        if (data && data.length > 0) {
+          ingestRows(data);
+          console.log('Datos cargados desde Supabase:', data.length);
           return;
         }
-        /* Supabase vacío: subir embebido y recargar */
-        console.log('Supabase vacío — subiendo datos iniciales...');
-        seedSupabase().then(function () {
-          return loadFromSupabase();
-        }).then(function (r2) {
-          ingestRows(r2.data || []);
-        });
+        /* Supabase vacío, seguir con fallback */
+        loadFromJsonFallback();
       })
       .catch(function (err) {
-        console.log('Supabase no disponible, usando fallback local:', err);
+        console.error('Supabase error:', err);
         loadFromJsonFallback();
       });
     return;
   }
 
-  /* 2) Fallback: archivo JSON local o embebido */
+  /* 2) Fallback sin Supabase */
   loadFromJsonFallback();
 }
 
