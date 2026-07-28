@@ -239,7 +239,13 @@
 
     <div class="section">
       <h2>✏️ Corregir ubicaciones</h2>
-      <button class="btn btn-secondary" id="btnEditMode">✏️ Activar modo corrección</button>
+      <button class="btn btn-primary" id="btnGeoref">🌎 Geocodificar todo con Georef (oficial)</button>
+      <div class="hint" style="margin-top:0">
+        Consulta la API oficial del Estado argentino (apis.datos.gob.ar) desde
+        <b>tu navegador</b> y reubica cada dirección sobre su calle real.
+        Tarda ~1 minuto. Después revisá y descargá el JSON.
+      </div>
+      <button class="btn btn-secondary" id="btnEditMode" style="margin-top:8px">✏️ Activar modo corrección</button>
       <div id="editStats" class="hint" style="margin-top:0"></div>
       <button class="btn btn-primary" id="btnExportJson" style="margin-top:8px">💾 Descargar direcciones.json corregido</button>
       <div class="hint">
@@ -1281,6 +1287,7 @@ function ingestRows(json) {
       fuente: r.fuente || null,
       calidad: r.calidad || 'sin_resolver',
       normalizada: r.normalizada || '',
+      verificacion: r.verificacion || '',
       key: normKey(r.direccion)
     });
   }
@@ -1457,6 +1464,8 @@ function buildPopupHtml(item) {
   html += '<span class="pp-tag ' + tagClass + '">' + tagText + '</span>';
   if (item.fuente === 'manual') {
     html += '<div class="pp-ok">✅ Ubicación verificada a mano</div>';
+  } else if (item.verificacion === 'georef_oficial') {
+    html += '<div class="pp-ok">🌎 Ubicada por Georef (nomenclador oficial)</div>';
   } else if (item.verificacion === 'estimada') {
     html += '<div class="pp-note">⚠️ Ubicación estimada (sin verificar)</div>';
   } else if (item.calidad === 'interpolada') {
@@ -2008,6 +2017,70 @@ function toggleBarrios() {
   rebuildBarrios();
 }
 
+/* --- Geocodificación masiva con Georef (corre en el navegador) -------------
+   Georef es la API oficial de normalización de direcciones del Estado
+   argentino. Interpola la altura sobre la geometría oficial de la calle,
+   así que ubica en la cuadra correcta (no a nivel de parcela).
+   Se ejecuta desde el navegador del usuario, que sí tiene salida a internet.
+   Las direcciones ya marcadas como 'manual' NO se tocan. -------------------- */
+
+function georefTodo() {
+  if (!allData.length) { alert('No hay datos cargados.'); return; }
+  var pendientes = [];
+  var i;
+  for (i = 0; i < allData.length; i++) {
+    if (allData[i].fuente !== 'manual') { pendientes.push(allData[i]); }
+  }
+  if (!pendientes.length) {
+    alert('Todas las direcciones ya están verificadas a mano. No hay nada que geocodificar.');
+    return;
+  }
+  if (!confirm('Se van a consultar ' + pendientes.length + ' direcciones a la API Georef.\n\n' +
+      'Las ' + (allData.length - pendientes.length) + ' verificadas a mano NO se tocan.\n\n' +
+      'Tarda alrededor de un minuto. ¿Continuar?')) { return; }
+  georefPaso(pendientes, 0, { ok: 0, fail: 0, errores: [] });
+}
+
+function georefPaso(lista, idx, res) {
+  if (idx >= lista.length) {
+    hideOverlay();
+    applyFilter();
+    updateEditStats();
+    var msg = 'Geocodificación terminada.\n\n' +
+      '✅ Ubicadas por Georef: ' + res.ok + '\n' +
+      '⚠️ No resueltas (quedaron como estaban): ' + res.fail;
+    if (res.errores.length) {
+      msg += '\n\nNo resueltas:\n- ' + res.errores.slice(0, 12).join('\n- ');
+      if (res.errores.length > 12) { msg += '\n- ...y ' + (res.errores.length - 12) + ' más'; }
+    }
+    msg += '\n\nAhora descargá el direcciones.json y subilo al repo.';
+    alert(msg);
+    return;
+  }
+  var item = lista[idx];
+  showOverlay('Georef ' + (idx + 1) + ' de ' + lista.length + '\n' + item.direccion);
+  georefLive(item.direccion).then(function (geo) {
+    if (geo && typeof geo.lat === 'number' && typeof geo.lng === 'number' &&
+        geo.lat > -33.10 && geo.lat < -32.80 && geo.lng > -60.85 && geo.lng < -60.55) {
+      item.lat = geo.lat;
+      item.lng = geo.lng;
+      item.fuente = 'georef';
+      item.calidad = 'interpolada';
+      item.verificacion = 'georef_oficial';
+      item.normalizada = geo.normalizada || item.direccion;
+      res.ok++;
+    } else {
+      res.fail++;
+      res.errores.push(item.direccion);
+    }
+    setTimeout(function () { georefPaso(lista, idx + 1, res); }, 350);
+  }).catch(function () {
+    res.fail++;
+    res.errores.push(item.direccion + ' (error de red/CORS)');
+    setTimeout(function () { georefPaso(lista, idx + 1, res); }, 350);
+  });
+}
+
 /* --- Modo corrección de ubicaciones --------------------------------------- */
 
 /* Guarda una coordenada verificada a mano sobre el dataset completo.
@@ -2130,6 +2203,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('btnWaze').addEventListener('click', openWaze);
   document.getElementById('btnExport').addEventListener('click', exportGeocoded);
   document.getElementById('tglBarrios').addEventListener('click', toggleBarrios);
+  document.getElementById('btnGeoref').addEventListener('click', georefTodo);
   document.getElementById('btnEditMode').addEventListener('click', toggleEditMode);
   document.getElementById('btnExportJson').addEventListener('click', exportJson);
 
