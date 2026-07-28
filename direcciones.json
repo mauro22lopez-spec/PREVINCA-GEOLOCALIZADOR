@@ -11,7 +11,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Lavalle 300",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Nuestra Sra. de Lourdes"
   },
   {
     "direccion": "Lavalle 1600",
@@ -25,7 +26,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Lavalle 1600",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "Córdoba 890",
@@ -39,7 +41,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Córdoba 890",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "Rioja 990",
@@ -53,7 +56,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Rioja 990",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "San Luis 1090",
@@ -67,7 +71,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "San Luis 1090",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "Mendoza 1290",
@@ -81,7 +86,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Mendoza 1290",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "Zeballos 1540",
@@ -95,7 +101,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Zeballos 1540",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "Montevideo 1650",
@@ -109,7 +116,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Montevideo 1650",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "República del Líbano 200",
@@ -123,7 +131,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "República del Líbano 200",
-    "verificacion": "estimada"
+    "verificacion": "estimada",
+    "barrio_oficial": "Domingo Faustino Sarmiento"
   },
   {
     "direccion": "Paso de Uspallata 300",
@@ -137,7 +146,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Paso de Uspallata 300",
-    "verificacion": "estimada"
+    "verificacion": "estimada",
+    "barrio_oficial": "Domingo Faustino Sarmiento"
   },
   {
     "direccion": "Remedios de Escalada 300",
@@ -151,7 +161,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Remedios de Escalada 300",
-    "verificacion": "estimada"
+    "verificacion": "estimada",
+    "barrio_oficial": "Domingo Faustino Sarmiento"
   },
   {
     "direccion": "Valle de Huaura 50",
@@ -165,7 +176,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Valle de Huaura 50",
-    "verificacion": "estimada"
+    "verificacion": "estimada",
+    "barrio_oficial": "Domingo Faustino Sarmiento"
   },
   {
     "direccion": "Batalla de Bailén 100",
@@ -179,7 +191,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Batalla de Bailén 100",
-    "verificacion": "estimada"
+    "verificacion": "estimada",
+    "barrio_oficial": "Domingo Faustino Sarmiento"
   },
   {
     "direccion": "Av. Pres. Perón 4000",
@@ -193,7 +206,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Av. Pres. Perón 4000",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Nuestra Sra. de Lourdes"
   },
   {
     "direccion": "Av. Pres. Perón 3500",
@@ -207,7 +221,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Av. Pres. Perón 3500",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Nuestra Sra. de Lourdes"
   },
   {
     "direccion": "Av. Pres. Perón 3000",
@@ -221,7 +236,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Av. Pres. Perón 3000",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Nuestra Sra. de Lourdes"
   },
   {
     "direccion": "Ocampo 3800",
@@ -235,7 +251,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Ocampo 3800",
-    "verificacion": "estimada"
+    "verificacion": "estimada",
+    "barrio_oficial": ""
   },
   {
     "direccion": "Cafferata 678",
@@ -249,7 +266,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Cafferata 678",
-    "verificacion": "estimada"
+    "verificacion": "estimada",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "Baigorria 2300",
@@ -258,12 +276,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9112,
-    "lng": -60.6725,
-    "fuente": "aprox_manual",
+    "lat": -32.88301571428571,
+    "lng": -60.74297178571429,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "Baigorria 2300",
-    "verificacion": "con_ancla"
+    "normalizada": "Baigorria 2300 — ubicada dentro del barrio oficial \"La Cerámica y Cuyo\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "La Cerámica y Cuyo"
   },
   {
     "direccion": "Dr. Pedro Medrano 2259",
@@ -272,12 +291,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9108,
-    "lng": -60.6738,
-    "fuente": "aprox_manual",
+    "lat": -32.88164999999999,
+    "lng": -60.735265,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "Dr. Pedro Medrano 2259",
-    "verificacion": "con_ancla"
+    "normalizada": "Dr. Pedro Medrano 2259 — ubicada dentro del barrio oficial \"La Cerámica y Cuyo\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "La Cerámica y Cuyo"
   },
   {
     "direccion": "Anchoris 1300",
@@ -286,12 +306,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.916,
-    "lng": -60.67,
-    "fuente": "aprox_manual",
+    "lat": -32.87891857142857,
+    "lng": -60.707006785714285,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "Anchoris 1300",
-    "verificacion": "con_ancla"
+    "normalizada": "Anchoris 1300 — ubicada dentro del barrio oficial \"La Cerámica y Cuyo\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "La Cerámica y Cuyo"
   },
   {
     "direccion": "Molina 1700",
@@ -300,12 +321,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9135,
-    "lng": -60.672,
-    "fuente": "aprox_manual",
+    "lat": -32.87823571428571,
+    "lng": -60.71985142857143,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "Molina 1700",
-    "verificacion": "con_ancla"
+    "normalizada": "Molina 1700 — ubicada dentro del barrio oficial \"La Cerámica y Cuyo\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "La Cerámica y Cuyo"
   },
   {
     "direccion": "Cosquín 2000",
@@ -314,12 +336,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.912,
-    "lng": -60.675,
-    "fuente": "aprox_manual",
+    "lat": -32.882332857142856,
+    "lng": -60.727558214285715,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "Cosquín 2000",
-    "verificacion": "estimada"
+    "normalizada": "Cosquín 2000 — ubicada dentro del barrio oficial \"La Cerámica y Cuyo\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "La Cerámica y Cuyo"
   },
   {
     "direccion": "Braille 3500",
@@ -328,12 +351,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9095,
-    "lng": -60.677,
-    "fuente": "aprox_manual",
+    "lat": -32.89121,
+    "lng": -60.76352321428572,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "Braille 3500",
-    "verificacion": "con_ancla"
+    "normalizada": "Braille 3500 — ubicada dentro del barrio oficial \"La Cerámica y Cuyo\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "La Cerámica y Cuyo"
   },
   {
     "direccion": "Valle Hermoso 2500",
@@ -342,12 +366,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9105,
-    "lng": -60.676,
-    "fuente": "aprox_manual",
+    "lat": -32.89530714285714,
+    "lng": -60.75067857142857,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "Valle Hermoso 2500",
-    "verificacion": "estimada"
+    "normalizada": "Valle Hermoso 2500 — ubicada dentro del barrio oficial \"La Cerámica y Cuyo\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "La Cerámica y Cuyo"
   },
   {
     "direccion": "José M. Rosa 7500",
@@ -356,12 +381,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.901,
-    "lng": -60.724,
-    "fuente": "aprox_manual",
+    "lat": -32.9229475,
+    "lng": -60.727287857142855,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "José M. Rosa 7500",
-    "verificacion": "estimada"
+    "normalizada": "José M. Rosa 7500 — ubicada dentro del barrio oficial \"Fisherton\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "Fisherton"
   },
   {
     "direccion": "A. Chizzini 8400",
@@ -370,12 +396,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.899,
-    "lng": -60.732,
-    "fuente": "aprox_manual",
+    "lat": -32.9191525,
+    "lng": -60.75076107142857,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "A. Chizzini 8400",
-    "verificacion": "estimada"
+    "normalizada": "A. Chizzini 8400 — ubicada dentro del barrio oficial \"Fisherton\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "Fisherton"
   },
   {
     "direccion": "Condarco 8800",
@@ -384,12 +411,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.8975,
-    "lng": -60.736,
-    "fuente": "aprox_manual",
+    "lat": -32.9191525,
+    "lng": -60.772100357142854,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "Condarco 8800",
-    "verificacion": "con_ancla"
+    "normalizada": "Condarco 8800 — ubicada dentro del barrio oficial \"Fisherton\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "Fisherton"
   },
   {
     "direccion": "Juárez Celman Bis 8800",
@@ -398,12 +426,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.898,
-    "lng": -60.735,
-    "fuente": "aprox_manual",
+    "lat": -32.9242125,
+    "lng": -60.759296785714284,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "Juárez Celman Bis 8800",
-    "verificacion": "con_ancla"
+    "normalizada": "Juárez Celman Bis 8800 — ubicada dentro del barrio oficial \"Fisherton\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "Fisherton"
   },
   {
     "direccion": "Brassey 8200",
@@ -412,12 +441,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.902,
-    "lng": -60.73,
-    "fuente": "aprox_manual",
+    "lat": -32.919785000000005,
+    "lng": -60.74222535714286,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "Brassey 8200",
-    "verificacion": "estimada"
+    "normalizada": "Brassey 8200 — ubicada dentro del barrio oficial \"Fisherton\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "Fisherton"
   },
   {
     "direccion": "Blvd. Argentino 8000",
@@ -426,12 +456,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.904,
-    "lng": -60.728,
-    "fuente": "aprox_manual",
+    "lat": -32.92611,
+    "lng": -60.733689642857144,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "Blvd. Argentino 8000",
-    "verificacion": "estimada"
+    "normalizada": "Blvd. Argentino 8000 — ubicada dentro del barrio oficial \"Fisherton\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "Fisherton"
   },
   {
     "direccion": "Juan B. Justo 1100",
@@ -440,12 +471,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.908,
-    "lng": -60.698,
-    "fuente": "aprox_manual",
+    "lat": -32.90176857142857,
+    "lng": -60.78213285714286,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "Juan B. Justo 1100",
-    "verificacion": "estimada"
+    "normalizada": "Juan B. Justo 1100 — ubicada dentro del barrio oficial \"Larrea y Empalme Graneros\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "Larrea y Empalme Graneros"
   },
   {
     "direccion": "González del Solar Bis 1100",
@@ -454,12 +486,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.91,
-    "lng": -60.7,
-    "fuente": "aprox_manual",
+    "lat": -32.90951714285714,
+    "lng": -60.76363642857143,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "González del Solar Bis 1100",
-    "verificacion": "estimada"
+    "normalizada": "González del Solar Bis 1100 — ubicada dentro del barrio oficial \"Larrea y Empalme Graneros\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "Larrea y Empalme Graneros"
   },
   {
     "direccion": "Urdinarrain 1000",
@@ -468,12 +501,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.906,
-    "lng": -60.696,
-    "fuente": "aprox_manual",
+    "lat": -32.91080857142857,
+    "lng": -60.745140000000006,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "Urdinarrain 1000",
-    "verificacion": "estimada"
+    "normalizada": "Urdinarrain 1000 — ubicada dentro del barrio oficial \"Larrea y Empalme Graneros\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "Larrea y Empalme Graneros"
   },
   {
     "direccion": "José Ingenieros 900",
@@ -482,12 +516,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.912,
-    "lng": -60.694,
-    "fuente": "aprox_manual",
+    "lat": -32.90047714285714,
+    "lng": -60.73034285714286,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "José Ingenieros 900",
-    "verificacion": "estimada"
+    "normalizada": "José Ingenieros 900 — ubicada dentro del barrio oficial \"Larrea y Empalme Graneros\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "Larrea y Empalme Graneros"
   },
   {
     "direccion": "Franklin 800",
@@ -496,12 +531,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.904,
-    "lng": -60.692,
-    "fuente": "aprox_manual",
+    "lat": -32.89789428571429,
+    "lng": -60.719245,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "Franklin 800",
-    "verificacion": "estimada"
+    "normalizada": "Franklin 800 — ubicada dentro del barrio oficial \"Larrea y Empalme Graneros\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "Larrea y Empalme Graneros"
   },
   {
     "direccion": "Juan José Paso 700",
@@ -510,12 +546,13 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.902,
-    "lng": -60.69,
-    "fuente": "aprox_manual",
+    "lat": -32.92630571428571,
+    "lng": -60.70444785714286,
+    "fuente": "barrio_oficial",
     "calidad": "interpolada",
-    "normalizada": "Juan José Paso 700",
-    "verificacion": "estimada"
+    "normalizada": "Juan José Paso 700 — ubicada dentro del barrio oficial \"Larrea y Empalme Graneros\" (cuadra sin verificar)",
+    "verificacion": "barrio_verificado",
+    "barrio_oficial": "Larrea y Empalme Graneros"
   },
   {
     "direccion": "Baigorria 2200",
@@ -529,7 +566,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Baigorria 2200",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": ""
   },
   {
     "direccion": "Mariano Perdriel 2200",
@@ -543,7 +581,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Mariano Perdriel 2200",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": ""
   },
   {
     "direccion": "Marcelino Freyre 2100",
@@ -557,7 +596,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Marcelino Freyre 2100",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": ""
   },
   {
     "direccion": "Calvo 1327",
@@ -571,7 +611,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Calvo 1327",
-    "verificacion": "estimada"
+    "verificacion": "estimada",
+    "barrio_oficial": ""
   },
   {
     "direccion": "Comercio 1100",
@@ -585,7 +626,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Comercio 1100",
-    "verificacion": "estimada"
+    "verificacion": "estimada",
+    "barrio_oficial": ""
   },
   {
     "direccion": "Francisco Netri 1100",
@@ -599,7 +641,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Francisco Netri 1100",
-    "verificacion": "estimada"
+    "verificacion": "estimada",
+    "barrio_oficial": ""
   },
   {
     "direccion": "Av. Casiano Casas 1200",
@@ -613,7 +656,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Av. Casiano Casas 1200",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": ""
   },
   {
     "direccion": "San Martín 567",
@@ -627,7 +671,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "San Martín 567",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "Pellegrini 890",
@@ -641,7 +686,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Pellegrini 890",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "Mitre 234",
@@ -655,7 +701,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Mitre 234",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "Entre Ríos 789",
@@ -669,7 +716,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Entre Ríos 789",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "Sarmiento 345",
@@ -683,7 +731,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Sarmiento 345",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "Balcarce 678",
@@ -697,7 +746,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Balcarce 678",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "Bv. Oroño 7890",
@@ -711,7 +761,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Bv. Oroño 7890",
-    "verificacion": "estimada"
+    "verificacion": "estimada",
+    "barrio_oficial": "Presidente Roque Saenz Peña"
   },
   {
     "direccion": "Wheelwright 2345",
@@ -725,7 +776,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Wheelwright 2345",
-    "verificacion": "estimada"
+    "verificacion": "estimada",
+    "barrio_oficial": ""
   },
   {
     "direccion": "Laprida 901",
@@ -739,7 +791,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Laprida 901",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "Zeballos 789",
@@ -753,7 +806,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Zeballos 789",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "Moreno 1234",
@@ -767,7 +821,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Moreno 1234",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "Paraguay 567",
@@ -781,7 +836,8 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Paraguay 567",
-    "verificacion": "con_ancla"
+    "verificacion": "con_ancla",
+    "barrio_oficial": "Centro"
   },
   {
     "direccion": "Urquiza 8901",
@@ -795,6 +851,7 @@
     "fuente": "aprox_manual",
     "calidad": "interpolada",
     "normalizada": "Urquiza 8901",
-    "verificacion": "estimada"
+    "verificacion": "estimada",
+    "barrio_oficial": "Belgrano"
   }
 ]
