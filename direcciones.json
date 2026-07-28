@@ -10,7 +10,8 @@
     "lng": -60.6667,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Lavalle 300 — CORRECTA en Echesortu: calle Lavalle corre junto a Bv. Avellaneda (paradas Lavalle x Urquiza)"
+    "normalizada": "Lavalle 300",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Lavalle 1600",
@@ -23,7 +24,8 @@
     "lng": -60.6667,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Lavalle 1600 — CORRECTA en Echesortu: tramo sur de Lavalle, cerca de Pellegrini (paradas Lavalle x Av. Pellegrini)"
+    "normalizada": "Lavalle 1600",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Córdoba 890",
@@ -36,7 +38,8 @@
     "lng": -60.6342,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Córdoba 890 — Microcentro (Blackford Café confirma la altura). La etiqueta de zona Echesortu no corresponde a esta dirección"
+    "normalizada": "Córdoba 890",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Rioja 990",
@@ -49,7 +52,8 @@
     "lng": -60.6353,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Rioja 990 — Microcentro; etiqueta de zona Echesortu no corresponde"
+    "normalizada": "Rioja 990",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "San Luis 1090",
@@ -62,7 +66,8 @@
     "lng": -60.6364,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "San Luis 1090 — Microcentro; etiqueta de zona Echesortu no corresponde"
+    "normalizada": "San Luis 1090",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Mendoza 1290",
@@ -75,7 +80,8 @@
     "lng": -60.6385,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Mendoza 1290 — Centro; etiqueta de zona Echesortu no corresponde"
+    "normalizada": "Mendoza 1290",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Zeballos 1540",
@@ -88,7 +94,8 @@
     "lng": -60.6412,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Zeballos 1540 — Centro/Abasto; etiqueta de zona Echesortu no corresponde"
+    "normalizada": "Zeballos 1540",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Montevideo 1650",
@@ -101,7 +108,8 @@
     "lng": -60.6424,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Montevideo 1650 — Centro/Abasto; etiqueta de zona Echesortu no corresponde"
+    "normalizada": "Montevideo 1650",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "República del Líbano 200",
@@ -111,10 +119,11 @@
     "telefono": "",
     "notas": "",
     "lat": -32.908,
-    "lng": -60.658,
+    "lng": -60.688,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "República del Líbano 200 (coordenada aproximada de arranque)"
+    "normalizada": "República del Líbano 200",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Paso de Uspallata 300",
@@ -123,11 +132,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9095,
-    "lng": -60.66,
+    "lat": -32.91,
+    "lng": -60.69,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Paso de Uspallata 300 (coordenada aproximada de arranque)"
+    "normalizada": "Paso de Uspallata 300",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Remedios de Escalada 300",
@@ -136,11 +146,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.907,
-    "lng": -60.662,
+    "lat": -32.906,
+    "lng": -60.692,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Remedios de Escalada 300 (coordenada aproximada de arranque)"
+    "normalizada": "Remedios de Escalada 300",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Valle de Huaura 50",
@@ -149,11 +160,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9065,
-    "lng": -60.656,
+    "lat": -32.905,
+    "lng": -60.687,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Valle de Huaura 50 (coordenada aproximada de arranque)"
+    "normalizada": "Valle de Huaura 50",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Batalla de Bailén 100",
@@ -162,11 +174,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.91,
-    "lng": -60.657,
+    "lat": -32.912,
+    "lng": -60.689,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Batalla de Bailén 100 (coordenada aproximada de arranque)"
+    "normalizada": "Batalla de Bailén 100",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Av. Pres. Perón 4000",
@@ -175,11 +188,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9595,
+    "lat": -32.9516,
     "lng": -60.6675,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Av. Pres. Perón 4000 — Corregida al oeste: a la altura de Bv. Avellaneda (Perón 4602 está junto a Pascual Rosas)"
+    "normalizada": "Av. Pres. Perón 4000",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Av. Pres. Perón 3500",
@@ -188,11 +202,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9585,
+    "lat": -32.951,
     "lng": -60.6621,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Av. Pres. Perón 3500 — Corregida al oeste: entre Francia y Avellaneda"
+    "normalizada": "Av. Pres. Perón 3500",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Av. Pres. Perón 3000",
@@ -201,11 +216,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9575,
+    "lat": -32.9505,
     "lng": -60.6568,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Av. Pres. Perón 3000 — Corregida al oeste: Perón (ex Godoy) a la altura de Av. Francia. Zona Barrio Parque Casado coincide"
+    "normalizada": "Av. Pres. Perón 3000",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Ocampo 3800",
@@ -214,11 +230,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.974,
+    "lat": -32.9285,
     "lng": -60.65,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Ocampo 3800 (coordenada aproximada de arranque)"
+    "normalizada": "Ocampo 3800",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Cafferata 678",
@@ -231,7 +248,8 @@
     "lng": -60.662,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Cafferata 678 (coordenada aproximada de arranque)"
+    "normalizada": "Cafferata 678",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Baigorria 2300",
@@ -240,11 +258,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.902,
-    "lng": -60.679,
+    "lat": -32.9112,
+    "lng": -60.6725,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Baigorria 2300 — Barrio Cerámica: Baigorria es calle N-S; altura 2300 en zona norte (ancla: Casiano Casas x Baigorria)"
+    "normalizada": "Baigorria 2300",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Dr. Pedro Medrano 2259",
@@ -253,11 +272,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9015,
-    "lng": -60.681,
+    "lat": -32.9108,
+    "lng": -60.6738,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Dr. Pedro Medrano 2259 — Cerámica: Medrano al 2200-2500 a ~200m de Baigorria (verificado en avisos inmobiliarios)"
+    "normalizada": "Dr. Pedro Medrano 2259",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Anchoris 1300",
@@ -266,11 +286,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.904,
-    "lng": -60.6775,
+    "lat": -32.916,
+    "lng": -60.67,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Anchoris 1300 — Cerámica: Anchoris cruza Freyre y Medrano; tramo bajo hacia el este"
+    "normalizada": "Anchoris 1300",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Molina 1700",
@@ -279,11 +300,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.903,
-    "lng": -60.6795,
+    "lat": -32.9135,
+    "lng": -60.672,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Molina 1700 — Cerámica: Molina paralela a Anchoris (parada Molina confirmada)"
+    "normalizada": "Molina 1700",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Cosquín 2000",
@@ -292,11 +314,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.901,
-    "lng": -60.683,
+    "lat": -32.912,
+    "lng": -60.675,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Cosquín 2000 — Cerámica: zona norte del barrio"
+    "normalizada": "Cosquín 2000",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Braille 3500",
@@ -305,11 +328,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9,
-    "lng": -60.687,
+    "lat": -32.9095,
+    "lng": -60.677,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Braille 3500 — Cerámica: Braile cerca de Medrano (parada Medrano x Braile confirmada)"
+    "normalizada": "Braille 3500",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Valle Hermoso 2500",
@@ -318,11 +342,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9005,
-    "lng": -60.685,
+    "lat": -32.9105,
+    "lng": -60.676,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Valle Hermoso 2500 — Cerámica: zona norte del barrio"
+    "normalizada": "Valle Hermoso 2500",
+    "verificacion": "estimada"
   },
   {
     "direccion": "José M. Rosa 7500",
@@ -335,7 +360,8 @@
     "lng": -60.724,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "José M. Rosa 7500 — Fisherton: sector alturas 7500+ noroeste"
+    "normalizada": "José M. Rosa 7500",
+    "verificacion": "estimada"
   },
   {
     "direccion": "A. Chizzini 8400",
@@ -344,11 +370,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.902,
+    "lat": -32.899,
     "lng": -60.732,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "A. Chizzini 8400 — Fisherton: noroeste, alturas altas"
+    "normalizada": "A. Chizzini 8400",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Condarco 8800",
@@ -357,11 +384,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.901,
+    "lat": -32.8975,
     "lng": -60.736,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Condarco 8800 — Fisherton: Álvarez Condarco Bis cerca de Newbery/Schweitzer (verificado)"
+    "normalizada": "Condarco 8800",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Juárez Celman Bis 8800",
@@ -370,11 +398,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9015,
+    "lat": -32.898,
     "lng": -60.735,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Juárez Celman Bis 8800 — Fisherton: cerca de Juan B. Justo x Juárez Celman (verificado)"
+    "normalizada": "Juárez Celman Bis 8800",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Brassey 8200",
@@ -387,7 +416,8 @@
     "lng": -60.73,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Brassey 8200 — Fisherton: noroeste"
+    "normalizada": "Brassey 8200",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Blvd. Argentino 8000",
@@ -400,7 +430,8 @@
     "lng": -60.728,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Blvd. Argentino 8000 — Fisherton: bulevar, sector alturas 8000"
+    "normalizada": "Blvd. Argentino 8000",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Juan B. Justo 1100",
@@ -409,11 +440,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.904,
-    "lng": -60.703,
+    "lat": -32.908,
+    "lng": -60.698,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Juan B. Justo 1100 (coordenada aproximada de arranque)"
+    "normalizada": "Juan B. Justo 1100",
+    "verificacion": "estimada"
   },
   {
     "direccion": "González del Solar Bis 1100",
@@ -422,11 +454,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.906,
-    "lng": -60.705,
+    "lat": -32.91,
+    "lng": -60.7,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "González del Solar Bis 1100 (coordenada aproximada de arranque)"
+    "normalizada": "González del Solar Bis 1100",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Urdinarrain 1000",
@@ -435,11 +468,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.903,
-    "lng": -60.702,
+    "lat": -32.906,
+    "lng": -60.696,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Urdinarrain 1000 (coordenada aproximada de arranque)"
+    "normalizada": "Urdinarrain 1000",
+    "verificacion": "estimada"
   },
   {
     "direccion": "José Ingenieros 900",
@@ -448,11 +482,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.908,
-    "lng": -60.704,
+    "lat": -32.912,
+    "lng": -60.694,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "José Ingenieros 900 (coordenada aproximada de arranque)"
+    "normalizada": "José Ingenieros 900",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Franklin 800",
@@ -461,11 +496,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.91,
-    "lng": -60.706,
+    "lat": -32.904,
+    "lng": -60.692,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Franklin 800 (coordenada aproximada de arranque)"
+    "normalizada": "Franklin 800",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Juan José Paso 700",
@@ -475,10 +511,11 @@
     "telefono": "",
     "notas": "",
     "lat": -32.902,
-    "lng": -60.707,
+    "lng": -60.69,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Juan José Paso 700 (coordenada aproximada de arranque)"
+    "normalizada": "Juan José Paso 700",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Baigorria 2200",
@@ -487,11 +524,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9045,
-    "lng": -60.669,
+    "lat": -32.9105,
+    "lng": -60.6725,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Baigorria 2200 — Casiano Casas: Baigorria 2200 junto a Av. Casiano Casas (parada Av. Casiano Casas x Baigorria)"
+    "normalizada": "Baigorria 2200",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Mariano Perdriel 2200",
@@ -500,11 +538,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9035,
-    "lng": -60.67,
+    "lat": -32.9095,
+    "lng": -60.671,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Mariano Perdriel 2200 — Casiano Casas: Perdriel cruza Warnes/Agrelo (parada Perdriel x Agrelo confirmada)"
+    "normalizada": "Mariano Perdriel 2200",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Marcelino Freyre 2100",
@@ -513,11 +552,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.905,
-    "lng": -60.668,
+    "lat": -32.9125,
+    "lng": -60.6695,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Marcelino Freyre 2100 — Casiano Casas: Freyre cruza Anchoris (parada Freyre x Anchoris confirmada)"
+    "normalizada": "Marcelino Freyre 2100",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Calvo 1327",
@@ -526,11 +566,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.903,
-    "lng": -60.672,
+    "lat": -32.9088,
+    "lng": -60.674,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Calvo 1327 — Casiano Casas: zona norte"
+    "normalizada": "Calvo 1327",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Comercio 1100",
@@ -539,11 +580,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.9025,
-    "lng": -60.67,
+    "lat": -32.9078,
+    "lng": -60.6725,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Comercio 1100 — Casiano Casas: zona norte"
+    "normalizada": "Comercio 1100",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Francisco Netri 1100",
@@ -552,11 +594,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.904,
-    "lng": -60.667,
+    "lat": -32.913,
+    "lng": -60.668,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Francisco Netri 1100 — Casiano Casas: zona norte"
+    "normalizada": "Francisco Netri 1100",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Av. Casiano Casas 1200",
@@ -565,11 +608,12 @@
     "nombre": "",
     "telefono": "",
     "notas": "",
-    "lat": -32.902,
-    "lng": -60.675,
+    "lat": -32.907,
+    "lng": -60.6755,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Av. Casiano Casas 1200 — Casiano Casas: avenida principal del barrio"
+    "normalizada": "Av. Casiano Casas 1200",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "San Martín 567",
@@ -582,7 +626,8 @@
     "lng": -60.6349,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "San Martín 567 — Afinada: cuadra Tucumán-Córdoba"
+    "normalizada": "San Martín 567",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Pellegrini 890",
@@ -595,7 +640,8 @@
     "lng": -60.6342,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Pellegrini 890 — Centro, corregida sobre Av. Pellegrini"
+    "normalizada": "Pellegrini 890",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Mitre 234",
@@ -608,7 +654,8 @@
     "lng": -60.637,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Mitre 234 — Afinada: cuadra Jujuy-Catamarca"
+    "normalizada": "Mitre 234",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Entre Ríos 789",
@@ -621,7 +668,8 @@
     "lng": -60.6381,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Entre Ríos 789 — Afinada: cuadra Santa Fe-San Lorenzo"
+    "normalizada": "Entre Ríos 789",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Sarmiento 345",
@@ -634,7 +682,8 @@
     "lng": -60.6359,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Sarmiento 345 — Afinada: cuadra Catamarca-Urquiza"
+    "normalizada": "Sarmiento 345",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Balcarce 678",
@@ -647,7 +696,8 @@
     "lng": -60.6466,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Balcarce 678 — Afinada: cuadra Córdoba-Santa Fe"
+    "normalizada": "Balcarce 678",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Bv. Oroño 7890",
@@ -660,7 +710,8 @@
     "lng": -60.6489,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Bv. Oroño 7890 — La altura SÍ existe: zona sur, pasando Av. Arijón. La etiqueta Centro es del mock; VERIFICAR en Google Maps"
+    "normalizada": "Bv. Oroño 7890",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Wheelwright 2345",
@@ -673,7 +724,8 @@
     "lng": -60.633,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Wheelwright 2345 (coordenada aproximada de arranque)"
+    "normalizada": "Wheelwright 2345",
+    "verificacion": "estimada"
   },
   {
     "direccion": "Laprida 901",
@@ -686,7 +738,8 @@
     "lng": -60.6317,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Laprida 901 — Afinada: cuadra Rioja-San Luis (El Círculo es Laprida 1223)"
+    "normalizada": "Laprida 901",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Zeballos 789",
@@ -699,7 +752,8 @@
     "lng": -60.6331,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Zeballos 789 — Centro, corregida sobre el eje de Zeballos"
+    "normalizada": "Zeballos 789",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Moreno 1234",
@@ -712,7 +766,8 @@
     "lng": -60.6456,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Moreno 1234 — Afinada: cuadra Mendoza-3 de Febrero"
+    "normalizada": "Moreno 1234",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Paraguay 567",
@@ -725,7 +780,8 @@
     "lng": -60.6402,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Paraguay 567 — Afinada: cuadra Tucumán-Córdoba"
+    "normalizada": "Paraguay 567",
+    "verificacion": "con_ancla"
   },
   {
     "direccion": "Urquiza 8901",
@@ -738,6 +794,7 @@
     "lng": -60.7199,
     "fuente": "aprox_manual",
     "calidad": "interpolada",
-    "normalizada": "Urquiza 8901 — Si la altura existe, cae en Fisherton norte, no en Centro. VERIFICAR en Google Maps si Urquiza llega a 8900"
+    "normalizada": "Urquiza 8901",
+    "verificacion": "estimada"
   }
 ]
