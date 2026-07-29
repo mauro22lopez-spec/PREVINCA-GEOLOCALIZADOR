@@ -6,2039 +6,1355 @@
 <title>Mapa de Ventas — Rosario, Santa Fe</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { height: 100%; overflow: hidden; }
-  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #e8eaf6; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; }
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: #e8eaf6; }
 
-  header {
-    height: 56px; z-index: 1000; position: relative;
-    background: linear-gradient(90deg, #1a237e, #3949ab);
-    color: #fff; display: flex; align-items: center; padding: 0 18px;
-    box-shadow: 0 2px 8px rgba(26,35,126,0.35);
-  }
-  header h1 { font-size: 17px; font-weight: 700; letter-spacing: 0.2px; }
-  header .sub { font-size: 12px; opacity: 0.85; margin-left: 10px; font-weight: 400; }
+header {
+height: 56px; z-index: 1000; position: relative;
+background: linear-gradient(90deg, #1a237e, #3949ab);
+color: #fff; display: flex; align-items: center; padding: 0 18px;
+box-shadow: 0 2px 8px rgba(26,35,126,0.35);
+}
+header h1 { font-size: 17px; font-weight: 700; letter-spacing: 0.2px; }
+header .sub { font-size: 12px; opacity: 0.85; margin-left: 10px; font-weight: 400; }
 
-  .main { display: flex; height: calc(100vh - 56px); }
-  .sidebar {
-    width: 360px; min-width: 360px; background: #fff;
-    border-right: 1px solid #e0e0e0; overflow-y: auto; padding: 14px;
-  }
-  #map { flex: 1; min-height: 400px; background: #e8eaf6; }
+.main { display: flex; height: calc(100vh - 56px); }
+.sidebar {
+width: 360px; min-width: 360px; background: #fff;
+border-right: 1px solid #e0e0e0; overflow-y: auto; padding: 14px;
+}
+#map { flex: 1; min-height: 400px; background: #e8eaf6; }
 
-  .section {
-    background: #fafafa; border: 1px solid #ececec; border-radius: 12px;
-    padding: 12px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  }
-  .section h2 {
-    font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px;
-    color: #3949ab; margin-bottom: 10px; font-weight: 700;
-  }
+.section {
+background: #fafafa; border: 1px solid #ececec; border-radius: 12px;
+padding: 12px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.section h2 {
+font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px;
+color: #3949ab; margin-bottom: 10px; font-weight: 700;
+}
 
-  .btn {
-    display: block; width: 100%; border: 0; border-radius: 8px;
-    padding: 9px 10px; font-size: 13px; font-weight: 600; cursor: pointer;
-    margin-bottom: 8px; font-family: inherit;
-  }
-  .btn:last-child { margin-bottom: 0; }
-  .btn-primary { background: #3949ab; color: #fff; }
-  .btn-primary:hover { background: #303f9f; }
-  .btn-secondary { background: #e8eaf6; color: #1a237e; }
-  .btn-secondary:hover { background: #dde1f5; }
-  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn {
+display: block; width: 100%; border: 0; border-radius: 8px;
+padding: 9px 10px; font-size: 13px; font-weight: 600; cursor: pointer;
+margin-bottom: 8px; font-family: inherit;
+}
+.btn:last-child { margin-bottom: 0; }
+.btn-primary { background: #3949ab; color: #fff; }
+.btn-primary:hover { background: #303f9f; }
+.btn-secondary { background: #e8eaf6; color: #1a237e; }
+.btn-secondary:hover { background: #dde1f5; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-  .hint { font-size: 11px; color: #757575; margin-top: 6px; line-height: 1.5; }
+.hint { font-size: 11px; color: #757575; margin-top: 6px; line-height: 1.5; }
 
-  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .stat-card {
-    background: #fff; border: 1px solid #e0e0e0; border-radius: 10px;
-    padding: 8px 10px; text-align: center;
-  }
-  .stat-card .num { font-size: 20px; font-weight: 800; color: #1a237e; }
-  .stat-card .lbl { font-size: 10px; color: #757575; text-transform: uppercase; letter-spacing: 0.4px; }
-  .stat-card.q-exacta .num { color: #2e7d32; }
-  .stat-card.q-interp .num { color: #f9a825; }
-  .stat-card.q-sr .num { color: #c62828; }
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.stat-card {
+background: #fff; border: 1px solid #e0e0e0; border-radius: 10px;
+padding: 8px 10px; text-align: center;
+}
+.stat-card .num { font-size: 20px; font-weight: 800; color: #1a237e; }
+.stat-card .lbl { font-size: 10px; color: #757575; text-transform: uppercase; letter-spacing: 0.4px; }
+.stat-card.q-exacta .num { color: #2e7d32; }
+.stat-card.q-interp .num { color: #f9a825; }
+.stat-card.q-sr .num { color: #c62828; }
 
-  select {
-    width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 8px;
-    font-size: 13px; font-family: inherit; background: #fff;
-  }
+select {
+width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 8px;
+font-size: 13px; font-family: inherit; background: #fff;
+}
 
-  .legend-row { display: flex; align-items: center; gap: 8px; font-size: 12px; margin-bottom: 5px; color: #424242; }
-  .legend-swatch { width: 16px; height: 16px; border-radius: 4px; flex-shrink: 0; }
-  .legend-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.3); flex-shrink: 0; }
+.legend-row { display: flex; align-items: center; gap: 8px; font-size: 12px; margin-bottom: 5px; color: #424242; }
+.legend-swatch { width: 16px; height: 16px; border-radius: 4px; flex-shrink: 0; }
+.legend-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.3); flex-shrink: 0; }
 
-  .addr-list { max-height: 200px; overflow-y: auto; margin-bottom: 10px; }
-  .addr-item {
-    padding: 8px 10px; border-radius: 8px; cursor: pointer; font-size: 12px;
-    border: 1px solid #eee; margin-bottom: 6px; background: #fff;
-    display: flex; justify-content: space-between; align-items: center; gap: 6px;
-  }
-  .addr-item:hover { background: #e8eaf6; }
-  .addr-item .dir { font-weight: 600; color: #212121; }
-  .addr-item .meta { font-size: 10px; color: #757575; }
-  .badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 10px; white-space: nowrap; }
-  .badge-exacta { background: #e8f5e9; color: #2e7d32; }
-  .badge-interp { background: #fff8e1; color: #f57f17; }
-  .badge-ventas { background: #e8eaf6; color: #1a237e; }
+.addr-list { max-height: 200px; overflow-y: auto; margin-bottom: 10px; }
+.addr-item {
+padding: 8px 10px; border-radius: 8px; cursor: pointer; font-size: 12px;
+border: 1px solid #eee; margin-bottom: 6px; background: #fff;
+display: flex; justify-content: space-between; align-items: center; gap: 6px;
+}
+.addr-item:hover { background: #e8eaf6; }
+.addr-item .dir { font-weight: 600; color: #212121; }
+.addr-item .meta { font-size: 10px; color: #757575; }
+.badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 10px; white-space: nowrap; }
+.badge-exacta { background: #e8f5e9; color: #2e7d32; }
+.badge-interp { background: #fff8e1; color: #f57f17; }
+.badge-ventas { background: #e8eaf6; color: #1a237e; }
 
-  .failed-list { max-height: 170px; overflow-y: auto; }
-  .failed-item {
-    padding: 8px 10px; border-radius: 8px; font-size: 12px;
-    border: 1px solid #ffcdd2; background: #fff5f5; margin-bottom: 6px;
-    display: flex; justify-content: space-between; align-items: center; gap: 6px;
-  }
-  .failed-item .dir { font-weight: 600; color: #b71c1c; }
-  .failed-item button {
-    border: 0; background: #ffebee; color: #c62828; border-radius: 6px;
-    padding: 4px 8px; font-size: 11px; cursor: pointer; font-family: inherit; font-weight: 600;
-  }
-  .failed-item button:hover { background: #ffcdd2; }
+.failed-list { max-height: 170px; overflow-y: auto; }
+.failed-item {
+padding: 8px 10px; border-radius: 8px; font-size: 12px;
+border: 1px solid #ffcdd2; background: #fff5f5; margin-bottom: 6px;
+display: flex; justify-content: space-between; align-items: center; gap: 6px;
+}
+.failed-item .dir { font-weight: 600; color: #b71c1c; }
+.failed-item button {
+border: 0; background: #ffebee; color: #c62828; border-radius: 6px;
+padding: 4px 8px; font-size: 11px; cursor: pointer; font-family: inherit; font-weight: 600;
+}
+.failed-item button:hover { background: #ffcdd2; }
 
-  .toggle-row { display: flex; gap: 8px; margin-top: 8px; }
-  .toggle-btn {
-    flex: 1; border: 1px solid #c5cae9; background: #fff; color: #9e9e9e;
-    border-radius: 8px; padding: 7px; font-size: 12px; font-weight: 600;
-    cursor: pointer; font-family: inherit;
-  }
-  .toggle-btn.on { background: #3949ab; color: #fff; border-color: #3949ab; }
+.toggle-row { display: flex; gap: 8px; margin-top: 8px; }
+.toggle-btn {
+flex: 1; border: 1px solid #c5cae9; background: #fff; color: #9e9e9e;
+border-radius: 8px; padding: 7px; font-size: 12px; font-weight: 600;
+cursor: pointer; font-family: inherit;
+}
+.toggle-btn.on { background: #3949ab; color: #fff; border-color: #3949ab; }
 
-  #routeButtons .btn { margin-bottom: 6px; }
+#routeButtons .btn { margin-bottom: 6px; }
 
-  .marker-circle {
-    width: 30px; height: 30px; border-radius: 50%; border: 3px solid #fff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.35); display: flex; align-items: center;
-    justify-content: center; font-family: system-ui, sans-serif;
-    font-weight: 800; font-size: 11px; color: #fff;
-  }
-  .marker-circle.interp { border: 3px dashed #fff; opacity: 0.9; }
+.marker-circle {
+width: 30px; height: 30px; border-radius: 50%; border: 3px solid #fff;
+box-shadow: 0 2px 6px rgba(0,0,0,0.35); display: flex; align-items: center;
+justify-content: center; font-family: system-ui, sans-serif;
+font-weight: 800; font-size: 11px; color: #fff;
+}
+.marker-circle.interp { border: 3px dashed #fff; opacity: 0.9; }
 
-  .zone-label {
-    background: rgba(255,255,255,0.9); border: 1px solid #c5cae9; border-radius: 8px;
-    padding: 3px 8px; font-size: 11px; font-weight: 700; color: #1a237e;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.2); white-space: nowrap;
-  }
+.zone-label {
+background: rgba(255,255,255,0.9); border: 1px solid #c5cae9; border-radius: 8px;
+padding: 3px 8px; font-size: 11px; font-weight: 700; color: #1a237e;
+box-shadow: 0 1px 4px rgba(0,0,0,0.2); white-space: nowrap;
+}
 
-  .leaflet-popup-content-wrapper { border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.25); padding: 0; overflow: hidden; }
-  .leaflet-popup-content { margin: 0; width: 240px !important; }
-  .pp-head {
-    background: linear-gradient(90deg, #1a237e, #3949ab); color: #fff;
-    padding: 10px 12px; font-weight: 700; font-size: 13px;
-  }
-  .pp-body { padding: 10px 12px; font-size: 12px; color: #424242; line-height: 1.7; }
-  .pp-tag { display: inline-block; margin-top: 6px; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 12px; }
-  .pp-alta { background: #ffebee; color: #c62828; }
-  .pp-media { background: #fff8e1; color: #f57f17; }
-  .pp-baja { background: #e8f5e9; color: #2e7d32; }
-  .pp-note { margin-top: 6px; font-size: 11px; color: #f57f17; font-weight: 600; }
+.leaflet-popup-content-wrapper { border-radius: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.25); padding: 0; overflow: hidden; }
+.leaflet-popup-content { margin: 0; width: 240px !important; }
+.pp-head {
+background: linear-gradient(90deg, #1a237e, #3949ab); color: #fff;
+padding: 10px 12px; font-weight: 700; font-size: 13px;
+}
+.pp-body { padding: 10px 12px; font-size: 12px; color: #424242; line-height: 1.7; }
+.pp-tag { display: inline-block; margin-top: 6px; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 12px; }
+.pp-alta { background: #ffebee; color: #c62828; }
+.pp-media { background: #fff8e1; color: #f57f17; }
+.pp-baja { background: #e8f5e9; color: #2e7d32; }
+.pp-note { margin-top: 6px; font-size: 11px; color: #f57f17; font-weight: 600; }
 
-  #loadingOverlay {
-    position: fixed; inset: 0; background: rgba(26,35,126,0.85); z-index: 3000;
-    display: none; align-items: center; justify-content: center; flex-direction: column; color: #fff;
-  }
-  #loadingOverlay.show { display: flex; }
-  .spinner {
-    width: 46px; height: 46px; border: 5px solid rgba(255,255,255,0.25);
-    border-top-color: #fff; border-radius: 50%; animation: spin 0.9s linear infinite; margin-bottom: 16px;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  #loadingText { font-size: 14px; text-align: center; padding: 0 20px; }
+#loadingOverlay {
+position: fixed; inset: 0; background: rgba(26,35,126,0.85); z-index: 3000;
+display: none; align-items: center; justify-content: center; flex-direction: column; color: #fff;
+}
+#loadingOverlay.show { display: flex; }
+.spinner {
+width: 46px; height: 46px; border: 5px solid rgba(255,255,255,0.25);
+border-top-color: #fff; border-radius: 50%; animation: spin 0.9s linear infinite; margin-bottom: 16px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+#loadingText { font-size: 14px; text-align: center; padding: 0 20px; }
 
-  @media (max-width: 760px) {
-    .main { flex-direction: column; }
-    .sidebar { width: 100%; min-width: 0; max-height: 45vh; border-right: 0; border-bottom: 1px solid #e0e0e0; }
-    #map { height: 55vh; }
-  }
+@media (max-width: 760px) {
+.main { flex-direction: column; }
+.sidebar { width: 100%; min-width: 0; max-height: 45vh; border-right: 0; border-bottom: 1px solid #e0e0e0; }
+#map { height: 55vh; }
+}
 </style>
 <base target="_blank">
 </head>
 <body>
 
 <header>
-  <h1>🗺️ Mapa de Ventas — Rosario</h1>
-  <span class="sub">Equipo de Cobertura Médica</span>
+<h1>🗺️ Mapa de Ventas — Rosario</h1>
+<span class="sub">Equipo de Cobertura Médica</span>
 </header>
 
 <div class="main">
-  <aside class="sidebar">
+<aside class="sidebar">
 
-    <div class="section">
-      <h2>Datos</h2>
-      <button class="btn btn-primary" id="btnReload">🔄 Recargar direcciones.json</button>
-      <input type="file" id="fileInput" accept=".xlsx,.xls,.csv" style="display:none">
-      <button class="btn btn-secondary" id="btnUpload">📄 Agregar direcciones desde Excel</button>
-      <div class="hint">
-        Los datos base se cargan de <b>direcciones.json</b> (generado con
-        <code>node geocode.mjs</code>). El archivo abre igual servido en Vercel
-        o con doble clic (trae una copia de respaldo embebida). El Excel es
-        para direcciones nuevas: se geocodifican en vivo con Georef y viven
-        solo en esta sesión.
-      </div>
-    </div>
+<div class="section">
+<h2>Datos</h2>
+<div id="estadoDatos" class="hint" style="margin:0 0 10px">Conectando…</div>
+<input type="file" id="fileInput" accept=".xlsx,.xls,.csv" style="display:none">
+<button class="btn btn-primary" id="btnUpload">📄 Sincronizar desde Excel</button>
+<button class="btn btn-secondary" id="btnGeocodificar">🌎 Geocodificar pendientes</button>
+<button class="btn btn-secondary" id="btnReintentar">🔁 Reintentar las fallidas</button>
+<button class="btn btn-secondary" id="btnReload">🔄 Recargar desde la base</button>
+<div class="hint">
+La base de <b>Supabase</b> es la única fuente de verdad. El Excel
+sincroniza: agrega las nuevas, actualiza las existentes y ofrece borrar
+las que ya no estén. Cada dirección se geocodifica <b>una sola vez</b>
+con Georef (API oficial del Estado) y el resultado queda guardado.
+Si Georef no la resuelve, la dirección <b>no se dibuja</b>: aparece en
+la lista de no geolocalizadas. Nunca se inventan coordenadas.
+</div>
+</div>
 
-    <div class="section">
-      <h2>Estadísticas</h2>
-      <div class="stats-grid">
-        <div class="stat-card"><div class="num" id="stDirecciones">0</div><div class="lbl">Direcciones</div></div>
-        <div class="stat-card"><div class="num" id="stVentas">0</div><div class="lbl">Total ventas</div></div>
-        <div class="stat-card q-exacta"><div class="num" id="stExactas">0</div><div class="lbl">Exactas</div></div>
-        <div class="stat-card q-interp"><div class="num" id="stInterp">0</div><div class="lbl">Interpoladas</div></div>
-        <div class="stat-card q-sr"><div class="num" id="stSinResolver">0</div><div class="lbl">Sin resolver</div></div>
-        <div class="stat-card"><div class="num" id="stZonas">0</div><div class="lbl">Zonas</div></div>
-      </div>
-    </div>
+<div class="section">
+<h2>Estadísticas</h2>
+<div class="stats-grid">
+<div class="stat-card"><div class="num" id="stDirecciones">0</div><div class="lbl">Direcciones</div></div>
+<div class="stat-card"><div class="num" id="stVentas">0</div><div class="lbl">Total ventas</div></div>
+<div class="stat-card q-exacta"><div class="num" id="stExactas">0</div><div class="lbl">Exactas</div></div>
+<div class="stat-card q-interp"><div class="num" id="stInterp">0</div><div class="lbl">Interpoladas</div></div>
+<div class="stat-card q-sr"><div class="num" id="stSinResolver">0</div><div class="lbl">Sin resolver</div></div>
+<div class="stat-card"><div class="num" id="stZonas">0</div><div class="lbl">Zonas</div></div>
+</div>
+</div>
 
-    <div class="section">
-      <h2>Capas</h2>
-      <select id="layerMode">
-        <option value="surface" selected>🔥 Mapa de calor (superficie)</option>
-        <option value="barrio">🏘️ Por barrio</option>
-        <option value="none">📍 Solo marcadores</option>
-      </select>
-      <div id="legendBox" style="margin-top:10px"></div>
-      <div class="toggle-row">
-        <button class="toggle-btn on" id="tglMarkers">📍 Marcadores</button>
-      </div>
-    </div>
+<div class="section">
+<h2>Capas</h2>
+<select id="layerMode">
+<option value="surface" selected>🔥 Mapa de calor (superficie)</option>
+<option value="barrio">🏘️ Por barrio</option>
+<option value="none">📍 Solo marcadores</option>
+</select>
+<div id="legendBox" style="margin-top:10px"></div>
+<div class="toggle-row">
+<button class="toggle-btn on" id="tglMarkers">📍 Marcadores</button>
+</div>
+</div>
 
-    <div class="section">
-      <h2>Filtrar por zona</h2>
-      <select id="zoneFilter">
-        <option value="">Todas las zonas</option>
-      </select>
-    </div>
+<div class="section">
+<h2>Filtrar por zona</h2>
+<select id="zoneFilter">
+<option value="">Todas las zonas</option>
+</select>
+</div>
 
-    <div class="section" id="failedSection" style="display:none">
-      <h2>⚠️ No geolocalizadas (<span id="failedCount">0</span>)</h2>
-      <div class="failed-list" id="failedList"></div>
-      <div class="hint">
-        No se dibujan en el mapa ni en las capas. Verificalas a mano
-        (Infomapa / Google Maps) y cargá lat/lng en direcciones.json con
-        <code>"fuente": "manual"</code> — el script nunca las pisa.
-      </div>
-    </div>
+<div class="section" id="failedSection" style="display:none">
+<h2>⚠️ No geolocalizadas (<span id="failedCount">0</span>)</h2>
+<div class="failed-list" id="failedList"></div>
+<div class="hint">
+No se dibujan en el mapa ni en las capas. Verificalas a mano
+(Infomapa / Google Maps) y cargá lat/lng en direcciones.json con
+<code>"fuente": "manual"</code> — el script nunca las pisa.
+</div>
+</div>
 
-    <div class="section">
-      <h2>Direcciones cargadas</h2>
-      <div class="addr-list" id="addrList"></div>
-      <div id="routeButtons"></div>
-      <button class="btn btn-secondary" id="btnWaze">🧭 Abrir primera dirección en Waze</button>
-    </div>
+<div class="section">
+<h2>Direcciones cargadas</h2>
+<div class="addr-list" id="addrList"></div>
+<div id="routeButtons"></div>
+<button class="btn btn-secondary" id="btnWaze">🧭 Abrir primera dirección en Waze</button>
+</div>
 
-    <div class="section">
-      <h2>Herramientas</h2>
-      <button class="btn btn-secondary" id="btnExport">📥 Exportar vista actual (.xlsx)</button>
-      <button class="btn btn-primary" id="btnSaveSupa">☁️ Guardar en Supabase</button>
-      <div class="hint">
-        Los datos se cargan automáticamente desde Supabase si existen.
-        Si Supabase está vacío, se usan los datos embebidos.
-        Apretá "Guardar" para persistir cambios en la nube.
-      </div>
-    </div>
+<div class="section">
+<h2>Herramientas</h2>
+<button class="btn btn-secondary" id="btnExport">📥 Exportar vista actual (.xlsx)</button>
+</div>
 
-  </aside>
+</aside>
 
-  <div id="map"></div>
+<div id="map"></div>
 </div>
 
 <div id="loadingOverlay">
-  <div class="spinner"></div>
-  <div id="loadingText">Cargando...</div>
+<div class="spinner"></div>
+<div id="loadingText">Cargando...</div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
 /* =========================================================================
-   Mapa de Ventas Rosario — v2
-   - SIN geocoding en runtime para los datos base: index.html consume
-     direcciones.json, generado offline con geocode.mjs (Georef + Nominatim).
-   - El upload de Excel geocodifica en vivo SOLO las filas nuevas, contra
-     Georef (API oficial del Estado, sin restricciones de bulk como Nominatim).
-   - Capas: Mapa de calor (superficie continua por densidad kernel, tipo
-     mapa de interpolación), Por barrio (convex hull), Solo marcadores.
-   ========================================================================= */
+Mapa de Ventas Rosario — v2
+- SIN geocoding en runtime para los datos base: index.html consume
+direcciones.json, generado offline con geocode.mjs (Georef + Nominatim).
+- El upload de Excel geocodifica en vivo SOLO las filas nuevas, contra
+Georef (API oficial del Estado, sin restricciones de bulk como Nominatim).
+- Capas: Mapa de calor (superficie continua por densidad kernel, tipo
+mapa de interpolación), Por barrio (convex hull), Solo marcadores.
+========================================================================= */
 
 /* --- Constantes ----------------------------------------------------------- */
 
-/* Superficie de calor: densidad kernel gaussiana ponderada por ventas.
-   Cada domicilio "irradia" sus ventas a su alrededor y las contribuciones
-   se SUMAN: donde hay muchos domicilios vendiendo cerca, el valor sube y
-   la zona se pinta roja. El resultado es una superficie continua (como un
-   mapa de interpolación), no un halo por pin.
-
-   BANDWIDTH_M: alcance de la irradiación (desvío estándar del kernel).
-   Subilo para manchas más amplias/suaves, bajalo para más detalle. */
 var BANDWIDTH_M = 450;
-var SURFACE_GAMMA = 0.6;   /* estira los valores medios para que no quede
-                              todo pálido frente al pico máximo */
-var CANVAS_W = 420;        /* resolución horizontal del render (px) */
+var SURFACE_GAMMA = 0.6;
+var CANVAS_W = 420;
 
-/* Conversión grados -> metros a latitud -32,94:
-   1° lat ≈ 111.320 m ; 1° lng ≈ 111.320 × cos(32,94°) ≈ 93.435 m.
-   Son factores DISTINTOS: 1° de longitud se achica con la latitud. */
 var M_PER_DEG_LAT = 111320;
 var M_PER_DEG_LNG = 93435;
 
-/* Paleta de quintiles (capa Por barrio): verde → amarillo → naranja → rojo */
 var QUINTILE_COLORS = ['#43a047', '#fbc02d', '#fb8c00', '#e53935', '#b71c1c'];
 
-/* Rampa de color de la superficie, de menor a mayor intensidad
-   (celeste → verde → amarillo → naranja → rojo → rojo oscuro, como los
-   mapas de densidad de referencia). t es la posición 0-1; a es el alfa. */
 var SURFACE_RAMP = [
-  { t: 0.00, r: 79,  g: 195, b: 247, a: 0.00 },
-  { t: 0.12, r: 79,  g: 195, b: 247, a: 0.30 },
-  { t: 0.30, r: 67,  g: 160, b: 71,  a: 0.42 },
-  { t: 0.55, r: 253, g: 216, b: 53,  a: 0.50 },
-  { t: 0.75, r: 251, g: 140, b: 0,   a: 0.55 },
-  { t: 0.90, r: 229, g: 57,  b: 53,  a: 0.60 },
-  { t: 1.00, r: 183, g: 28,  b: 28,  a: 0.65 }
+{ t: 0.00, r: 79, g: 195, b: 247, a: 0.00 },
+{ t: 0.12, r: 79, g: 195, b: 247, a: 0.30 },
+{ t: 0.30, r: 67, g: 160, b: 71, a: 0.42 },
+{ t: 0.55, r: 253, g: 216, b: 53, a: 0.50 },
+{ t: 0.75, r: 251, g: 140, b: 0, a: 0.55 },
+{ t: 0.90, r: 229, g: 57, b: 53, a: 0.60 },
+{ t: 1.00, r: 183, g: 28, b: 28, a: 0.65 }
 ];
 
-/* Expansión mínima de abreviaturas para el geocoding en vivo del Excel.
-   El diccionario completo y editable vive en geocode.mjs. */
 var WORD_ABBREV = {
-  'av.': 'avenida', 'av': 'avenida',
-  'bv.': 'bulevar', 'bv': 'bulevar', 'blvd.': 'bulevar', 'blvd': 'bulevar',
-  'pres.': 'presidente', 'pres': 'presidente',
-  'dr.': 'doctor', 'dr': 'doctor',
-  'gral.': 'general', 'gral': 'general',
-  'pje.': 'pasaje', 'pje': 'pasaje'
+'av.': 'avenida', 'av': 'avenida',
+'bv.': 'bulevar', 'bv': 'bulevar', 'blvd.': 'bulevar', 'blvd': 'bulevar',
+'pres.': 'presidente', 'pres': 'presidente',
+'dr.': 'doctor', 'dr': 'doctor',
+'gral.': 'general', 'gral': 'general',
+'pje.': 'pasaje', 'pje': 'pasaje'
 };
 
 
 
 
-/* --- DATOS EMBEBIDOS (fallback) --------------------------------------------
-   Copia de direcciones.json embebida para que el archivo tambien funcione
-   abierto con doble clic (protocolo file://), donde el navegador bloquea
-   fetch. En un servidor HTTP (Vercel) se usa el direcciones.json externo,
-   que tiene prioridad; esto es solo el respaldo.
+/* =========================================================================
+CAPA DE DATOS — Supabase + Georef
+========================================================================= */
 
-   Para actualizar: corre  node geocode.mjs  y pega el nuevo direcciones.json
-   tanto en el archivo externo como reemplazando el array de abajo (o dejalo:
-   en Vercel manda el externo).
-   ------------------------------------------------------------------------ */
-var DIRECCIONES_EMBED = [
-  {
-    "direccion": "Lavalle 300",
-    "ventas": 85,
-    "zona": "Echesortu",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9423,
-    "lng": -60.6667,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Lavalle 300 — CORRECTA en Echesortu: calle Lavalle corre junto a Bv. Avellaneda (paradas Lavalle x Urquiza)"
-  },
-  {
-    "direccion": "Lavalle 1600",
-    "ventas": 72,
-    "zona": "Echesortu",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9539,
-    "lng": -60.6667,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Lavalle 1600 — CORRECTA en Echesortu: tramo sur de Lavalle, cerca de Pellegrini (paradas Lavalle x Av. Pellegrini)"
-  },
-  {
-    "direccion": "Córdoba 890",
-    "ventas": 45,
-    "zona": "Echesortu",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9445,
-    "lng": -60.6342,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Córdoba 890 — Microcentro (Blackford Café confirma la altura). La etiqueta de zona Echesortu no corresponde a esta dirección"
-  },
-  {
-    "direccion": "Rioja 990",
-    "ventas": 38,
-    "zona": "Echesortu",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9472,
-    "lng": -60.6353,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Rioja 990 — Microcentro; etiqueta de zona Echesortu no corresponde"
-  },
-  {
-    "direccion": "San Luis 1090",
-    "ventas": 12,
-    "zona": "Echesortu",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9481,
-    "lng": -60.6364,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "San Luis 1090 — Microcentro; etiqueta de zona Echesortu no corresponde"
-  },
-  {
-    "direccion": "Mendoza 1290",
-    "ventas": 67,
-    "zona": "Echesortu",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.95,
-    "lng": -60.6385,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Mendoza 1290 — Centro; etiqueta de zona Echesortu no corresponde"
-  },
-  {
-    "direccion": "Zeballos 1540",
-    "ventas": 91,
-    "zona": "Echesortu",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9518,
-    "lng": -60.6412,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Zeballos 1540 — Centro/Abasto; etiqueta de zona Echesortu no corresponde"
-  },
-  {
-    "direccion": "Montevideo 1650",
-    "ventas": 55,
-    "zona": "Echesortu",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9527,
-    "lng": -60.6424,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Montevideo 1650 — Centro/Abasto; etiqueta de zona Echesortu no corresponde"
-  },
-  {
-    "direccion": "República del Líbano 200",
-    "ventas": 8,
-    "zona": "Florida Sur",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.908,
-    "lng": -60.688,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "República del Líbano 200 (coordenada aproximada de arranque)"
-  },
-  {
-    "direccion": "Paso de Uspallata 300",
-    "ventas": 15,
-    "zona": "Florida Sur",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.91,
-    "lng": -60.69,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Paso de Uspallata 300 (coordenada aproximada de arranque)"
-  },
-  {
-    "direccion": "Remedios de Escalada 300",
-    "ventas": 22,
-    "zona": "Florida Sur",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.906,
-    "lng": -60.692,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Remedios de Escalada 300 (coordenada aproximada de arranque)"
-  },
-  {
-    "direccion": "Valle de Huaura 50",
-    "ventas": 5,
-    "zona": "Florida Sur",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.905,
-    "lng": -60.687,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Valle de Huaura 50 (coordenada aproximada de arranque)"
-  },
-  {
-    "direccion": "Batalla de Bailén 100",
-    "ventas": 18,
-    "zona": "Florida Sur",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.912,
-    "lng": -60.689,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Batalla de Bailén 100 (coordenada aproximada de arranque)"
-  },
-  {
-    "direccion": "Av. Pres. Perón 4000",
-    "ventas": 78,
-    "zona": "Barrio Parque",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9516,
-    "lng": -60.6675,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Av. Pres. Perón 4000 — Corregida al oeste: a la altura de Bv. Avellaneda (Perón 4602 está junto a Pascual Rosas)"
-  },
-  {
-    "direccion": "Av. Pres. Perón 3500",
-    "ventas": 62,
-    "zona": "Barrio Parque",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.951,
-    "lng": -60.6621,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Av. Pres. Perón 3500 — Corregida al oeste: entre Francia y Avellaneda"
-  },
-  {
-    "direccion": "Av. Pres. Perón 3000",
-    "ventas": 44,
-    "zona": "Barrio Parque",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9505,
-    "lng": -60.6568,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Av. Pres. Perón 3000 — Corregida al oeste: Perón (ex Godoy) a la altura de Av. Francia. Zona Barrio Parque Casado coincide"
-  },
-  {
-    "direccion": "Ocampo 3800",
-    "ventas": 88,
-    "zona": "Barrio Parque",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.974,
-    "lng": -60.65,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Ocampo 3800 (coordenada aproximada de arranque)"
-  },
-  {
-    "direccion": "Cafferata 678",
-    "ventas": 33,
-    "zona": "Barrio Parque",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.955,
-    "lng": -60.662,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Cafferata 678 (coordenada aproximada de arranque)"
-  },
-  {
-    "direccion": "Baigorria 2300",
-    "ventas": 25,
-    "zona": "Cerámica",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9112,
-    "lng": -60.6725,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Baigorria 2300 — Barrio Cerámica: Baigorria es calle N-S; altura 2300 en zona norte (ancla: Casiano Casas x Baigorria)"
-  },
-  {
-    "direccion": "Dr. Pedro Medrano 2259",
-    "ventas": 48,
-    "zona": "Cerámica",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9108,
-    "lng": -60.6738,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Dr. Pedro Medrano 2259 — Cerámica: Medrano al 2200-2500 a ~200m de Baigorria (verificado en avisos inmobiliarios)"
-  },
-  {
-    "direccion": "Anchoris 1300",
-    "ventas": 95,
-    "zona": "Cerámica",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.916,
-    "lng": -60.67,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Anchoris 1300 — Cerámica: Anchoris cruza Freyre y Medrano; tramo bajo hacia el este"
-  },
-  {
-    "direccion": "Molina 1700",
-    "ventas": 73,
-    "zona": "Cerámica",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9135,
-    "lng": -60.672,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Molina 1700 — Cerámica: Molina paralela a Anchoris (parada Molina confirmada)"
-  },
-  {
-    "direccion": "Cosquín 2000",
-    "ventas": 56,
-    "zona": "Cerámica",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.912,
-    "lng": -60.675,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Cosquín 2000 — Cerámica: zona norte del barrio"
-  },
-  {
-    "direccion": "Braille 3500",
-    "ventas": 19,
-    "zona": "Cerámica",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9095,
-    "lng": -60.677,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Braille 3500 — Cerámica: Braile cerca de Medrano (parada Medrano x Braile confirmada)"
-  },
-  {
-    "direccion": "Valle Hermoso 2500",
-    "ventas": 31,
-    "zona": "Cerámica",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9105,
-    "lng": -60.676,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Valle Hermoso 2500 — Cerámica: zona norte del barrio"
-  },
-  {
-    "direccion": "José M. Rosa 7500",
-    "ventas": 82,
-    "zona": "Fisherton",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.901,
-    "lng": -60.724,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "José M. Rosa 7500 — Fisherton: sector alturas 7500+ noroeste"
-  },
-  {
-    "direccion": "A. Chizzini 8400",
-    "ventas": 76,
-    "zona": "Fisherton",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.899,
-    "lng": -60.732,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "A. Chizzini 8400 — Fisherton: noroeste, alturas altas"
-  },
-  {
-    "direccion": "Condarco 8800",
-    "ventas": 68,
-    "zona": "Fisherton",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.8975,
-    "lng": -60.736,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Condarco 8800 — Fisherton: Álvarez Condarco Bis cerca de Newbery/Schweitzer (verificado)"
-  },
-  {
-    "direccion": "Juárez Celman Bis 8800",
-    "ventas": 71,
-    "zona": "Fisherton",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.898,
-    "lng": -60.735,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Juárez Celman Bis 8800 — Fisherton: cerca de Juan B. Justo x Juárez Celman (verificado)"
-  },
-  {
-    "direccion": "Brassey 8200",
-    "ventas": 59,
-    "zona": "Fisherton",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.902,
-    "lng": -60.73,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Brassey 8200 — Fisherton: noroeste"
-  },
-  {
-    "direccion": "Blvd. Argentino 8000",
-    "ventas": 64,
-    "zona": "Fisherton",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.904,
-    "lng": -60.728,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Blvd. Argentino 8000 — Fisherton: bulevar, sector alturas 8000"
-  },
-  {
-    "direccion": "Juan B. Justo 1100",
-    "ventas": 28,
-    "zona": "Empalme 2",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.908,
-    "lng": -60.698,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Juan B. Justo 1100 (coordenada aproximada de arranque)"
-  },
-  {
-    "direccion": "González del Solar Bis 1100",
-    "ventas": 35,
-    "zona": "Empalme 2",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.91,
-    "lng": -60.7,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "González del Solar Bis 1100 (coordenada aproximada de arranque)"
-  },
-  {
-    "direccion": "Urdinarrain 1000",
-    "ventas": 41,
-    "zona": "Empalme 2",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.906,
-    "lng": -60.696,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Urdinarrain 1000 (coordenada aproximada de arranque)"
-  },
-  {
-    "direccion": "José Ingenieros 900",
-    "ventas": 16,
-    "zona": "Empalme 2",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.912,
-    "lng": -60.694,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "José Ingenieros 900 (coordenada aproximada de arranque)"
-  },
-  {
-    "direccion": "Franklin 800",
-    "ventas": 9,
-    "zona": "Empalme 2",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.904,
-    "lng": -60.692,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Franklin 800 (coordenada aproximada de arranque)"
-  },
-  {
-    "direccion": "Juan José Paso 700",
-    "ventas": 14,
-    "zona": "Empalme 2",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.902,
-    "lng": -60.69,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Juan José Paso 700 (coordenada aproximada de arranque)"
-  },
-  {
-    "direccion": "Baigorria 2200",
-    "ventas": 37,
-    "zona": "Casiano Casas",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9105,
-    "lng": -60.6725,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Baigorria 2200 — Casiano Casas: Baigorria 2200 junto a Av. Casiano Casas (parada Av. Casiano Casas x Baigorria)"
-  },
-  {
-    "direccion": "Mariano Perdriel 2200",
-    "ventas": 42,
-    "zona": "Casiano Casas",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9095,
-    "lng": -60.671,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Mariano Perdriel 2200 — Casiano Casas: Perdriel cruza Warnes/Agrelo (parada Perdriel x Agrelo confirmada)"
-  },
-  {
-    "direccion": "Marcelino Freyre 2100",
-    "ventas": 29,
-    "zona": "Casiano Casas",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9125,
-    "lng": -60.6695,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Marcelino Freyre 2100 — Casiano Casas: Freyre cruza Anchoris (parada Freyre x Anchoris confirmada)"
-  },
-  {
-    "direccion": "Calvo 1327",
-    "ventas": 53,
-    "zona": "Casiano Casas",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9088,
-    "lng": -60.674,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Calvo 1327 — Casiano Casas: zona norte"
-  },
-  {
-    "direccion": "Comercio 1100",
-    "ventas": 21,
-    "zona": "Casiano Casas",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9078,
-    "lng": -60.6725,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Comercio 1100 — Casiano Casas: zona norte"
-  },
-  {
-    "direccion": "Francisco Netri 1100",
-    "ventas": 26,
-    "zona": "Casiano Casas",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.913,
-    "lng": -60.668,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Francisco Netri 1100 — Casiano Casas: zona norte"
-  },
-  {
-    "direccion": "Av. Casiano Casas 1200",
-    "ventas": 34,
-    "zona": "Casiano Casas",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.907,
-    "lng": -60.6755,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Av. Casiano Casas 1200 — Casiano Casas: avenida principal del barrio"
-  },
-  {
-    "direccion": "San Martín 567",
-    "ventas": 12,
-    "zona": "Centro",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9441,
-    "lng": -60.6349,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "San Martín 567 — Afinada: cuadra Tucumán-Córdoba"
-  },
-  {
-    "direccion": "Pellegrini 890",
-    "ventas": 45,
-    "zona": "Centro",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9554,
-    "lng": -60.6342,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Pellegrini 890 — Centro, corregida sobre Av. Pellegrini"
-  },
-  {
-    "direccion": "Mitre 234",
-    "ventas": 78,
-    "zona": "Centro",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9414,
-    "lng": -60.637,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Mitre 234 — Afinada: cuadra Jujuy-Catamarca"
-  },
-  {
-    "direccion": "Entre Ríos 789",
-    "ventas": 92,
-    "zona": "Centro",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9459,
-    "lng": -60.6381,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Entre Ríos 789 — Afinada: cuadra Santa Fe-San Lorenzo"
-  },
-  {
-    "direccion": "Sarmiento 345",
-    "ventas": 23,
-    "zona": "Centro",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9423,
-    "lng": -60.6359,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Sarmiento 345 — Afinada: cuadra Catamarca-Urquiza"
-  },
-  {
-    "direccion": "Balcarce 678",
-    "ventas": 67,
-    "zona": "Centro",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.945,
-    "lng": -60.6466,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Balcarce 678 — Afinada: cuadra Córdoba-Santa Fe"
-  },
-  {
-    "direccion": "Bv. Oroño 7890",
-    "ventas": 88,
-    "zona": "Centro",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -33.0095,
-    "lng": -60.6489,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Bv. Oroño 7890 — La altura SÍ existe: zona sur, pasando Av. Arijón. La etiqueta Centro es del mock; VERIFICAR en Google Maps"
-  },
-  {
-    "direccion": "Wheelwright 2345",
-    "ventas": 15,
-    "zona": "Centro",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.936,
-    "lng": -60.633,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Wheelwright 2345 (coordenada aproximada de arranque)"
-  },
-  {
-    "direccion": "Laprida 901",
-    "ventas": 9,
-    "zona": "Centro",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9477,
-    "lng": -60.6317,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Laprida 901 — Afinada: cuadra Rioja-San Luis (El Círculo es Laprida 1223)"
-  },
-  {
-    "direccion": "Zeballos 789",
-    "ventas": 62,
-    "zona": "Centro",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9518,
-    "lng": -60.6331,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Zeballos 789 — Centro, corregida sobre el eje de Zeballos"
-  },
-  {
-    "direccion": "Moreno 1234",
-    "ventas": 27,
-    "zona": "Centro",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9504,
-    "lng": -60.6456,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Moreno 1234 — Afinada: cuadra Mendoza-3 de Febrero"
-  },
-  {
-    "direccion": "Paraguay 567",
-    "ventas": 95,
-    "zona": "Centro",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.9441,
-    "lng": -60.6402,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Paraguay 567 — Afinada: cuadra Tucumán-Córdoba"
-  },
-  {
-    "direccion": "Urquiza 8901",
-    "ventas": 18,
-    "zona": "Centro",
-    "nombre": "",
-    "telefono": "",
-    "notas": "",
-    "lat": -32.942,
-    "lng": -60.7199,
-    "fuente": "aprox_manual",
-    "calidad": "interpolada",
-    "normalizada": "Urquiza 8901 — Si la altura existe, cae en Fisherton norte, no en Centro. VERIFICAR en Google Maps si Urquiza llega a 8900"
-  }
-];
+var SUPABASE_URL = 'https://mxgkkeangcuqxlvrekqx.supabase.co';
+var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im14Z2trZWFuZ2N1cXhsdnJla3F4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyOTE1MTAsImV4cCI6MjEwMDg2NzUxMH0.SLS9yrUfBvl4UoRTXi3QBVM8TXVhNlydR4l2Vg9i01s';
 
+var TABLA = 'domicilios';
 
-/* --- Configuración de Supabase -------------------------------------------- */
-var SUPABASE_URL = 'https://bnvltncjaoytmpmalmui.supabase.co';
-var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJudmx0bmNqYW95dG1wbWFsbXVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUyNjYzMjgsImV4cCI6MjEwMDg0MjMyOH0.F_yFci6bOCDBNB_8VLo4b8LPZ02QXwNDFmJu5RBQwek';
+var BBOX_ROSARIO = { latMin: -33.03, latMax: -32.86, lngMin: -60.79, lngMax: -60.60 };
 
-var supabase = null;
+var GEOREF_PAUSA_MS = 250;
 
-function initSupabase() {
-  if (typeof window.supabase !== 'undefined') {
-    try {
-      supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-      return true;
-    } catch (e) {
-      console.error('Error initSupabase:', e);
-      return false;
-    }
-  }
-  return false;
+/* --- Cliente REST mínimo de Supabase ------------------------------------ */
+
+function sbConfigurado() {
+return SUPABASE_URL.indexOf('TU-PROYECTO') === -1 &&
+SUPABASE_ANON_KEY.indexOf('TU-ANON-KEY') === -1;
 }
 
-/* --- CRUD Supabase -------------------------------------------------------- */
-
-/* Carga direcciones desde Supabase. */
-function loadFromSupabase() {
-  if (!supabase) return Promise.reject('No supabase');
-  return supabase.from('direcciones').select('*').order('direccion')
-    .then(function (result) {
-      if (result.error) throw result.error;
-      return result.data || [];
-    });
+function sbHeaders(extra) {
+var h = {
+'apikey': SUPABASE_ANON_KEY,
+'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+'Content-Type': 'application/json'
+};
+var k;
+for (k in extra) {
+if (Object.prototype.hasOwnProperty.call(extra, k)) { h[k] = extra[k]; }
+}
+return h;
 }
 
-/* Sincroniza TODO el dataset actual con Supabase. */
-function syncAllToSupabase() {
-  if (!supabase) {
-    alert('Supabase no está disponible.');
-    return;
-  }
-  showOverlay('Guardando ' + allData.length + ' direcciones en Supabase...');
-  var rows = [];
-  var i;
-  for (i = 0; i < allData.length; i++) {
-    var d = allData[i];
-    rows.push({
-      direccion: d.direccion, ventas: d.ventas, zona: d.zona,
-      nombre: d.nombre, telefono: d.telefono, notas: d.notas,
-      lat: d.lat, lng: d.lng, fuente: d.fuente,
-      calidad: d.calidad, normalizada: d.normalizada
-    });
-  }
-  supabase.from('direcciones').upsert(rows, { onConflict: 'direccion' })
-    .then(function (result) {
-      hideOverlay();
-      if (result.error) {
-        alert('Error al guardar: ' + result.error.message);
-      } else {
-        alert('✓ ' + allData.length + ' direcciones guardadas en Supabase.');
-      }
-    })
-    .catch(function (err) {
-      hideOverlay();
-      alert('Error de red: ' + err.message);
-    });
+function sbUrl(query) {
+return SUPABASE_URL + '/rest/v1/' + TABLA + (query || '');
 }
 
-/* Intenta cargar desde Supabase; si falla o está vacío, usa el embebido. */
-function tryLoadFromSupabase() {
-  if (!initSupabase()) {
-    console.log('Supabase no disponible, usando embebido');
-    return;
-  }
-  loadFromSupabase()
-    .then(function (data) {
-      if (data && data.length > 0) {
-        console.log('Cargado desde Supabase:', data.length, 'direcciones');
-        ingestRows(data);
-      } else {
-        console.log('Supabase vacío, usando embebido');
-      }
-    })
-    .catch(function (err) {
-      console.error('Error cargando desde Supabase:', err);
-    });
+function sbError(resp) {
+return resp.text().then(function (t) {
+throw new Error('Supabase HTTP ' + resp.status + ': ' + t.slice(0, 200));
+});
 }
 
-/* --- Estado ---------------------------------------------------------------- */
+function sbSelectTodo() {
+return fetch(sbUrl('?select=*&order=zona.asc,direccion.asc'), { headers: sbHeaders() })
+.then(function (r) { return r.ok ? r.json() : sbError(r); });
+}
+
+function sbUpsert(filas) {
+return fetch(sbUrl('?on_conflict=direccion_key'), {
+method: 'POST',
+headers: sbHeaders({ 'Prefer': 'resolution=merge-duplicates,return=representation' }),
+body: JSON.stringify(filas)
+}).then(function (r) { return r.ok ? r.json() : sbError(r); });
+}
+
+function sbGuardarGeo(id, geo) {
+return fetch(sbUrl('?id=eq.' + id), {
+method: 'PATCH',
+headers: sbHeaders({ 'Prefer': 'return=minimal' }),
+body: JSON.stringify(geo)
+}).then(function (r) { return r.ok ? true : sbError(r); });
+}
+
+function sbBorrar(ids) {
+if (!ids.length) { return Promise.resolve(true); }
+return fetch(sbUrl('?id=in.(' + ids.join(',') + ')'), {
+method: 'DELETE',
+headers: sbHeaders({ 'Prefer': 'return=minimal' })
+}).then(function (r) { return r.ok ? true : sbError(r); });
+}
+
+/* --- Estado de la aplicación --------------------------------------------- */
 var map = null;
 var markersLayer = null;
-var overlayLayer = null;   /* capa activa: superficie / barrios */
+var overlayLayer = null;
 var layerMode = 'surface';
-var surfaceMax = 0;        /* pico de intensidad de la última superficie */
-var allData = [];          /* dataset completo (json + agregados por Excel) */
-var currentData = [];      /* vista filtrada */
-var markersByKey = {};     /* clave normalizada -> marker */
+var surfaceMax = 0;
+var allData = [];
+var currentData = [];
+var markersByKey = {};
 var showMarkers = true;
 
-/* --- Utilidades ------------------------------------------------------------ */
+/* --- Utilidades ---------------------------------------------------------- */
 
 function normKey(dir) {
-  var s = String(dir || '').toLowerCase();
-  s = s.replace(/,\s*rosario/g, '').replace(/,\s*santa\s*fe/g, '').replace(/,\s*argentina/g, '');
-  return s.replace(/\s+/g, ' ').trim();
+var s = String(dir || '').toLowerCase();
+s = s.replace(/,\s*rosario/g, '').replace(/,\s*santa\s*fe/g, '').replace(/,\s*argentina/g, '');
+return s.replace(/\s+/g, ' ').trim();
 }
 
-function expandAbbrev(street) {
-  var words = street.split(' ');
-  var out = [];
-  var i;
-  for (i = 0; i < words.length; i++) {
-    var w = words[i];
-    out.push(WORD_ABBREV[w] !== undefined ? WORD_ABBREV[w] : w);
-  }
-  return out.join(' ');
+function expandAbbrev(texto) {
+var words = String(texto || '').split(' ');
+var out = [];
+var i;
+for (i = 0; i < words.length; i++) {
+var w = words[i];
+out.push(WORD_ABBREV[w] !== undefined ? WORD_ABBREV[w] : w);
+}
+return out.join(' ');
 }
 
 function escapeHtml(s) {
-  return String(s == null ? '' : s)
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+return String(s == null ? '' : s)
+.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+.replace(/"/g, '&quot;');
 }
 
 function showOverlay(text) {
-  document.getElementById('loadingText').textContent = text;
-  document.getElementById('loadingOverlay').className = 'show';
+document.getElementById('loadingText').textContent = text;
+document.getElementById('loadingOverlay').className = 'show';
 }
+
 function hideOverlay() {
-  document.getElementById('loadingOverlay').className = '';
+document.getElementById('loadingOverlay').className = '';
 }
 
-/* --- Carga de datos: fetch con fallback embebido --------------------------- */
+/* --- Georef: el único geocodificador ------------------------------------ */
 
-/* Normaliza una fila cruda al formato interno. */
-function ingestRows(json) {
-  var rows = [];
-  var i;
-  for (i = 0; i < json.length; i++) {
-    var r = json[i];
-    rows.push({
-      direccion: String(r.direccion || ''),
-      ventas: Number(r.ventas) || 0,
-      zona: String(r.zona || ''),
-      nombre: String(r.nombre || ''),
-      telefono: String(r.telefono || ''),
-      notas: String(r.notas || ''),
-      lat: (typeof r.lat === 'number') ? r.lat : null,
-      lng: (typeof r.lng === 'number') ? r.lng : null,
-      fuente: r.fuente || null,
-      calidad: r.calidad || 'sin_resolver',
-      normalizada: r.normalizada || '',
-      key: normKey(r.direccion)
-    });
-  }
-  allData = rows; /* punto de ingesta */
-  populateZoneFilter();
-  document.getElementById('zoneFilter').value = '';
-  applyFilter();
-  hideOverlay();
+function georefGeocodificar(direccion) {
+var limpia = normKey(direccion);
+var m = limpia.match(/^(.*?)\s+(\d+)\s*(bis)?\s*$/);
+var consulta;
+if (m) {
+var calle = expandAbbrev(m[1].trim());
+if (m[3]) { calle = calle + ' ' + m[3]; }
+consulta = calle + ' ' + m[2];
+} else {
+return Promise.resolve({ calidad: 'sin_resolver', motivo: 'la dirección no tiene altura' });
 }
 
-/* Carga datos: intenta Supabase primero, sino JSON externo, sino embebido. */
-function loadFromJson() {
-  showOverlay('Cargando datos...');
+var url = 'https://apis.datos.gob.ar/georef/api/v2.1/direcciones' +
+'?direccion=' + encodeURIComponent(consulta) +
+'&provincia=santa%20fe&localidad_censal=rosario&max=1';
 
-  /* 1) Intentar Supabase */
-  if (initSupabase()) {
-    loadFromSupabase()
-      .then(function (data) {
-        if (data && data.length > 0) {
-          ingestRows(data);
-          console.log('Datos cargados desde Supabase:', data.length);
-          return;
-        }
-        /* Supabase vacío, seguir con fallback */
-        loadFromJsonFallback();
-      })
-      .catch(function (err) {
-        console.error('Supabase error:', err);
-        loadFromJsonFallback();
-      });
-    return;
-  }
-
-  /* 2) Fallback sin Supabase */
-  loadFromJsonFallback();
+return fetch(url)
+.then(function (r) {
+if (!r.ok) { throw new Error('HTTP ' + r.status); }
+return r.json();
+})
+.then(function (json) {
+var dirs = (json && json.direcciones) || [];
+var best = dirs.length ? dirs[0] : null;
+var ub = best && best.ubicacion;
+if (!ub || typeof ub.lat !== 'number' || typeof ub.lon !== 'number') {
+return { calidad: 'sin_resolver', motivo: 'Georef no encontró la dirección' };
+}
+if (ub.lat < BBOX_ROSARIO.latMin || ub.lat > BBOX_ROSARIO.latMax ||
+ub.lon < BBOX_ROSARIO.lngMin || ub.lon > BBOX_ROSARIO.lngMax) {
+return { calidad: 'sin_resolver', motivo: 'el resultado cae fuera de Rosario' };
+}
+return {
+lat: ub.lat,
+lng: ub.lon,
+calidad: 'interpolada',
+fuente: 'georef',
+normalizada: best.nomenclatura || consulta,
+geocodificado_en: new Date().toISOString()
+};
+})
+.catch(function (e) {
+return { calidad: 'sin_resolver', motivo: 'error de red: ' + e.message };
+});
 }
 
-function loadFromJsonFallback() {
-  fetch('./direcciones.json')
-    .then(function (resp) {
-      if (!resp.ok) { throw new Error('HTTP ' + resp.status); }
-      return resp.json();
-    })
-    .then(function (json) {
-      ingestRows(json);
-    })
-    .catch(function () {
-      ingestRows(DIRECCIONES_EMBED);
-    });
+/* --- Carga inicial ------------------------------------------------------- */
+
+function cargarDatos() {
+if (!sbConfigurado()) {
+hideOverlay();
+alert('Falta configurar Supabase.\n\n' +
+'Abrí el index.html y completá arriba de todo:\n' +
+' SUPABASE_URL\n SUPABASE_ANON_KEY\n\n' +
+'Los dos valores están en Supabase → Project Settings → API.');
+return;
+}
+showOverlay('Cargando domicilios...');
+sbSelectTodo()
+.then(function (filas) {
+ingestRows(filas);
+actualizarPanelDatos();
+})
+.catch(function (e) {
+hideOverlay();
+alert('No se pudo leer la base:\n\n' + e.message +
+'\n\nRevisá que la URL y la anon key sean correctas y que hayas ' +
+'corrido supabase_setup.sql.');
+});
 }
 
-/* --- Geocoding en vivo (SOLO Excel nuevo, vía Georef) ----------------------- */
-
-function georefLive(direccion) {
-  var clean = normKey(direccion);
-  var m = clean.match(/^(.*?)\s+(\d+)\s*(bis)?\s*$/);
-  var q;
-  if (m) {
-    var street = expandAbbrev(m[1].trim());
-    if (m[3]) { street = street + ' ' + m[3]; }
-    q = street + ' ' + m[2];
-  } else {
-    q = clean;
-  }
-  var url = 'https://apis.datos.gob.ar/georef/api/v2.1/direcciones' +
-    '?direccion=' + encodeURIComponent(q) +
-    '&provincia=santa%20fe&localidad_censal=rosario&max=1';
-  return fetch(url)
-    .then(function (resp) {
-      if (!resp.ok) { throw new Error('HTTP ' + resp.status); }
-      return resp.json();
-    })
-    .then(function (json) {
-      var dirs = (json && json.direcciones) || [];
-      var best = dirs.length ? dirs[0] : null;
-      var ub = best && best.ubicacion;
-      if (ub && typeof ub.lat === 'number' && typeof ub.lon === 'number') {
-        return {
-          lat: ub.lat, lng: ub.lon, fuente: 'georef', calidad: 'interpolada',
-          normalizada: best.nomenclatura || q
-        };
-      }
-      return null;
-    })
-    .catch(function () { return null; });
+function ingestRows(filas) {
+var rows = [];
+var i;
+for (i = 0; i < filas.length; i++) {
+var r = filas[i];
+rows.push({
+id: r.id,
+direccion: String(r.direccion || ''),
+ventas: Number(r.ventas) || 0,
+zona: String(r.zona || ''),
+nombre: String(r.nombre || ''),
+telefono: String(r.telefono || ''),
+notas: String(r.notas || ''),
+lat: (typeof r.lat === 'number') ? r.lat : null,
+lng: (typeof r.lng === 'number') ? r.lng : null,
+fuente: r.fuente || null,
+calidad: r.calidad || 'pendiente',
+normalizada: r.normalizada || '',
+key: normKey(r.direccion)
+});
 }
+allData = rows;
+populateZoneFilter();
+applyFilter();
+hideOverlay();
+}
+
+/* --- Sincronizar desde Excel --------------------------------------------- */
 
 function handleFile(evt) {
-  var file = evt.target.files[0];
-  if (!file) { return; }
-  var reader = new FileReader();
-  reader.onload = function (e) {
-    var rows = [];
-    try {
-      var wb = XLSX.read(new Uint8Array(e.target.result), { type: 'array' });
-      var ws = wb.Sheets[wb.SheetNames[0]];
-      var raw = XLSX.utils.sheet_to_json(ws, { defval: '' });
-      var i;
-      for (i = 0; i < raw.length; i++) {
-        var r = raw[i];
-        var dir = r['Dirección'] || r['Direccion'] || r['direccion'] || '';
-        if (!String(dir).trim()) { continue; }
-        rows.push({
-          direccion: String(dir).trim(),
-          ventas: Number(r['Ventas'] || r['ventas']) || 0,
-          zona: String(r['Zona'] || r['zona'] || '').trim(),
-          nombre: String(r['Nombre'] || r['nombre'] || '').trim(),
-          telefono: String(r['Teléfono'] || r['Telefono'] || r['telefono'] || '').trim(),
-          notas: String(r['Notas'] || r['notas'] || '').trim()
-        });
-      }
-    } catch (err) {
-      alert('No se pudo leer el archivo: ' + err.message);
-      return;
-    }
-    if (!rows.length) {
-      alert('No se encontraron filas con la columna Dirección.');
-      return;
-    }
-    processNewRows(rows, 0, []);
-  };
-  reader.readAsArrayBuffer(file);
-  evt.target.value = '';
+var file = evt.target.files[0];
+evt.target.value = '';
+if (!file) { return; }
+if (!sbConfigurado()) { alert('Falta configurar Supabase.'); return; }
+
+var reader = new FileReader();
+reader.onload = function (e) {
+var filas = [];
+try {
+var wb = XLSX.read(new Uint8Array(e.target.result), { type: 'array' });
+var ws = wb.Sheets[wb.SheetNames[0]];
+var raw = XLSX.utils.sheet_to_json(ws, { defval: '' });
+var i;
+for (i = 0; i < raw.length; i++) {
+var r = raw[i];
+var dir = r['Dirección'] || r['Direccion'] || r['direccion'] || '';
+if (!String(dir).trim()) { continue; }
+filas.push({
+direccion: String(dir).trim(),
+ventas: Number(r['Ventas'] || r['ventas']) || 0,
+zona: String(r['Zona'] || r['zona'] || '').trim(),
+nombre: String(r['Nombre'] || r['nombre'] || '').trim(),
+telefono: String(r['Teléfono'] || r['Telefono'] || r['telefono'] || '').trim(),
+notas: String(r['Notas'] || r['notas'] || '').trim()
+});
+}
+} catch (err) {
+alert('No se pudo leer el archivo: ' + err.message);
+return;
+}
+if (!filas.length) {
+alert('El Excel no tiene ninguna fila con la columna "Dirección".');
+return;
+}
+sincronizar(filas);
+};
+reader.readAsArrayBuffer(file);
 }
 
-/* Procesa secuencialmente las filas nuevas contra Georef (sin recursión de
-   promesas anidadas profundas: encadena con then). */
-function processNewRows(rows, idx, acc) {
-  if (idx >= rows.length) {
-    var added = 0;
-    var i;
-    for (i = 0; i < acc.length; i++) {
-      allData.push(acc[i]); /* se agregan al dataset en el punto de ingesta */
-      added++;
-    }
-    populateZoneFilter();
-    applyFilter();
-    hideOverlay();
-    var sr = 0;
-    for (i = 0; i < acc.length; i++) {
-      if (acc[i].calidad === 'sin_resolver') { sr++; }
-    }
-    alert('Agregadas ' + added + ' direcciones (' + sr + ' sin resolver).\n' +
-      'Recordá: viven solo en esta sesión. Para hacerlas permanentes, ' +
-      'sumalas al CSV y re-corré geocode.mjs.');
-    return;
-  }
-  var row = rows[idx];
-  showOverlay('Geocodificando (Georef) ' + (idx + 1) + ' de ' + rows.length + ': ' + row.direccion);
-  georefLive(row.direccion).then(function (geo) {
-    var item = {
-      direccion: row.direccion, ventas: row.ventas, zona: row.zona,
-      nombre: row.nombre, telefono: row.telefono, notas: row.notas,
-      lat: geo ? geo.lat : null,
-      lng: geo ? geo.lng : null,
-      fuente: geo ? geo.fuente : null,
-      calidad: geo ? geo.calidad : 'sin_resolver',
-      normalizada: geo ? geo.normalizada : '',
-      key: normKey(row.direccion)
-    };
-    acc.push(item);
-    setTimeout(function () { processNewRows(rows, idx + 1, acc); }, 300);
-  });
+function sincronizar(filasExcel) {
+var vistas = {};
+var limpias = [];
+var i;
+for (i = 0; i < filasExcel.length; i++) {
+var k = normKey(filasExcel[i].direccion);
+if (vistas[k]) { continue; }
+vistas[k] = true;
+limpias.push(filasExcel[i]);
+}
+
+var enExcel = vistas;
+var sobrantes = [];
+for (i = 0; i < allData.length; i++) {
+if (!enExcel[allData[i].key]) { sobrantes.push(allData[i]); }
+}
+
+var msg = 'Se van a sincronizar ' + limpias.length + ' direcciones del Excel.\n\n';
+if (sobrantes.length) {
+msg += 'Además hay ' + sobrantes.length + ' domicilios en la base que YA NO están ' +
+'en el Excel.\n\nAceptar = sincronizar y BORRAR esos ' + sobrantes.length + '.\n' +
+'Cancelar = no hacer nada.';
+} else {
+msg += 'No hay domicilios para borrar.\n\n¿Continuar?';
+}
+if (!confirm(msg)) { return; }
+
+showOverlay('Sincronizando ' + limpias.length + ' direcciones...');
+
+sbUpsert(limpias)
+.then(function () {
+var ids = [];
+var j;
+for (j = 0; j < sobrantes.length; j++) {
+if (sobrantes[j].id) { ids.push(sobrantes[j].id); }
+}
+return sbBorrar(ids);
+})
+.then(function () { return sbSelectTodo(); })
+.then(function (filas) {
+ingestRows(filas);
+actualizarPanelDatos();
+var pend = 0;
+var j;
+for (j = 0; j < allData.length; j++) {
+if (allData[j].calidad === 'pendiente') { pend++; }
+}
+if (pend) {
+if (confirm('Sincronización lista.\n\n' + pend + ' direcciones nuevas quedaron sin ' +
+'geocodificar.\n\n¿Geocodificarlas ahora con Georef?')) {
+geocodificarPendientes(false);
+}
+} else {
+alert('Sincronización lista. No quedaron direcciones pendientes.');
+}
+})
+.catch(function (e) {
+hideOverlay();
+alert('Error sincronizando:\n\n' + e.message);
+});
+}
+
+/* --- Geocodificar lo pendiente ------------------------------------------- */
+
+function geocodificarPendientes(incluirFallidas) {
+if (!sbConfigurado()) { alert('Falta configurar Supabase.'); return; }
+var cola = [];
+var i;
+for (i = 0; i < allData.length; i++) {
+var c = allData[i].calidad;
+if (c === 'pendiente' || (incluirFallidas && c === 'sin_resolver')) {
+cola.push(allData[i]);
+}
+}
+if (!cola.length) {
+alert(incluirFallidas
+? 'No hay direcciones pendientes ni fallidas.'
+: 'No hay direcciones pendientes. Para reintentar las fallidas usá el otro botón.');
+return;
+}
+var res = { ok: 0, fail: 0, motivos: [] };
+pasoGeocodificar(cola, 0, res);
+}
+
+function pasoGeocodificar(cola, idx, res) {
+if (idx >= cola.length) {
+showOverlay('Actualizando el mapa...');
+sbSelectTodo().then(function (filas) {
+ingestRows(filas);
+actualizarPanelDatos();
+var msg = 'Geocodificación terminada.\n\n' +
+'✅ Resueltas: ' + res.ok + '\n' +
+'⚠️ Sin resolver: ' + res.fail;
+if (res.motivos.length) {
+msg += '\n\nNo resueltas:\n- ' + res.motivos.slice(0, 12).join('\n- ');
+if (res.motivos.length > 12) { msg += '\n- ...y ' + (res.motivos.length - 12) + ' más'; }
+msg += '\n\nQuedan listadas en "No geolocalizadas". Revisá que la ' +
+'calle y la altura estén bien escritas y volvé a intentar.';
+}
+alert(msg);
+}).catch(function (e) {
+hideOverlay();
+alert('Error recargando: ' + e.message);
+});
+return;
+}
+
+var item = cola[idx];
+showOverlay('Geocodificando ' + (idx + 1) + ' de ' + cola.length + '\n' + item.direccion);
+
+georefGeocodificar(item.direccion).then(function (geo) {
+var patch;
+if (geo.calidad === 'interpolada') {
+patch = {
+lat: geo.lat, lng: geo.lng, calidad: 'interpolada',
+fuente: 'georef', normalizada: geo.normalizada,
+geocodificado_en: geo.geocodificado_en
+};
+res.ok++;
+} else {
+patch = {
+lat: null, lng: null, calidad: 'sin_resolver',
+fuente: null, normalizada: geo.motivo || 'sin resolver',
+geocodificado_en: new Date().toISOString()
+};
+res.fail++;
+res.motivos.push(item.direccion + ' (' + (geo.motivo || 'sin resolver') + ')');
+}
+return sbGuardarGeo(item.id, patch);
+}).then(function () {
+setTimeout(function () { pasoGeocodificar(cola, idx + 1, res); }, GEOREF_PAUSA_MS);
+}).catch(function (e) {
+res.fail++;
+res.motivos.push(item.direccion + ' (' + e.message + ')');
+setTimeout(function () { pasoGeocodificar(cola, idx + 1, res); }, GEOREF_PAUSA_MS);
+});
+}
+
+/* --- Panel de estado ------------------------------------------------------ */
+
+function actualizarPanelDatos() {
+var pend = 0, sinres = 0, ok = 0;
+var i;
+for (i = 0; i < allData.length; i++) {
+var c = allData[i].calidad;
+if (c === 'pendiente') { pend++; }
+else if (c === 'sin_resolver') { sinres++; }
+else { ok++; }
+}
+var el = document.getElementById('estadoDatos');
+if (!el) { return; }
+var html = '<b>' + allData.length + '</b> domicilios en la base · ' +
+'<b>' + ok + '</b> en el mapa';
+if (pend) { html += ' · <b style="color:#f57f17">' + pend + ' sin geocodificar</b>'; }
+if (sinres) { html += ' · <b style="color:#c62828">' + sinres + ' fallidas</b>'; }
+el.innerHTML = html;
+
+var btn = document.getElementById('btnGeocodificar');
+if (btn) { btn.disabled = (pend === 0); }
+var btnR = document.getElementById('btnReintentar');
+if (btnR) { btnR.disabled = (sinres === 0); }
 }
 
 /* --- Render base ------------------------------------------------------------ */
 
 function markerColor(ventas) {
-  if (ventas >= 60) { return '#e53935'; }
-  if (ventas >= 30) { return '#fbc02d'; }
-  return '#43a047';
+if (ventas >= 60) { return '#e53935'; }
+if (ventas >= 30) { return '#fbc02d'; }
+return '#43a047';
 }
 
 function buildPopupHtml(item) {
-  var tagClass = 'pp-baja';
-  var tagText = '🌱 Baja Venta';
-  if (item.ventas >= 60) { tagClass = 'pp-alta'; tagText = '🔥 Alta Venta'; }
-  else if (item.ventas >= 30) { tagClass = 'pp-media'; tagText = '⚡ Venta Media'; }
+var tagClass = 'pp-baja';
+var tagText = '🌱 Baja Venta';
+if (item.ventas >= 60) { tagClass = 'pp-alta'; tagText = '🔥 Alta Venta'; }
+else if (item.ventas >= 30) { tagClass = 'pp-media'; tagText = '⚡ Venta Media'; }
 
-  var html = '<div class="pp-head">' + escapeHtml(item.direccion) + '</div>';
-  html += '<div class="pp-body">';
-  if (item.nombre)   { html += '<b>Nombre:</b> ' + escapeHtml(item.nombre) + '<br>'; }
-  if (item.telefono) { html += '<b>Teléfono:</b> ' + escapeHtml(item.telefono) + '<br>'; }
-  if (item.zona)     { html += '<b>Zona:</b> ' + escapeHtml(item.zona) + '<br>'; }
-  html += '<b>Ventas:</b> ' + item.ventas + '<br>';
-  if (item.notas)    { html += '<b>Notas:</b> ' + escapeHtml(item.notas) + '<br>'; }
-  if (item.fuente)   { html += '<b>Fuente:</b> ' + escapeHtml(item.fuente) + '<br>'; }
-  html += '<span class="pp-tag ' + tagClass + '">' + tagText + '</span>';
-  if (item.calidad === 'interpolada') {
-    html += '<div class="pp-note">⚠️ Ubicación interpolada sobre la calle (no a nivel de parcela)</div>';
-  }
-  html += '</div>';
-  return html;
+var html = '<div class="pp-head">' + escapeHtml(item.direccion) + '</div>';
+html += '<div class="pp-body">';
+if (item.nombre) { html += '<b>Nombre:</b> ' + escapeHtml(item.nombre) + '<br>'; }
+if (item.telefono) { html += '<b>Teléfono:</b> ' + escapeHtml(item.telefono) + '<br>'; }
+if (item.zona) { html += '<b>Zona:</b> ' + escapeHtml(item.zona) + '<br>'; }
+html += '<b>Ventas:</b> ' + item.ventas + '<br>';
+if (item.notas) { html += '<b>Notas:</b> ' + escapeHtml(item.notas) + '<br>'; }
+if (item.fuente) { html += '<b>Fuente:</b> ' + escapeHtml(item.fuente) + '<br>'; }
+html += '<span class="pp-tag ' + tagClass + '">' + tagText + '</span>';
+if (item.calidad === 'interpolada') {
+html += '<div class="pp-note">⚠️ Ubicación interpolada sobre la calle (no a nivel de parcela)</div>';
+}
+html += '</div>';
+return html;
 }
 
 function makeMarker(item) {
-  var color = markerColor(item.ventas);
-  var textColor = (item.ventas >= 30 && item.ventas < 60) ? '#212121' : '#fff';
-  var extra = item.calidad === 'interpolada' ? ' interp' : '';
-  var html = '<div class="marker-circle' + extra + '" style="background:' + color + ';color:' + textColor + '">' + item.ventas + '</div>';
-  var icon = L.divIcon({ html: html, className: '', iconSize: [30, 30], iconAnchor: [15, 15] });
-  var marker = L.marker([item.lat, item.lng], { icon: icon });
-  marker.bindPopup(buildPopupHtml(item));
-  return marker;
+var color = markerColor(item.ventas);
+var textColor = (item.ventas >= 30 && item.ventas < 60) ? '#212121' : '#fff';
+var extra = item.calidad === 'interpolada' ? ' interp' : '';
+var html = '<div class="marker-circle' + extra + '" style="background:' + color + ';color:' + textColor + '">' + item.ventas + '</div>';
+var icon = L.divIcon({ html: html, className: '', iconSize: [30, 30], iconAnchor: [15, 15] });
+var marker = L.marker([item.lat, item.lng], { icon: icon });
+marker.bindPopup(buildPopupHtml(item));
+return marker;
 }
 
 function placeableOf(data) {
-  var out = [];
-  var i;
-  for (i = 0; i < data.length; i++) {
-    if (data[i].calidad !== 'sin_resolver' && data[i].lat != null && data[i].lng != null) {
-      out.push(data[i]);
-    }
-  }
-  return out;
+var out = [];
+var i;
+for (i = 0; i < data.length; i++) {
+if (data[i].lat != null && data[i].lng != null &&
+(data[i].calidad === 'interpolada' || data[i].calidad === 'exacta')) {
+out.push(data[i]);
+}
+}
+return out;
 }
 
 function renderData(data) {
-  currentData = data;
-  var placeable = placeableOf(data);
+currentData = data;
+var placeable = placeableOf(data);
 
-  /* Marcadores */
-  markersLayer.clearLayers();
-  markersByKey = {};
-  var i;
-  for (i = 0; i < placeable.length; i++) {
-    var marker = makeMarker(placeable[i]);
-    markersByKey[placeable[i].key] = marker;
-    if (showMarkers) { markersLayer.addLayer(marker); }
-  }
+markersLayer.clearLayers();
+markersByKey = {};
+var i;
+for (i = 0; i < placeable.length; i++) {
+var marker = makeMarker(placeable[i]);
+markersByKey[placeable[i].key] = marker;
+if (showMarkers) { markersLayer.addLayer(marker); }
+}
 
-  rebuildOverlay();
+rebuildOverlay();
 
-  if (placeable.length) {
-    var bounds = [];
-    for (i = 0; i < placeable.length; i++) {
-      bounds.push([placeable[i].lat, placeable[i].lng]);
-    }
-    map.fitBounds(bounds, { padding: [30, 30], maxZoom: 15 });
-  }
+if (placeable.length) {
+var bounds = [];
+for (i = 0; i < placeable.length; i++) {
+bounds.push([placeable[i].lat, placeable[i].lng]);
+}
+map.fitBounds(bounds, { padding: [30, 30], maxZoom: 15 });
+}
 
-  renderAddressList(data);
-  renderFailedList(data);
-  renderRouteButtons(placeable);
-  updateStats(data);
+renderAddressList(data);
+renderFailedList(data);
+renderRouteButtons(placeable);
+updateStats(data);
 }
 
 /* --- Capas ------------------------------------------------------------------ */
 
 function removeOverlay() {
-  if (overlayLayer && map.hasLayer(overlayLayer)) { map.removeLayer(overlayLayer); }
-  overlayLayer = null;
+if (overlayLayer && map.hasLayer(overlayLayer)) { map.removeLayer(overlayLayer); }
+overlayLayer = null;
 }
 
 function rebuildOverlay() {
-  removeOverlay();
-  var placeable = placeableOf(currentData);
-  if (layerMode === 'surface') {
-    overlayLayer = buildSurfaceLayer(placeable);
-  } else if (layerMode === 'barrio') {
-    overlayLayer = buildBarrioLayer(placeable);
-  } else {
-    renderLegend('none', null);
-  }
-  if (overlayLayer) { overlayLayer.addTo(map); }
+removeOverlay();
+var placeable = placeableOf(currentData);
+if (layerMode === 'surface') {
+overlayLayer = buildSurfaceLayer(placeable);
+} else if (layerMode === 'barrio') {
+overlayLayer = buildBarrioLayer(placeable);
+} else {
+renderLegend('none', null);
+}
+if (overlayLayer) { overlayLayer.addTo(map); }
 }
 
-/* Quintiles sobre valores > 0. Devuelve los 4 cortes internos. */
 function quintileBreaks(values) {
-  var sorted = values.slice().sort(function (a, b) { return a - b; });
-  var breaks = [];
-  var i;
-  for (i = 1; i <= 4; i++) {
-    var pos = (i / 5) * (sorted.length - 1);
-    var lo = Math.floor(pos);
-    var hi = Math.ceil(pos);
-    var frac = pos - lo;
-    breaks.push(sorted[lo] + (sorted[hi] - sorted[lo]) * frac);
-  }
-  return breaks;
+var sorted = values.slice().sort(function (a, b) { return a - b; });
+var breaks = [];
+var i;
+for (i = 1; i <= 4; i++) {
+var pos = (i / 5) * (sorted.length - 1);
+var lo = Math.floor(pos);
+var hi = Math.ceil(pos);
+var frac = pos - lo;
+breaks.push(sorted[lo] + (sorted[hi] - sorted[lo]) * frac);
+}
+return breaks;
 }
 
 function quintileIndex(v, breaks) {
-  var i;
-  for (i = 0; i < breaks.length; i++) {
-    if (v <= breaks[i]) { return i; }
-  }
-  return 4;
+var i;
+for (i = 0; i < breaks.length; i++) {
+if (v <= breaks[i]) { return i; }
+}
+return 4;
 }
 
 /* --- 2.a Capa Superficie de calor: densidad kernel continua ------------------ */
 
-/* Interpola el color de la rampa para un valor normalizado t (0-1). */
 function rampColor(t) {
-  if (t <= 0) { return SURFACE_RAMP[0]; }
-  if (t >= 1) { return SURFACE_RAMP[SURFACE_RAMP.length - 1]; }
-  var i;
-  for (i = 1; i < SURFACE_RAMP.length; i++) {
-    if (t <= SURFACE_RAMP[i].t) {
-      var a = SURFACE_RAMP[i - 1];
-      var b = SURFACE_RAMP[i];
-      var f = (t - a.t) / (b.t - a.t);
-      return {
-        r: Math.round(a.r + (b.r - a.r) * f),
-        g: Math.round(a.g + (b.g - a.g) * f),
-        b: Math.round(a.b + (b.b - a.b) * f),
-        a: a.a + (b.a - a.a) * f
-      };
-    }
-  }
-  return SURFACE_RAMP[SURFACE_RAMP.length - 1];
+if (t <= 0) { return SURFACE_RAMP[0]; }
+if (t >= 1) { return SURFACE_RAMP[SURFACE_RAMP.length - 1]; }
+var i;
+for (i = 1; i < SURFACE_RAMP.length; i++) {
+if (t <= SURFACE_RAMP[i].t) {
+var a = SURFACE_RAMP[i - 1];
+var b = SURFACE_RAMP[i];
+var f = (t - a.t) / (b.t - a.t);
+return {
+r: Math.round(a.r + (b.r - a.r) * f),
+g: Math.round(a.g + (b.g - a.g) * f),
+b: Math.round(a.b + (b.b - a.b) * f),
+a: a.a + (b.a - a.a) * f
+};
+}
+}
+return SURFACE_RAMP[SURFACE_RAMP.length - 1];
 }
 
-/* Intensidad kernel en un punto (lat,lng): suma de ventas de cada domicilio
-   pesada por una gaussiana de la distancia en metros. */
 function surfaceValueAt(lat, lng, placeable) {
-  var twoSigma2 = 2 * BANDWIDTH_M * BANDWIDTH_M;
-  var cutoff = 3 * BANDWIDTH_M; /* más allá de 3 sigmas el aporte es ~0 */
-  var sum = 0;
-  var i;
-  for (i = 0; i < placeable.length; i++) {
-    var dy = (lat - placeable[i].lat) * M_PER_DEG_LAT;
-    var dx = (lng - placeable[i].lng) * M_PER_DEG_LNG;
-    if (dy > cutoff || dy < -cutoff || dx > cutoff || dx < -cutoff) { continue; }
-    var d2 = dx * dx + dy * dy;
-    sum += placeable[i].ventas * Math.exp(-d2 / twoSigma2);
-  }
-  return sum;
+var twoSigma2 = 2 * BANDWIDTH_M * BANDWIDTH_M;
+var cutoff = 3 * BANDWIDTH_M;
+var sum = 0;
+var i;
+for (i = 0; i < placeable.length; i++) {
+var dy = (lat - placeable[i].lat) * M_PER_DEG_LAT;
+var dx = (lng - placeable[i].lng) * M_PER_DEG_LNG;
+if (dy > cutoff || dy < -cutoff || dx > cutoff || dx < -cutoff) { continue; }
+var d2 = dx * dx + dy * dy;
+sum += placeable[i].ventas * Math.exp(-d2 / twoSigma2);
+}
+return sum;
 }
 
 function buildSurfaceLayer(placeable) {
-  if (!placeable.length) { renderLegend('none', null); return null; }
+if (!placeable.length) { renderLegend('none', null); return null; }
 
-  /* 1) Bounding box de los puntos + margen de 2.5 anchos de banda para
-     que las manchas no queden cortadas en el borde. */
-  var latMin = Infinity, latMax = -Infinity, lngMin = Infinity, lngMax = -Infinity;
-  var i;
-  for (i = 0; i < placeable.length; i++) {
-    if (placeable[i].lat < latMin) { latMin = placeable[i].lat; }
-    if (placeable[i].lat > latMax) { latMax = placeable[i].lat; }
-    if (placeable[i].lng < lngMin) { lngMin = placeable[i].lng; }
-    if (placeable[i].lng > lngMax) { lngMax = placeable[i].lng; }
-  }
-  var padLat = (BANDWIDTH_M * 2.5) / M_PER_DEG_LAT;
-  var padLng = (BANDWIDTH_M * 2.5) / M_PER_DEG_LNG;
-  latMin -= padLat; latMax += padLat;
-  lngMin -= padLng; lngMax += padLng;
+var latMin = Infinity, latMax = -Infinity, lngMin = Infinity, lngMax = -Infinity;
+var i;
+for (i = 0; i < placeable.length; i++) {
+if (placeable[i].lat < latMin) { latMin = placeable[i].lat; }
+if (placeable[i].lat > latMax) { latMax = placeable[i].lat; }
+if (placeable[i].lng < lngMin) { lngMin = placeable[i].lng; }
+if (placeable[i].lng > lngMax) { lngMax = placeable[i].lng; }
+}
+var padLat = (BANDWIDTH_M * 2.5) / M_PER_DEG_LAT;
+var padLng = (BANDWIDTH_M * 2.5) / M_PER_DEG_LNG;
+latMin -= padLat; latMax += padLat;
+lngMin -= padLng; lngMax += padLng;
 
-  /* 2) Canvas con relación de aspecto correcta EN METROS (no en grados) */
-  var widthM = (lngMax - lngMin) * M_PER_DEG_LNG;
-  var heightM = (latMax - latMin) * M_PER_DEG_LAT;
-  var W = CANVAS_W;
-  var H = Math.max(40, Math.round(W * heightM / widthM));
-  var canvas = document.createElement('canvas');
-  canvas.width = W;
-  canvas.height = H;
-  var ctx = canvas.getContext('2d');
-  var img = ctx.createImageData(W, H);
+var widthM = (lngMax - lngMin) * M_PER_DEG_LNG;
+var heightM = (latMax - latMin) * M_PER_DEG_LAT;
+var W = CANVAS_W;
+var H = Math.max(40, Math.round(W * heightM / widthM));
+var canvas = document.createElement('canvas');
+canvas.width = W;
+canvas.height = H;
+var ctx = canvas.getContext('2d');
+var img = ctx.createImageData(W, H);
 
-  /* 3) Calcular la intensidad por píxel (dos pasadas: máximo y pintado) */
-  var values = new Float32Array(W * H);
-  var maxVal = 0;
-  var px, py;
-  for (py = 0; py < H; py++) {
-    /* fila py=0 es el norte del bbox (latMax) */
-    var lat = latMax - (py + 0.5) * (latMax - latMin) / H;
-    for (px = 0; px < W; px++) {
-      var lng = lngMin + (px + 0.5) * (lngMax - lngMin) / W;
-      var v = surfaceValueAt(lat, lng, placeable);
-      values[py * W + px] = v;
-      if (v > maxVal) { maxVal = v; }
-    }
-  }
-  if (maxVal <= 0) { renderLegend('none', null); return null; }
-  surfaceMax = maxVal;
+var values = new Float32Array(W * H);
+var maxVal = 0;
+var px, py;
+for (py = 0; py < H; py++) {
+var lat = latMax - (py + 0.5) * (latMax - latMin) / H;
+for (px = 0; px < W; px++) {
+var lng = lngMin + (px + 0.5) * (lngMax - lngMin) / W;
+var v = surfaceValueAt(lat, lng, placeable);
+values[py * W + px] = v;
+if (v > maxVal) { maxVal = v; }
+}
+}
+if (maxVal <= 0) { renderLegend('none', null); return null; }
+surfaceMax = maxVal;
 
-  for (py = 0; py < H; py++) {
-    for (px = 0; px < W; px++) {
-      var idx = py * W + px;
-      /* gamma < 1 levanta los valores medios: sin esto, un pico dominante
-         deja el resto del mapa casi transparente */
-      var t = Math.pow(values[idx] / maxVal, SURFACE_GAMMA);
-      var col = rampColor(t);
-      var o = idx * 4;
-      img.data[o] = col.r;
-      img.data[o + 1] = col.g;
-      img.data[o + 2] = col.b;
-      img.data[o + 3] = Math.round(col.a * 255);
-    }
-  }
-  ctx.putImageData(img, 0, 0);
+for (py = 0; py < H; py++) {
+for (px = 0; px < W; px++) {
+var idx = py * W + px;
+var t = Math.pow(values[idx] / maxVal, SURFACE_GAMMA);
+var col = rampColor(t);
+var o = idx * 4;
+img.data[o] = col.r;
+img.data[o + 1] = col.g;
+img.data[o + 2] = col.b;
+img.data[o + 3] = Math.round(col.a * 255);
+}
+}
+ctx.putImageData(img, 0, 0);
 
-  renderLegend('surface', maxVal);
+renderLegend('surface', maxVal);
 
-  /* 4) Overlay geográfico: escala con el zoom, no con la pantalla */
-  var overlay = L.imageOverlay(canvas.toDataURL('image/png'),
-    [[latMin, lngMin], [latMax, lngMax]],
-    { opacity: 1, interactive: false });
-  return overlay;
+var overlay = L.imageOverlay(canvas.toDataURL('image/png'),
+[[latMin, lngMin], [latMax, lngMax]],
+{ opacity: 1, interactive: false });
+return overlay;
 }
 
-/* Popup al clickear el mapa en modo superficie: intensidad local y
-   domicilios dentro del ancho de banda, para saber "entre qué calle y
-   qué calle" está la zona caliente. */
 function surfaceClickPopup(e) {
-  if (layerMode !== 'surface') { return; }
-  var placeable = placeableOf(currentData);
-  if (!placeable.length || surfaceMax <= 0) { return; }
-  var v = surfaceValueAt(e.latlng.lat, e.latlng.lng, placeable);
-  var pct = Math.round(100 * Math.pow(v / surfaceMax, SURFACE_GAMMA));
-  var near = 0;
-  var ventasNear = 0;
-  var zonas = {};
-  var i;
-  for (i = 0; i < placeable.length; i++) {
-    var dy = (e.latlng.lat - placeable[i].lat) * M_PER_DEG_LAT;
-    var dx = (e.latlng.lng - placeable[i].lng) * M_PER_DEG_LNG;
-    if (dx * dx + dy * dy <= BANDWIDTH_M * BANDWIDTH_M) {
-      near++;
-      ventasNear += placeable[i].ventas;
-      if (placeable[i].zona) { zonas[placeable[i].zona] = true; }
-    }
-  }
-  var zonaNames = Object.keys(zonas).sort().join(', ');
-  var html = '<div class="pp-head">Intensidad de ventas</div><div class="pp-body">' +
-    '<b>Nivel acá:</b> ' + pct + '% del máximo<br>' +
-    '<b>Domicilios a ' + BANDWIDTH_M + ' m:</b> ' + near + '<br>' +
-    '<b>Ventas de esos domicilios:</b> ' + ventasNear + '<br>' +
-    '<b>Zonas:</b> ' + escapeHtml(zonaNames || '—') + '</div>';
-  L.popup().setLatLng(e.latlng).setContent(html).openOn(map);
+if (layerMode !== 'surface') { return; }
+var placeable = placeableOf(currentData);
+if (!placeable.length || surfaceMax <= 0) { return; }
+var v = surfaceValueAt(e.latlng.lat, e.latlng.lng, placeable);
+var pct = Math.round(100 * Math.pow(v / surfaceMax, SURFACE_GAMMA));
+var near = 0;
+var ventasNear = 0;
+var zonas = {};
+var i;
+for (i = 0; i < placeable.length; i++) {
+var dy = (e.latlng.lat - placeable[i].lat) * M_PER_DEG_LAT;
+var dx = (e.latlng.lng - placeable[i].lng) * M_PER_DEG_LNG;
+if (dx * dx + dy * dy <= BANDWIDTH_M * BANDWIDTH_M) {
+near++;
+ventasNear += placeable[i].ventas;
+if (placeable[i].zona) { zonas[placeable[i].zona] = true; }
+}
+}
+var zonaNames = Object.keys(zonas).sort().join(', ');
+var html = '<div class="pp-head">Intensidad de ventas</div><div class="pp-body">' +
+'<b>Nivel acá:</b> ' + pct + '% del máximo<br>' +
+'<b>Domicilios a ' + BANDWIDTH_M + ' m:</b> ' + near + '<br>' +
+'<b>Ventas de esos domicilios:</b> ' + ventasNear + '<br>' +
+'<b>Zonas:</b> ' + escapeHtml(zonaNames || '—') + '</div>';
+L.popup().setLatLng(e.latlng).setContent(html).openOn(map);
 }
 
 /* --- 2.b Capa Por barrio: convex hull por zona ------------------------------ */
 
-/* Convex hull — Andrew's monotone chain. Puntos como [lng, lat] para operar
-   en x/y. Devuelve el polígono en orden antihorario.
-   NOTA A FUTURO: lo correcto es reemplazar estos hulls por los polígonos
-   oficiales de barrios/vecinales del portal de datos abiertos de la
-   Municipalidad de Rosario (datosabiertos.rosario.gob.ar, datasets de la
-   Dirección de Cartografía), cargados como GeoJSON con L.geoJSON(). */
 function cross(o, a, b) {
-  return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
 }
 
 function convexHull(points) {
-  var pts = points.slice().sort(function (a, b) {
-    return a[0] === b[0] ? a[1] - b[1] : a[0] - b[0];
-  });
-  var n = pts.length;
-  if (n < 3) { return pts; }
-  var lower = [];
-  var i;
-  for (i = 0; i < n; i++) {
-    while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], pts[i]) <= 0) {
-      lower.pop();
-    }
-    lower.push(pts[i]);
-  }
-  var upper = [];
-  for (i = n - 1; i >= 0; i--) {
-    while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], pts[i]) <= 0) {
-      upper.pop();
-    }
-    upper.push(pts[i]);
-  }
-  lower.pop();
-  upper.pop();
-  return lower.concat(upper);
+var pts = points.slice().sort(function (a, b) {
+return a[0] === b[0] ? a[1] - b[1] : a[0] - b[0];
+});
+var n = pts.length;
+if (n < 3) { return pts; }
+var lower = [];
+var i;
+for (i = 0; i < n; i++) {
+while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], pts[i]) <= 0) {
+lower.pop();
+}
+lower.push(pts[i]);
+}
+var upper = [];
+for (i = n - 1; i >= 0; i--) {
+while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], pts[i]) <= 0) {
+upper.pop();
+}
+upper.push(pts[i]);
+}
+lower.pop();
+upper.pop();
+return lower.concat(upper);
 }
 
 function buildBarrioLayer(placeable) {
-  if (!placeable.length) { renderLegend('none', null); return null; }
+if (!placeable.length) { renderLegend('none', null); return null; }
 
-  /* Agrupar por zona */
-  var zones = {}; /* nombre -> { points: [[lng,lat]], total } */
-  var i;
-  for (i = 0; i < placeable.length; i++) {
-    var p = placeable[i];
-    var z = p.zona || 'Sin zona';
-    if (!zones[z]) { zones[z] = { points: [], total: 0, count: 0 }; }
-    zones[z].points.push([p.lng, p.lat]);
-    zones[z].total += p.ventas;
-    zones[z].count += 1;
-  }
+var zones = {};
+var i;
+for (i = 0; i < placeable.length; i++) {
+var p = placeable[i];
+var z = p.zona || 'Sin zona';
+if (!zones[z]) { zones[z] = { points: [], total: 0, count: 0 }; }
+zones[z].points.push([p.lng, p.lat]);
+zones[z].total += p.ventas;
+zones[z].count += 1;
+}
 
-  var totals = [];
-  var name;
-  for (name in zones) {
-    if (Object.prototype.hasOwnProperty.call(zones, name)) { totals.push(zones[name].total); }
-  }
-  var breaks = quintileBreaks(totals);
-  renderLegend('barrio', breaks);
+var totals = [];
+var name;
+for (name in zones) {
+if (Object.prototype.hasOwnProperty.call(zones, name)) { totals.push(zones[name].total); }
+}
+var breaks = quintileBreaks(totals);
+renderLegend('barrio', breaks);
 
-  var group = L.layerGroup();
-  for (name in zones) {
-    if (!Object.prototype.hasOwnProperty.call(zones, name)) { continue; }
-    var zn = zones[name];
-    var color = QUINTILE_COLORS[quintileIndex(zn.total, breaks)];
-    var labelHtml = '<div class="zone-label">' + escapeHtml(name) + ' — ' + zn.total + '</div>';
-    var popup = '<div class="pp-head">' + escapeHtml(name) + '</div><div class="pp-body">' +
-      '<b>Ventas totales:</b> ' + zn.total + '<br>' +
-      '<b>Domicilios:</b> ' + zn.count + '</div>';
-    var shape;
-    var latlngs;
-    var j;
+var group = L.layerGroup();
+for (name in zones) {
+if (!Object.prototype.hasOwnProperty.call(zones, name)) { continue; }
+var zn = zones[name];
+var color = QUINTILE_COLORS[quintileIndex(zn.total, breaks)];
+var labelHtml = '<div class="zone-label">' + escapeHtml(name) + ' — ' + zn.total + '</div>';
+var popup = '<div class="pp-head">' + escapeHtml(name) + '</div><div class="pp-body">' +
+'<b>Ventas totales:</b> ' + zn.total + '<br>' +
+'<b>Domicilios:</b> ' + zn.count + '</div>';
+var shape;
+var latlngs;
+var j;
 
-    if (zn.points.length >= 3) {
-      var hull = convexHull(zn.points);
-      latlngs = [];
-      for (j = 0; j < hull.length; j++) { latlngs.push([hull[j][1], hull[j][0]]); }
-      shape = L.polygon(latlngs, { color: color, weight: 2, fillColor: color, fillOpacity: 0.35 });
-    } else if (zn.points.length === 2) {
-      latlngs = [[zn.points[0][1], zn.points[0][0]], [zn.points[1][1], zn.points[1][0]]];
-      shape = L.polyline(latlngs, { color: color, weight: 10, opacity: 0.5 });
-    } else {
-      shape = L.circle([zn.points[0][1], zn.points[0][0]], { radius: 150, color: color, fillColor: color, fillOpacity: 0.35, weight: 2 });
-    }
-    shape.bindPopup(popup);
-    shape.bindTooltip(labelHtml, { permanent: true, direction: 'center', className: '', opacity: 1 });
-    group.addLayer(shape);
-  }
-  return group;
+if (zn.points.length >= 3) {
+var hull = convexHull(zn.points);
+latlngs = [];
+for (j = 0; j < hull.length; j++) { latlngs.push([hull[j][1], hull[j][0]]); }
+shape = L.polygon(latlngs, { color: color, weight: 2, fillColor: color, fillOpacity: 0.35 });
+} else if (zn.points.length === 2) {
+latlngs = [[zn.points[0][1], zn.points[0][0]], [zn.points[1][1], zn.points[1][0]]];
+shape = L.polyline(latlngs, { color: color, weight: 10, opacity: 0.5 });
+} else {
+shape = L.circle([zn.points[0][1], zn.points[0][0]], { radius: 150, color: color, fillColor: color, fillOpacity: 0.35, weight: 2 });
+}
+shape.bindPopup(popup);
+shape.bindTooltip(labelHtml, { permanent: true, direction: 'center', className: '', opacity: 1 });
+group.addLayer(shape);
+}
+return group;
 }
 
 /* --- Leyenda dinámica -------------------------------------------------------- */
 
 function legendRow(color, text, dot) {
-  var cls = dot ? 'legend-dot' : 'legend-swatch';
-  return '<div class="legend-row"><span class="' + cls + '" style="background:' + color + '"></span> ' + text + '</div>';
+var cls = dot ? 'legend-dot' : 'legend-swatch';
+return '<div class="legend-row"><span class="' + cls + '" style="background:' + color + '"></span> ' + text + '</div>';
 }
 
 function fmtRange(a, b) {
-  return Math.round(a) + ' – ' + Math.round(b);
+return Math.round(a) + ' – ' + Math.round(b);
 }
 
 function renderLegend(mode, extra) {
-  var box = document.getElementById('legendBox');
-  var html = '';
-  if (mode === 'surface') {
-    html += '<div class="hint" style="margin:0 0 6px">Concentración de ventas (radio ~' + BANDWIDTH_M + ' m):</div>';
-    html += '<div style="height:14px;border-radius:7px;background:linear-gradient(90deg,' +
-      'rgba(79,195,247,0.35),#43a047,#fdd835,#fb8c00,#e53935,#b71c1c)"></div>' +
-      '<div style="display:flex;justify-content:space-between;font-size:10px;color:#757575;margin-top:3px">' +
-      '<span>Muy bajo</span><span>Medio</span><span>Muy alto</span></div>';
-    html += '<div class="hint" style="margin-top:6px">Rojo = muchas ventas concentradas en la zona. ' +
-      'Hacé clic en el mapa para ver el detalle de un punto.</div>';
-  } else if (mode === 'barrio' && extra) {
-    html += '<div class="hint" style="margin:0 0 6px">Ventas totales por zona (quintiles):</div>';
-    html += legendRow(QUINTILE_COLORS[0], '&le; ' + Math.round(extra[0]), false);
-    html += legendRow(QUINTILE_COLORS[2], fmtRange(extra[1], extra[2]), false);
-    html += legendRow(QUINTILE_COLORS[4], '&ge; ' + Math.round(extra[3]), false);
-  }
-  box.innerHTML = html;
+var box = document.getElementById('legendBox');
+var html = '';
+if (mode === 'surface') {
+html += '<div class="hint" style="margin:0 0 6px">Concentración de ventas (radio ~' + BANDWIDTH_M + ' m):</div>';
+html += '<div style="height:14px;border-radius:7px;background:linear-gradient(90deg,' +
+'rgba(79,195,247,0.35),#43a047,#fdd835,#fb8c00,#e53935,#b71c1c)"></div>' +
+'<div style="display:flex;justify-content:space-between;font-size:10px;color:#757575;margin-top:3px">' +
+'<span>Muy bajo</span><span>Medio</span><span>Muy alto</span></div>';
+html += '<div class="hint" style="margin-top:6px">Rojo = muchas ventas concentradas en la zona. ' +
+'Hacé clic en el mapa para ver el detalle de un punto.</div>';
+} else if (mode === 'barrio' && extra) {
+html += '<div class="hint" style="margin:0 0 6px">Ventas totales por zona (quintiles):</div>';
+html += legendRow(QUINTILE_COLORS[0], '&le; ' + Math.round(extra[0]), false);
+html += legendRow(QUINTILE_COLORS[2], fmtRange(extra[1], extra[2]), false);
+html += legendRow(QUINTILE_COLORS[4], '&ge; ' + Math.round(extra[3]), false);
+}
+box.innerHTML = html;
 }
 
 /* --- Sidebar: listas, stats, filtro ------------------------------------------ */
 
 function renderAddressList(data) {
-  var box = document.getElementById('addrList');
-  box.innerHTML = '';
-  var i;
-  for (i = 0; i < data.length; i++) {
-    var item = data[i];
-    if (item.calidad === 'sin_resolver') { continue; }
-    var div = document.createElement('div');
-    div.className = 'addr-item';
-    var badge = item.calidad === 'exacta'
-      ? '<span class="badge badge-exacta">exacta</span>'
-      : '<span class="badge badge-interp">interp.</span>';
-    div.innerHTML =
-      '<div><div class="dir">' + escapeHtml(item.direccion) + '</div>' +
-      '<div class="meta">' + escapeHtml(item.zona || 'Sin zona') + '</div></div>' +
-      '<div>' + badge + ' <span class="badge badge-ventas">' + item.ventas + '</span></div>';
-    div.setAttribute('data-key', item.key);
-    div.addEventListener('click', function () {
-      flyToAddress(this.getAttribute('data-key'));
-    });
-    box.appendChild(div);
-  }
-  if (!box.children.length) {
-    box.innerHTML = '<div class="hint">No hay direcciones geolocalizadas en esta vista.</div>';
-  }
+var box = document.getElementById('addrList');
+box.innerHTML = '';
+var i;
+for (i = 0; i < data.length; i++) {
+var item = data[i];
+if (item.calidad === 'sin_resolver' || item.calidad === 'pendiente') { continue; }
+var div = document.createElement('div');
+div.className = 'addr-item';
+var badge = item.calidad === 'exacta'
+? '<span class="badge badge-exacta">exacta</span>'
+: '<span class="badge badge-interp">interp.</span>';
+div.innerHTML =
+'<div><div class="dir">' + escapeHtml(item.direccion) + '</div>' +
+'<div class="meta">' + escapeHtml(item.zona || 'Sin zona') + '</div></div>' +
+'<div>' + badge + ' <span class="badge badge-ventas">' + item.ventas + '</span></div>';
+div.setAttribute('data-key', item.key);
+div.addEventListener('click', function () {
+flyToAddress(this.getAttribute('data-key'));
+});
+box.appendChild(div);
+}
+if (!box.children.length) {
+box.innerHTML = '<div class="hint">No hay direcciones geolocalizadas en esta vista.</div>';
+}
 }
 
 function renderFailedList(data) {
-  var failed = [];
-  var i;
-  for (i = 0; i < data.length; i++) {
-    if (data[i].calidad === 'sin_resolver') { failed.push(data[i]); }
-  }
-  var section = document.getElementById('failedSection');
-  var list = document.getElementById('failedList');
-  document.getElementById('failedCount').textContent = failed.length;
-  list.innerHTML = '';
-  if (!failed.length) {
-    section.style.display = 'none';
-    return;
-  }
-  section.style.display = 'block';
-  for (i = 0; i < failed.length; i++) {
-    var item = failed[i];
-    var div = document.createElement('div');
-    div.className = 'failed-item';
-    div.innerHTML = '<span class="dir">' + escapeHtml(item.direccion) + '</span>';
-    var btn = document.createElement('button');
-    btn.textContent = 'Ver en Maps';
-    btn.setAttribute('data-dir', item.direccion);
-    btn.addEventListener('click', function () {
-      var q = encodeURIComponent(this.getAttribute('data-dir') + ' rosario santa fe');
-      window.open('https://www.google.com/maps/search/?api=1&query=' + q, '_blank');
-    });
-    div.appendChild(btn);
-    list.appendChild(div);
-  }
+var failed = [];
+var i;
+for (i = 0; i < data.length; i++) {
+if (data[i].calidad === 'sin_resolver' || data[i].calidad === 'pendiente') { failed.push(data[i]); }
+}
+var section = document.getElementById('failedSection');
+var list = document.getElementById('failedList');
+document.getElementById('failedCount').textContent = failed.length;
+list.innerHTML = '';
+if (!failed.length) {
+section.style.display = 'none';
+return;
+}
+section.style.display = 'block';
+for (i = 0; i < failed.length; i++) {
+var item = failed[i];
+var div = document.createElement('div');
+div.className = 'failed-item';
+div.innerHTML = '<span class="dir">' + escapeHtml(item.direccion) + '</span>';
+var btn = document.createElement('button');
+btn.textContent = 'Ver en Maps';
+btn.setAttribute('data-dir', item.direccion);
+btn.addEventListener('click', function () {
+var q = encodeURIComponent(this.getAttribute('data-dir') + ' rosario santa fe');
+window.open('https://www.google.com/maps/search/?api=1&query=' + q, '_blank');
+});
+div.appendChild(btn);
+list.appendChild(div);
+}
 }
 
 function updateStats(data) {
-  var totalVentas = 0, exactas = 0, interp = 0, sr = 0;
-  var zonas = {};
-  var i;
-  for (i = 0; i < data.length; i++) {
-    totalVentas += data[i].ventas;
-    if (data[i].zona) { zonas[data[i].zona] = true; }
-    if (data[i].calidad === 'exacta') { exactas++; }
-    else if (data[i].calidad === 'interpolada') { interp++; }
-    else { sr++; }
-  }
-  document.getElementById('stDirecciones').textContent = data.length;
-  document.getElementById('stVentas').textContent = totalVentas;
-  document.getElementById('stExactas').textContent = exactas;
-  document.getElementById('stInterp').textContent = interp;
-  document.getElementById('stSinResolver').textContent = sr;
-  document.getElementById('stZonas').textContent = Object.keys(zonas).length;
+var totalVentas = 0, exactas = 0, interp = 0, sr = 0;
+var zonas = {};
+var i;
+for (i = 0; i < data.length; i++) {
+totalVentas += data[i].ventas;
+if (data[i].zona) { zonas[data[i].zona] = true; }
+if (data[i].calidad === 'exacta') { exactas++; }
+else if (data[i].calidad === 'interpolada') { interp++; }
+else { sr++; }
+}
+document.getElementById('stDirecciones').textContent = data.length;
+document.getElementById('stVentas').textContent = totalVentas;
+document.getElementById('stExactas').textContent = exactas;
+document.getElementById('stInterp').textContent = interp;
+document.getElementById('stSinResolver').textContent = sr;
+document.getElementById('stZonas').textContent = Object.keys(zonas).length;
 }
 
 function populateZoneFilter() {
-  var sel = document.getElementById('zoneFilter');
-  var prev = sel.value;
-  var zonas = {};
-  var i;
-  for (i = 0; i < allData.length; i++) {
-    if (allData[i].zona) { zonas[allData[i].zona] = true; }
-  }
-  sel.innerHTML = '<option value="">Todas las zonas</option>';
-  var names = Object.keys(zonas).sort();
-  for (i = 0; i < names.length; i++) {
-    var opt = document.createElement('option');
-    opt.value = names[i];
-    opt.textContent = names[i];
-    sel.appendChild(opt);
-  }
-  sel.value = zonas[prev] ? prev : '';
+var sel = document.getElementById('zoneFilter');
+var prev = sel.value;
+var zonas = {};
+var i;
+for (i = 0; i < allData.length; i++) {
+if (allData[i].zona) { zonas[allData[i].zona] = true; }
+}
+sel.innerHTML = '<option value="">Todas las zonas</option>';
+var names = Object.keys(zonas).sort();
+for (i = 0; i < names.length; i++) {
+var opt = document.createElement('option');
+opt.value = names[i];
+opt.textContent = names[i];
+sel.appendChild(opt);
+}
+sel.value = zonas[prev] ? prev : '';
 }
 
 function applyFilter() {
-  var zona = document.getElementById('zoneFilter').value;
-  if (!zona) {
-    renderData(allData.slice());
-    return;
-  }
-  var filtered = [];
-  var i;
-  for (i = 0; i < allData.length; i++) {
-    if (allData[i].zona === zona) { filtered.push(allData[i]); }
-  }
-  renderData(filtered);
+var zona = document.getElementById('zoneFilter').value;
+if (!zona) {
+renderData(allData.slice());
+return;
+}
+var filtered = [];
+var i;
+for (i = 0; i < allData.length; i++) {
+if (allData[i].zona === zona) { filtered.push(allData[i]); }
+}
+renderData(filtered);
 }
 
 /* --- Interacciones ------------------------------------------------------------ */
 
 function flyToAddress(key) {
-  var marker = markersByKey[key];
-  if (!marker) { return; }
-  map.flyTo(marker.getLatLng(), 17, { duration: 0.8 });
-  setTimeout(function () { marker.openPopup(); }, 850);
+var marker = markersByKey[key];
+if (!marker) { return; }
+map.flyTo(marker.getLatLng(), 17, { duration: 0.8 });
+setTimeout(function () { marker.openPopup(); }, 850);
 }
 
 function toggleMarkers() {
-  showMarkers = !showMarkers;
-  document.getElementById('tglMarkers').className = showMarkers ? 'toggle-btn on' : 'toggle-btn';
-  if (showMarkers) {
-    var k;
-    for (k in markersByKey) {
-      if (Object.prototype.hasOwnProperty.call(markersByKey, k)) {
-        markersLayer.addLayer(markersByKey[k]);
-      }
-    }
-  } else {
-    markersLayer.clearLayers();
-  }
+showMarkers = !showMarkers;
+document.getElementById('tglMarkers').className = showMarkers ? 'toggle-btn on' : 'toggle-btn';
+if (showMarkers) {
+var k;
+for (k in markersByKey) {
+if (Object.prototype.hasOwnProperty.call(markersByKey, k)) {
+markersLayer.addLayer(markersByKey[k]);
+}
+}
+} else {
+markersLayer.clearLayers();
+}
 }
 
 /* --- Rutas --------------------------------------------------------------------- */
 
 function orderNearestNeighbor(points) {
-  if (points.length < 2) { return points.slice(); }
-  var remaining = points.slice();
-  var ordered = [remaining.shift()];
-  while (remaining.length) {
-    var last = ordered[ordered.length - 1];
-    var bestIdx = 0;
-    var bestDist = Infinity;
-    var i;
-    for (i = 0; i < remaining.length; i++) {
-      var dLat = remaining[i].lat - last.lat;
-      var dLng = remaining[i].lng - last.lng;
-      var d = dLat * dLat + dLng * dLng;
-      if (d < bestDist) { bestDist = d; bestIdx = i; }
-    }
-    ordered.push(remaining.splice(bestIdx, 1)[0]);
-  }
-  return ordered;
+if (points.length < 2) { return points.slice(); }
+var remaining = points.slice();
+var ordered = [remaining.shift()];
+while (remaining.length) {
+var last = ordered[ordered.length - 1];
+var bestIdx = 0;
+var bestDist = Infinity;
+var i;
+for (i = 0; i < remaining.length; i++) {
+var dLat = remaining[i].lat - last.lat;
+var dLng = remaining[i].lng - last.lng;
+var d = dLat * dLat + dLng * dLng;
+if (d < bestDist) { bestDist = d; bestIdx = i; }
+}
+ordered.push(remaining.splice(bestIdx, 1)[0]);
+}
+return ordered;
 }
 
 function renderRouteButtons(placeable) {
-  var box = document.getElementById('routeButtons');
-  box.innerHTML = '';
-  if (placeable.length < 2) { return; }
-  var ordered = orderNearestNeighbor(placeable);
-  var MAX_STOPS = 10;
-  var segments = [];
-  var start = 0;
-  while (start < ordered.length - 1) {
-    var end = Math.min(start + MAX_STOPS - 1, ordered.length - 1);
-    segments.push(ordered.slice(start, end + 1));
-    start = end;
-  }
-  var i;
-  for (i = 0; i < segments.length; i++) {
-    var seg = segments[i];
-    var origin = seg[0].lat + ',' + seg[0].lng;
-    var dest = seg[seg.length - 1].lat + ',' + seg[seg.length - 1].lng;
-    var wps = [];
-    var j;
-    for (j = 1; j < seg.length - 1; j++) { wps.push(seg[j].lat + ',' + seg[j].lng); }
-    var url = 'https://www.google.com/maps/dir/?api=1&travelmode=driving';
-    url += '&origin=' + encodeURIComponent(origin);
-    url += '&destination=' + encodeURIComponent(dest);
-    if (wps.length) { url += '&waypoints=' + encodeURIComponent(wps.join('|')); }
-    var btn = document.createElement('button');
-    btn.className = 'btn btn-primary';
-    btn.textContent = '🚗 Tramo ' + (i + 1) + ' de ' + segments.length + ' (' + seg.length + ' paradas)';
-    btn.setAttribute('data-url', url);
-    btn.addEventListener('click', function () {
-      window.open(this.getAttribute('data-url'), '_blank');
-    });
-    box.appendChild(btn);
-  }
+var box = document.getElementById('routeButtons');
+box.innerHTML = '';
+if (placeable.length < 2) { return; }
+var ordered = orderNearestNeighbor(placeable);
+var MAX_STOPS = 10;
+var segments = [];
+var start = 0;
+while (start < ordered.length - 1) {
+var end = Math.min(start + MAX_STOPS - 1, ordered.length - 1);
+segments.push(ordered.slice(start, end + 1));
+start = end;
+}
+var i;
+for (i = 0; i < segments.length; i++) {
+var seg = segments[i];
+var origin = seg[0].lat + ',' + seg[0].lng;
+var dest = seg[seg.length - 1].lat + ',' + seg[seg.length - 1].lng;
+var wps = [];
+var j;
+for (j = 1; j < seg.length - 1; j++) { wps.push(seg[j].lat + ',' + seg[j].lng); }
+var url = 'https://www.google.com/maps/dir/?api=1&travelmode=driving';
+url += '&origin=' + encodeURIComponent(origin);
+url += '&destination=' + encodeURIComponent(dest);
+if (wps.length) { url += '&waypoints=' + encodeURIComponent(wps.join('|')); }
+var btn = document.createElement('button');
+btn.className = 'btn btn-primary';
+btn.textContent = '🚗 Tramo ' + (i + 1) + ' de ' + segments.length + ' (' + seg.length + ' paradas)';
+btn.setAttribute('data-url', url);
+btn.addEventListener('click', function () {
+window.open(this.getAttribute('data-url'), '_blank');
+});
+box.appendChild(btn);
+}
 }
 
 function openWaze() {
-  var placeable = placeableOf(currentData);
-  if (!placeable.length) {
-    alert('No hay direcciones geolocalizadas para navegar.');
-    return;
-  }
-  var url = 'https://waze.com/ul?ll=' + placeable[0].lat + ',' + placeable[0].lng + '&navigate=yes';
-  window.open(url, '_blank');
+var placeable = placeableOf(currentData);
+if (!placeable.length) {
+alert('No hay direcciones geolocalizadas para navegar.');
+return;
+}
+var url = 'https://waze.com/ul?ll=' + placeable[0].lat + ',' + placeable[0].lng + '&navigate=yes';
+window.open(url, '_blank');
 }
 
 /* --- Export --------------------------------------------------------------------- */
 
 function exportGeocoded() {
-  if (!currentData.length) {
-    alert('No hay datos cargados.');
-    return;
-  }
-  var rows = [];
-  var i;
-  for (i = 0; i < currentData.length; i++) {
-    var d = currentData[i];
-    rows.push({
-      'Dirección': d.direccion, 'Ventas': d.ventas, 'Zona': d.zona,
-      'Nombre': d.nombre, 'Teléfono': d.telefono, 'Notas': d.notas,
-      'lat': d.lat, 'lng': d.lng, 'fuente': d.fuente,
-      'calidad': d.calidad, 'normalizada': d.normalizada
-    });
-  }
-  var ws = XLSX.utils.json_to_sheet(rows);
-  var wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, 'Direcciones');
-  XLSX.writeFile(wb, 'vista_actual_rosario.xlsx');
+if (!currentData.length) {
+alert('No hay datos cargados.');
+return;
+}
+var rows = [];
+var i;
+for (i = 0; i < currentData.length; i++) {
+var d = currentData[i];
+rows.push({
+'Dirección': d.direccion, 'Ventas': d.ventas, 'Zona': d.zona,
+'Nombre': d.nombre, 'Teléfono': d.telefono, 'Notas': d.notas,
+'lat': d.lat, 'lng': d.lng, 'fuente': d.fuente,
+'calidad': d.calidad, 'normalizada': d.normalizada
+});
+}
+var ws = XLSX.utils.json_to_sheet(rows);
+var wb = XLSX.utils.book_new();
+XLSX.utils.book_append_sheet(wb, ws, 'Direcciones');
+XLSX.writeFile(wb, 'vista_actual_rosario.xlsx');
 }
 
 /* --- Init ------------------------------------------------------------------------ */
 
 function initMap() {
-  if (typeof L === 'undefined') {
-    alert('No se pudo cargar Leaflet. Verificá la conexión a internet y los CDN.');
-    return false;
-  }
-  map = L.map('map').setView([-32.9442, -60.6505], 13);
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
-  markersLayer = L.layerGroup().addTo(map);
+if (typeof L === 'undefined') {
+alert('No se pudo cargar Leaflet. Verificá la conexión a internet y los CDN.');
+return false;
+}
+map = L.map('map').setView([-32.9442, -60.6505], 13);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+maxZoom: 19,
+attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+markersLayer = L.layerGroup().addTo(map);
 
-  /* La superficie es un imageOverlay geográfico: escala sola con el zoom,
-     no hay que re-renderizarla. El clic muestra el detalle local. */
-  map.on('click', surfaceClickPopup);
-  return true;
+map.on('click', surfaceClickPopup);
+return true;
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  if (!initMap()) { return; }
+if (!initMap()) { return; }
 
-  document.getElementById('btnReload').addEventListener('click', loadFromJson);
-  document.getElementById('btnUpload').addEventListener('click', function () {
-    document.getElementById('fileInput').click();
-  });
-  document.getElementById('fileInput').addEventListener('change', handleFile);
-  document.getElementById('zoneFilter').addEventListener('change', applyFilter);
-  document.getElementById('layerMode').addEventListener('change', function () {
-    layerMode = this.value;
-    rebuildOverlay();
-  });
-  document.getElementById('tglMarkers').addEventListener('click', toggleMarkers);
-  document.getElementById('btnWaze').addEventListener('click', openWaze);
-  document.getElementById('btnExport').addEventListener('click', exportGeocoded);
-  document.getElementById('btnSaveSupa').addEventListener('click', syncAllToSupabase);
-
-  loadFromJson();
+document.getElementById('btnUpload').addEventListener('click', function () {
+document.getElementById('fileInput').click();
 });
+document.getElementById('fileInput').addEventListener('change', handleFile);
+document.getElementById('btnGeocodificar').addEventListener('click', function () {
+geocodificarPendientes(false);
+});
+document.getElementById('btnReintentar').addEventListener('click', function () {
+geocodificarPendientes(true);
+});
+document.getElementById('btnReload').addEventListener('click', cargarDatos);
+document.getElementById('zoneFilter').addEventListener('change', applyFilter);
+document.getElementById('layerMode').addEventListener('change', function () {
+layerMode = this.value;
+rebuildOverlay();
+});
+document.getElementById('tglMarkers').addEventListener('click', toggleMarkers);
+document.getElementById('btnWaze').addEventListener('click', openWaze);
+document.getElementById('btnExport').addEventListener('click', exportGeocoded);
+
+cargarDatos();
+});
+
 </script>
+
 </body>
 </html>
