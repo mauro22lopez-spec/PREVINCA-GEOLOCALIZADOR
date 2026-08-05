@@ -12,47 +12,43 @@
 11,Remedios de Escalada 300,Florida Sur,22,-32.909549,-60.689883,Rosario,Santa Fe,verificado
 12,Valle de Huaura 50,Florida Sur,5,-32.912296,-60.690315,Rosario,Santa Fe,verificado
 13,Batalla de Bailén 100,Florida Sur,18,-32.912144,-60.689373,Rosario,Santa Fe,verificado
-14,Av. Pres. Perón 4000,Barrio Parque,78,-32.9516,-60.6675,Rosario,Santa Fe,verificado
-15,Av. Pres. Perón 3500,Barrio Parque,62,-32.951,-60.6621,Rosario,Santa Fe,verificado
-16,Av. Pres. Perón 3000,Barrio Parque,44,-32.9505,-60.6568,Rosario,Santa Fe,verificado
+14,Avenida Pres. Perón 4000,Barrio Parque,78,-32.9516,-60.6675,Rosario,Santa Fe,verificado
+15,Avenida Pres. Perón 3500,Barrio Parque,62,-32.951,-60.6621,Rosario,Santa Fe,verificado
+16,Avenida Pres. Perón 3000,Barrio Parque,44,-32.9505,-60.6568,Rosario,Santa Fe,verificado
 17,Ocampo 3800,Barrio Parque,88,-32.95954,-60.680125,Rosario,Santa Fe,verificado
 18,Cafferata 678,Barrio Parque,33,-32.938263,-60.6707,Rosario,Santa Fe,verificado
 19,Baigorria 2300,Cerámica,25,-32.9112,-60.6725,Rosario,Santa Fe,verificado
-20,Dr. Pedro Medrano 2259,Cerámica,48,-32.9108,-60.6738,Rosario,Santa Fe,verificado
+20,Doctor Pedro Medrano 2259,Cerámica,48,-32.9108,-60.6738,Rosario,Santa Fe,verificado
 21,Anchoris 1300,Cerámica,95,-32.916,-60.67,Rosario,Santa Fe,verificado
 22,Molina 1700,Cerámica,73,-32.9135,-60.672,Rosario,Santa Fe,verificado
-23,Cosquín 2000,Cerámica,56,-32.886259,-60.709032,Rosario,Santa Fe,verificado
-24,Braille 3500,Cerámica,19,-32.9095,-60.677,Rosario,Santa Fe,verificado
-25,Valle Hermoso 2500,Cerámica,31,-32.886458,-60.709777,Rosario,Santa Fe,verificado
-26,José M. Rosa 7500,Fisherton,82,-32.965174,-60.720225,Rosario,Santa Fe,verificado
-27,A. Chizzini 8400,Fisherton,76,-32.9225,-60.745698,Rosario,Santa Fe,verificado
-28,Condarco 8800,Fisherton,68,-32.8975,-60.736,Rosario,Santa Fe,verificado
-29,Juárez Celman Bis 8800,Fisherton,71,-32.898,-60.735,Rosario,Santa Fe,verificado
-30,Brassey 8200,Fisherton,59,-32.923031,-60.739374,Rosario,Santa Fe,verificado
-31,Blvd. Argentino 8000,Fisherton,64,-32.924161,-60.734702,Rosario,Santa Fe,verificado
-32,Juan B. Justo 1100,Empalme 2,28,-32.913732,-60.679112,Rosario,Santa Fe,verificado
-33,González del Solar Bis 1100,Empalme 2,35,-32.916457,-60.737459,Rosario,Santa Fe,verificado
-34,Urdinarrain 1000,Empalme 2,41,-32.916809,-60.730399,Rosario,Santa Fe,verificado
-35,José Ingenieros 900,Empalme 2,16,-32.915794,-60.676668,Rosario,Santa Fe,verificado
-36,Franklin 800,Empalme 2,9,-32.918201,-60.737375,Rosario,Santa Fe,verificado
-37,Juan José Paso 700,Empalme 2,14,-32.918876,-60.674247,Rosario,Santa Fe,verificado
-38,Baigorria 2200,Casiano Casas,37,-32.9105,-60.6725,Rosario,Santa Fe,verificado
-39,Mariano Perdriel 2200,Casiano Casas,42,-32.9095,-60.671,Rosario,Santa Fe,verificado
-40,Marcelino Freyre 2100,Casiano Casas,29,-32.9125,-60.6695,Rosario,Santa Fe,verificado
-41,Calvo 1327,Casiano Casas,53,-32.905612,-60.704956,Rosario,Santa Fe,verificado
-42,Comercio 1100,Casiano Casas,21,-32.90436,-60.696693,Rosario,Santa Fe,verificado
-43,Francisco Netri 1100,Casiano Casas,26,-32.902537,-60.697459,Rosario,Santa Fe,verificado
-44,Av. Casiano Casas 1200,Casiano Casas,34,-32.907,-60.6755,Rosario,Santa Fe,verificado
-45,San Martín 567,Centro,12,-32.9441,-60.6349,Rosario,Santa Fe,verificado
-46,Pellegrini 890,Centro,45,-32.9554,-60.6342,Rosario,Santa Fe,verificado
-47,Mitre 234,Centro,78,-32.9414,-60.637,Rosario,Santa Fe,verificado
-48,Entre Ríos 789,Centro,92,-32.9459,-60.6381,Rosario,Santa Fe,verificado
-49,Sarmiento 345,Centro,23,-32.9423,-60.6359,Rosario,Santa Fe,verificado
-50,Balcarce 678,Centro,67,-32.945,-60.6466,Rosario,Santa Fe,verificado
-51,Bv. Oroño 7890,Centro,88,-33.012481,-60.665988,Rosario,Santa Fe,verificado
-52,Wheelwright 2345,Centro,15,-32.932661,-60.647712,Rosario,Santa Fe,verificado
-53,Laprida 901,Centro,9,-32.9477,-60.6317,Rosario,Santa Fe,verificado
-54,Zeballos 789,Centro,62,-32.9518,-60.6331,Rosario,Santa Fe,verificado
-55,Moreno 1234,Centro,27,-32.9504,-60.6456,Rosario,Santa Fe,verificado
-56,Paraguay 567,Centro,95,-32.9441,-60.6402,Rosario,Santa Fe,verificado
-57,Urquiza 8901,Centro,18,-32.934149,-60.738161,Rosario,Santa Fe,verificado
+23,Braille 3500,Cerámica,19,-32.9095,-60.677,Rosario,Santa Fe,verificado
+24,Valle Hermoso 2500,Cerámica,31,-32.8864518071137,-60.7097911292536,Rosario,Santa Fe,verificado
+25,José María Rosa 7500,Fisherton,82,-32.9649611577952,-60.7202725431645,Rosario,Santa Fe,verificado
+26,Chizzini 8400,Fisherton,76,-32.9223817798506,-60.7457348183166,Rosario,Santa Fe,verificado
+27,Brassey 8200,Fisherton,59,-32.923031,-60.739374,Rosario,Santa Fe,verificado
+28,Boulevard Argentino 8000,Fisherton,64,-32.924161,-60.734702,Rosario,Santa Fe,verificado
+29,Juan B. Justo 1100,Empalme 2,28,-32.913732,-60.679112,Rosario,Santa Fe,verificado
+30,González del Solar Bis 1100,Fisherton,35,-32.9156338178705,-60.7374011907286,Rosario,Santa Fe,verificado
+31,Urdinarrain 1000,Empalme 2,41,-32.916809,-60.730399,Rosario,Santa Fe,verificado
+32,José Ingenieros 900,Empalme 2,16,-32.915794,-60.676668,Rosario,Santa Fe,verificado
+33,Juan José Paso 700,Empalme 2,14,-32.918876,-60.674247,Rosario,Santa Fe,verificado
+34,Baigorria 2200,Casiano Casas,37,-32.9105,-60.6725,Rosario,Santa Fe,verificado
+35,Mariano Perdriel 2200,Casiano Casas,42,-32.9095,-60.671,Rosario,Santa Fe,verificado
+36,Marcelino Freyre 2100,Casiano Casas,29,-32.9125,-60.6695,Rosario,Santa Fe,verificado
+37,Calvo 1327,Casiano Casas,53,-32.905612,-60.704956,Rosario,Santa Fe,verificado
+38,Comercio 1100,Casiano Casas,21,-32.90436,-60.696693,Rosario,Santa Fe,verificado
+39,Francisco Netri 1100,Casiano Casas,26,-32.902537,-60.697459,Rosario,Santa Fe,verificado
+40,Avenida Casiano Casas 1200,Casiano Casas,34,-32.907,-60.6755,Rosario,Santa Fe,verificado
+41,San Martín 567,Centro,12,-32.9441,-60.6349,Rosario,Santa Fe,verificado
+42,Pellegrini 890,Centro,45,-32.9554,-60.6342,Rosario,Santa Fe,verificado
+43,Mitre 2344,Centro,78,-32.9414,-60.637,Rosario,Santa Fe,verificado
+44,Entre Ríos 789,Centro,92,-32.9459,-60.6381,Rosario,Santa Fe,verificado
+45,Sarmiento 345,Centro,23,-32.9423,-60.6359,Rosario,Santa Fe,verificado
+46,Balcarce 678,Centro,67,-32.945,-60.6466,Rosario,Santa Fe,verificado
+47,Boulevard Oroño 7890,Centro,88,-33.0122216759229,-60.6660711336577,Rosario,Santa Fe,verificado
+48,Wheelwright 2345,Centro,15,-32.932661,-60.647712,Rosario,Santa Fe,verificado
+49,Laprida 901,Centro,9,-32.9477,-60.6317,Rosario,Santa Fe,verificado
+50,Zeballos 789,Centro,62,-32.9518,-60.6331,Rosario,Santa Fe,verificado
+51,Moreno 1234,Centro,27,-32.9504,-60.6456,Rosario,Santa Fe,verificado
+52,Paraguay 567,Centro,95,-32.9441,-60.6402,Rosario,Santa Fe,verificado
+53,Urquiza 8901,Fisherton,18,-32.9340860523482,-60.7380640318077,Rosario,Santa Fe,verificado
